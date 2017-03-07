@@ -1,0 +1,49 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nyt/global/}
+    \entry{doi:10.1146/annurev.bioeng.8.061505.095802}{article}{}
+      \field{sortinit}{M}
+      \field{sortinithash}{c26a05ef03e4429073ed5c825140fac3}
+      \field{labeldatesource}{year}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Machine learning offers a principled approach for developing sophisticated, automatic, and objective algorithms for analysis of high-dimensional and multimodal biomedical data. This review focuses on several advances in the state of the art that have shown promise in improving detection, diagnosis, and therapeutic monitoring of disease. Key in the advancement has been the development of a more in-depth understanding and theoretical analysis of critical issues related to algorithmic construction and learning theory. These include trade-offs for maximizing generalization performance, use of physically realistic constraints, and incorporation of prior knowledge and uncertainty. The review describes recent developments in machine learning, focusing on supervised and unsupervised linear methods and Bayesian inference, which have made significant impacts in the detection and diagnosis of disease in biomedicine. We describe the different methodologies and, for each, provide examples of their application to specific domains in biomedical diagnostics.}
+      \field{journaltitle}{Annual Review of Biomedical Engineering}
+      \field{note}{PMID: 16834566}
+      \field{number}{1}
+      \field{title}{Machine Learning for Detection and Diagnosis of Disease}
+      \field{volume}{8}
+      \field{year}{2006}
+      \field{pages}{537\bibrangedash 565}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1146/annurev.bioeng.8.061505.095802
+      \endverb
+      \verb{eprint}
+      \verb http://dx.doi.org/10.1146/annurev.bioeng.8.061505.095802
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1146/annurev.bioeng.8.061505.095802
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

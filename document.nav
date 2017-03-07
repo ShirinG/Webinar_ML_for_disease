@@ -1,0 +1,123 @@
+\defcounter {refsection}{0}\relax 
+\beamer@endinputifotherversion {3.36pt}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {1}{1}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {2}{2}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {1}{Machine Learning (ML) in disease modeling}{3}{Machine Learning (ML) in disease modeling}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@sectionpages {1}{2}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {1}{2}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {1}{0}{1}{3/3}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {3}{3}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {1}{0}{2}{4/4}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {4}{4}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {2}{A quick recap of ML basics}{5}{A quick recap of ML basics}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@sectionpages {3}{4}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {3}{4}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {2}{0}{1}{5/5}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {5}{5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionentry {0}{2}{1}{6}{Supervised vs Unsupervised algorithms}}\headcommand {\beamer@subsectionpages {5}{5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionentry {0}{2}{2}{6}{Classification vs Regression}}\headcommand {\beamer@subsectionpages {6}{5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionentry {0}{2}{3}{6}{Features}}\headcommand {\beamer@subsectionpages {6}{5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionentry {0}{2}{4}{6}{Training, validation and test data}}\headcommand {\beamer@subsectionpages {6}{5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionentry {0}{2}{5}{6}{Cross-validation}}\headcommand {\beamer@subsectionpages {6}{5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionentry {0}{2}{6}{6}{Missing data}}\headcommand {\beamer@subsectionpages {6}{5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionentry {0}{2}{7}{6}{Grid Search}}\headcommand {\beamer@subsectionpages {6}{5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {3}{How to build ML models in R}{6}{How to build ML models in R}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@sectionpages {5}{5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {6}{5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {3}{0}{1}{6/6}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {6}{6}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {3}{0}{2}{7/7}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {7}{7}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionentry {0}{3}{1}{8}{Get to know your data}}\headcommand {\beamer@subsectionpages {6}{7}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {3}{1}{1}{8/8}{Get to know your data}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {8}{8}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionentry {0}{3}{2}{9}{Classification}}\headcommand {\beamer@subsectionpages {8}{8}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsubsectionentry {0}{3}{2}{1}{9}{Tree based models}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {3}{2}{1}{9/9}{Classification}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {9}{9}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {3}{2}{2}{10/10}{Classification}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {10}{10}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {3}{2}{3}{11/11}{Classification}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {11}{11}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionentry {0}{3}{3}{12}{Regression}}\headcommand {\beamer@subsectionpages {9}{11}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsubsectionentry {0}{3}{3}{1}{12}{Linear Models}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {3}{3}{1}{12/12}{Regression}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {12}{12}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsubsectionentry {0}{3}{3}{2}{13}{Deep learning with neural network}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {4}{Evaluating ML model performance}{13}{Evaluating ML model performance}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@sectionpages {6}{12}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {12}{12}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {4}{0}{1}{13/13}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {13}{13}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionentry {0}{4}{1}{14}{Validation vs test set performance}}\headcommand {\beamer@subsectionpages {13}{13}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {4}{1}{1}{14/14}{Validation vs test set performance}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {14}{14}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {4}{1}{2}{15/15}{Validation vs test set performance}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {15}{15}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {4}{1}{3}{16/16}{Validation vs test set performance}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\beamer@partpages {1}{16}}
+\headcommand {\beamer@subsectionpages {14}{16}}
+\headcommand {\beamer@sectionpages {13}{16}}
+\headcommand {\beamer@documentpages {16}}
+\headcommand {\def \inserttotalframenumber {16}}
