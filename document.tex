@@ -1,4 +1,4 @@
-\documentclass[handout, t, 11pt, xcolor=svgnames, hyperref={colorlinks,citecolor=DeepPink4,linkcolor=DarkRed,urlcolor=DarkBlue}]{beamer} % t aligns all blocks and text to the top (default is aligned to center)
+\documentclass[handout, c, 11pt, xcolor=svgnames, hyperref={colorlinks,citecolor=DeepPink4,linkcolor=DarkRed,urlcolor=DarkBlue}]{beamer} % t aligns all blocks and text to the top (default is aligned to center)
 %\usepackage{pgfpages}
 %\pgfpagesuselayout{4 on 1}[a4paper, border shrink=5mm, landscape]
 
@@ -68,7 +68,7 @@
 	
 	%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
 	%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
-	%\setbeamertemplate{headline} % to remove header with navigation tree
+	\setbeamertemplate{headline} % to remove header with navigation tree
 	
 	\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
 }
@@ -97,7 +97,7 @@
 
 \title[Webinar for ISDS R Group]{Building meaningful machine learning models for disease prediction} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author{Dr. Shirin Glander} % Your name
+\author{Dr Shirin Glander} % Your name
 \institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
 	Dep. of Genetic Epidemiology \\
@@ -143,9 +143,62 @@
 	\begin{frame}[c]
 		\frametitle{Table of contents}
 		
-			\tableofcontents
+			\tableofcontents[hideallsubsections]
 
 	\end{frame}
+
+\begin{frame}
+	\frametitle{About me}
+	
+	\begin{columns}
+		\column{0.15\textwidth}	
+	
+		\column{0.8\textwidth}	
+	\begin{itemize}
+		\item[2005 - 2011] BSc and MSc of Science in Biology \\
+							Evolutionary genetics, \\ immune memory in Drosophila \\[5mm]
+		\item[2011 - 2015] PhD in Biology \\
+							Is the immune system of plants required to adapt to flowering time change? \\[5mm]
+		\item[since 2015] Bioinformatics Postdoc \\
+							Autoinflammatory diseases \& innate immunity \\
+							Next Generation Sequencing
+	\end{itemize}
+
+	\column{0.05\textwidth}	
+	
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[xshift=-2cm,yshift=-2.5cm] at (current page.north east) {\includegraphics[width=3cm]{images/Bewerbungsfoto}};
+	\end{tikzpicture}
+
+	\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\section{What makes a model meaningful?}
+
+\begin{frame}
+	\frametitle{\textsl{Meaningful} models}
+	
+	\begin{itemize}
+		\item answer the question(s) posed...
+		\item ... with sufficient accuracy to be trustworthy
+	\end{itemize}
+
+\vspace{0.6cm}
+
+	\begin{center}
+		{\Large \alert{Accuracy depends on the problem!}}
+		
+		\vspace{1cm}
+		
+		\includegraphics[width=0.33\textwidth]{images/meaningful_1}
+		\includegraphics[width=0.33\textwidth]{images/meaningful_2}
+		\includegraphics[width=0.33\textwidth]{images/meaningful_3}
+	\end{center}
+	
+	
+\end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%

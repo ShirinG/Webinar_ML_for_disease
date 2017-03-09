@@ -30,6 +30,56 @@ Feature Selection in Machine Learning (Breast Cancer Datasets): https://shiring.
 Predicting food preferences with sparklyr (machine learning): https://shiring.github.io/machine_learning/2017/02/19/food_spark
 Building deep neural nets with h2o and rsparkling that predict arrhythmia of the heart: https://shiring.github.io/machine_learning/2017/02/27/h2o
 
+```{r echo=FALSE, eval=FALSE}
+# hypothetical example for describing meaningfulness
+
+library(ggplot2)
+
+df <- data.frame(actual = rep(c("healthy", "disease"), each = 2),
+                 predicted = rep(c("healthy", "disease"), 2),
+                 count = c(98, 2, 5, 95))
+
+p1 <- ggplot(df, aes(x = predicted, y = count, fill = actual)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_bw() +
+  scale_fill_brewer(palette = "Set1") +
+  labs(title = "Ideal case")
+
+setwd("U:/Github_blog/Webinar/Webinar_ML_for_disease/images")
+
+pdf("images/meaningful_1.pdf", onefile = TRUE, bg = "white", family = "Helvetica", width = 4, height = 3, useDingbats=F)
+print(p1)
+dev.off()
+
+df <- data.frame(actual = rep(c("healthy", "disease"), each = 2),
+                 predicted = rep(c("healthy", "disease"), 2),
+                 count = c(60, 40, 5, 95))
+
+p2 <- ggplot(df, aes(x = predicted, y = count, fill = actual)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_bw() +
+  scale_fill_brewer(palette = "Set1") +
+  labs(title = "Possible case 1")
+
+pdf("images/meaningful_2.pdf", onefile = TRUE, bg = "white", family = "Helvetica", width = 4, height = 3, useDingbats=F)
+print(p2)
+dev.off()
+
+df <- data.frame(actual = rep(c("healthy", "disease"), each = 2),
+                 predicted = rep(c("healthy", "disease"), 2),
+                 count = c(90, 10, 35, 70))
+
+p3 <- ggplot(df, aes(x = predicted, y = count, fill = actual)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_bw() +
+  scale_fill_brewer(palette = "Set1") +
+  labs(title = "Possible case 2")
+
+pdf("images/meaningful_3.pdf", onefile = TRUE, bg = "white", family = "Helvetica", width = 4, height = 3, useDingbats=F)
+print(p3)
+dev.off()
+```
+
 
 <br>
 
