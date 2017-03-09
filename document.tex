@@ -1,7 +1,17 @@
-\documentclass[handout, c, 11pt, xcolor=svgnames, hyperref={colorlinks,citecolor=DeepPink4,linkcolor=DarkRed,urlcolor=DarkBlue}]{beamer} % t aligns all blocks and text to the top (default is aligned to center)
+\documentclass[notes, c, 11pt, xcolor=svgnames, hyperref={colorlinks,citecolor=DeepPink4,linkcolor=DarkRed,urlcolor=DarkBlue}]{beamer}
+
+% print notes only:
+%\documentclass[notes=only, c, 11pt, xcolor=svgnames, hyperref={colorlinks,citecolor=DeepPink4,linkcolor=DarkRed,urlcolor=DarkBlue}]{beamer}
+
+% print only frames:
+%\documentclass[c, 11pt, xcolor=svgnames, hyperref={colorlinks,citecolor=DeepPink4,linkcolor=DarkRed,urlcolor=DarkBlue}]{beamer}
+
+% print handouts:
+%\documentclass[handout, c, 11pt, xcolor=svgnames, hyperref={colorlinks,citecolor=DeepPink4,linkcolor=DarkRed,urlcolor=DarkBlue}]{beamer} 
 %\usepackage{pgfpages}
 %\pgfpagesuselayout{4 on 1}[a4paper, border shrink=5mm, landscape]
 
+\setbeamerfont{note page}{size=\tiny}
 
 \usepackage[english, german]{babel}
 \usepackage[latin1]{inputenc}
@@ -130,7 +140,7 @@
 	\end{frame}
 }
 
-\renewcommand{\thefootnote}{$\star$} 
+%\renewcommand{\thefootnote}{$\star$} 
 
 \begin{document}
 	
@@ -167,7 +177,7 @@
 	\column{0.05\textwidth}	
 	
 	\begin{tikzpicture}[remember picture,overlay]
-	\node[xshift=-2cm,yshift=-2.5cm] at (current page.north east) {\includegraphics[width=3cm]{images/Bewerbungsfoto}};
+	\node[xshift=-2cm,yshift=-2.3cm] at (current page.north east) {\includegraphics[width=3cm]{images/Bewerbungsfoto}};
 	\end{tikzpicture}
 
 	\end{columns}
@@ -176,6 +186,16 @@
 %%%%%%%%%%%%%%%%%%%%%
 
 \section{What makes a model meaningful?}
+
+\note{
+	Machine learning is a powerful approach for developing sophisticated, automatic, and objective algorithms for analysis of high-dimensional and multimodal biomedical data. \\
+	
+	\vspace{0.2cm}
+	A key aspect of the precision medicine effort is the development of informatics tools that can analyze and interpret 'big data' sets in an automated and adaptive fashion while providing accurate and actionable clinical information. \\
+	
+	\vspace{0.1cm}
+	ML based model can improve detection, diagnosis, and therapeutic monitoring of disease. \\
+}
 
 \begin{frame}
 	\frametitle{\textsl{Meaningful} models}
@@ -197,10 +217,33 @@
 		\includegraphics[width=0.33\textwidth]{images/meaningful_3}
 	\end{center}
 	
-	
 \end{frame}
 
+\note{
+	I want to begin with an introduction to the main question of my talk: what makes a model \textsl{good} or \textsl{meaningful}? \\
+	\vspace{0.1cm}
+	
+	A meaningful model
+	\begin{itemize}
+		\item answers the questions or questions posed...
+		\item ... with sufficient accuracy to be trustworthy
+	\end{itemize}
 
+	\vspace{0.1cm}
+	But what we mean exactly with \textsl{accuracy} can not be defined with a one-size-fits-all approach: it depends on the problem we want to model. 	
+
+	\vspace{0.1cm}
+	Let me illustrate what I mean with the following examples:
+	\begin{itemize}
+		\item \textbf{Ideal case:} Of course, we all want to achieve ideal modeling results where overall prediction accuracy is very high. \\ With a model like that, we can be very confident that a healthy person is indeed healthy and a sick person is not. \\
+		\item But in reality, we often achieve prediction accuracies that are much less nice. \\
+		\item This forces us to evaluate how we want to define a good model
+		\item \alert{Scenarios 1 and 2:} Le's consider two possible scenarios: 
+		\item in case 1, we can be very confident that a person who got classified as "healthy" is indeed healthy, \\ while a person who has been diagnosed as diseased might as well be healthy based on these prediction accuracies
+		\item in case 2, it is the other way around.
+		\item We now need to make a decision which scenario is better and in which direction we want to optimize our model: \\ do we rather want to refer a few healthy people for further checking because the model predicted them as diseased? \\ Or do we rather want to be as certain as possible that a predicted disease is actually true \\ and accept that we might miss a few disease cases?
+	\end{itemize}
+}
 %%%%%%%%%%%%%%%%%%%%%
 
 \section{Machine Learning (ML) in disease modeling}
@@ -208,28 +251,91 @@
 %publications
 
 \begin{frame}
+	\frametitle{ML in disease modeling}
 	
-	\footfullcite{doi:10.1146/annurev.bioeng.8.061505.095802}
-	%\footcite{doi:10.1146/annurev.bioeng.8.061505.095802}
+	\begin{itemize}
+		\item falls into the field of \alert{artificial intelligence (AI)}
+		\item algorithms \alert{learn} by being trained on observed data
+		\item learned models can \alert{predict unknown data}
+		\item ML concepts are not new, but the increase in computational capacity has made them more accessible
+	\end{itemize}
+
+\vspace{0.2cm}
+
+\alert{Examples:} 
+\begin{itemize}
+	\item Computer-aided diagnosis of breast cancer from mammograms,
+	\item early diagnosis of osteoporosis from chest radiographs, etc. \footfullcite{Kunio}
+	\item Identifying signatures of Brain Cancer from MRSI \footfullcite{doi:10.1146/annurev.bioeng.8.061505.095802}
+\end{itemize}
+	
+	%\footcite{}
 	
 \end{frame}
+
+\note{
+	Computer-aided diagnosis (CAD) has become one of the major research subjects in medical imaging and diagnostic radiology \\
+	With CAD, radiologists use the computer output as a 'second opinion' and make the final decisions. \\
+	
+	\vspace{0.2cm}
+	In vivo magnetic resonance spectroscopy imaging (MRSI) allows noninvasive characterization and quantification of molecular markers of potentially high clinical utility for improving detection, identification, and treatment for a variety of diseases, most notably brain cancers. \\
+	
+	\vspace{0.2cm}
+	1. Unsupervised matrix decomposition methods, such as nonnegative matrix
+	factorization, which impose general, although physically meaningful, constraints,
+	are able to recover biomarkers of disease and toxicity, generating a
+	natural basis for data visualization and pattern classification. \\
+	
+	\vspace{0.2cm}
+	2. Supervised discriminative models that explicitly address the bias-variance
+	trade-off, such as the support vector machine, have shown great promise for
+	disease diagnosis in computational biology, where data types are disparate
+	and high dimensional. \\
+	
+	\vspace{0.2cm}
+	3. Generative models based on Bayesian networks offer a general approach
+	for biomedical image and signal analysis in that they enable one to directly
+	model the uncertainty and variability inherent to biomedical data as well
+	as provide a framework for an array of analysis, including classification,
+	segmentation, and compression. \\
+}
 
 %%%%%%%%%%%%%%%%%%%%%
 
 \section{A quick recap of ML basics}
 
-\subsection{Supervised vs Unsupervised algorithms}
+\begin{frame}
+	\frametitle{Supervised vs Unsupervised algorithms}
 
-\subsection{Classification vs Regression}
+\end{frame}
 
-\subsection{Features}
 
-% feature engineering
-% feature selection
+\begin{frame}
+	\frametitle{Classification vs Regression}
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Features}
+	
+	\begin{itemize}
+		\item feature selection
+		\item feature extraction
+		\item feature engineering
+	\end{itemize}
+\end{frame}
+
 % factorial vs numeric
 % preprocessing
 
+\note{
+	extraction of salient structure in the data that is more informative than the raw data itself (the feature extraction problem)
+}
+
 \subsection{Training, validation and test data}
+
+% preventing overfitting, we want our models to be generalizeable
 
 \subsection{Cross-validation}
 

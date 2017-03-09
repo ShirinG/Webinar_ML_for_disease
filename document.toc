@@ -6,38 +6,32 @@
 \defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {1}{What makes a model meaningful?}{4}{0}{1}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {2}{Machine Learning (ML) in disease modeling}{6}{0}{2}
+\beamer@sectionintoc {2}{Machine Learning (ML) in disease modeling}{8}{0}{2}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {3}{A quick recap of ML basics}{8}{0}{3}
+\beamer@sectionintoc {3}{A quick recap of ML basics}{11}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {3}{1}{Supervised vs Unsupervised algorithms}{9}{0}{3}
+\beamer@subsectionintoc {3}{1}{Training, validation and test data}{16}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {3}{2}{Classification vs Regression}{9}{0}{3}
+\beamer@subsectionintoc {3}{2}{Cross-validation}{16}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {3}{3}{Features}{9}{0}{3}
+\beamer@subsectionintoc {3}{3}{Missing data}{16}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {3}{4}{Training, validation and test data}{9}{0}{3}
+\beamer@subsectionintoc {3}{4}{Grid Search}{16}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {3}{5}{Cross-validation}{9}{0}{3}
+\beamer@sectionintoc {4}{How to build ML models in R}{16}{0}{4}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {3}{6}{Missing data}{9}{0}{3}
+\beamer@subsectionintoc {4}{1}{Get to know your data}{18}{0}{4}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {3}{7}{Grid Search}{9}{0}{3}
+\beamer@subsectionintoc {4}{2}{Classification}{19}{0}{4}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {4}{How to build ML models in R}{9}{0}{4}
+\beamer@subsubsectionintoc {4}{2}{1}{Tree based models}{19}{0}{4}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {4}{1}{Get to know your data}{11}{0}{4}
+\beamer@subsectionintoc {4}{3}{Regression}{22}{0}{4}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {4}{2}{Classification}{12}{0}{4}
+\beamer@subsubsectionintoc {4}{3}{1}{Linear Models}{22}{0}{4}
 \defcounter {refsection}{0}\relax 
-\beamer@subsubsectionintoc {4}{2}{1}{Tree based models}{12}{0}{4}
+\beamer@subsubsectionintoc {4}{3}{2}{Deep learning with neural network}{23}{0}{4}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {4}{3}{Regression}{15}{0}{4}
+\beamer@sectionintoc {5}{Evaluating ML model performance}{23}{0}{5}
 \defcounter {refsection}{0}\relax 
-\beamer@subsubsectionintoc {4}{3}{1}{Linear Models}{15}{0}{4}
-\defcounter {refsection}{0}\relax 
-\beamer@subsubsectionintoc {4}{3}{2}{Deep learning with neural network}{16}{0}{4}
-\defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {5}{Evaluating ML model performance}{16}{0}{5}
-\defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {5}{1}{Validation vs test set performance}{17}{0}{5}
+\beamer@subsectionintoc {5}{1}{Validation vs test set performance}{24}{0}{5}
