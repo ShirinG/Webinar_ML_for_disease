@@ -125,9 +125,7 @@
 	\href{https://github.com/ShirinG}{https://github.com/ShirinG}
 	
 }
-\date{31.03.2017
-	\vspace{0.5cm}
-} % Date, can be changed to a custom date
+\date{Friday, 31\textsuperscript{st} March 2017} 
 
 \AtBeginSection[]{
 	\begin{frame}
@@ -142,20 +140,30 @@
 
 %\renewcommand{\thefootnote}{$\star$} 
 
+%%%%%%%%%%%%%%%%%%%%%
+%	TITLE PAGE
+%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 	
 	\begin{frame}
-		\titlepage % Print the title page as the first slide
-		
-		%Dr Shirin Glander will go over her work on building machine-learning models to predict the course of different diseases. She will go over building a model, evaluating its performance, and answering or addressing different disease related questions using machine learning. Her talk will cover the theory of machine learning as it is applied using R. 
+		\titlepage
 	\end{frame}
 	
-	\begin{frame}[c]
-		\frametitle{Table of contents}
-		
-			\tableofcontents[hideallsubsections]
+\note{
+	\begin{itemize}
+		\item Welcome everybody!
+		\item Thank you very much for the invitation and the opportunity to present this talk
+		\item I will go over my work on using machine learning models in disease prediction
+		\item I want to specifically give a hands-on demonstration of how you can build meaningful models yourselves using R
+		\item I will demonstrate how to evaluate model performance and
+		\item how to optimize models to address different disease-related questions
+	\end{itemize}
+}
 
-	\end{frame}
+%%%%%%%%%%%%%%%%%%%%%
+%	ABOUT ME
+%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 	\frametitle{About me}
@@ -164,48 +172,97 @@
 		\column{0.15\textwidth}	
 	
 		\column{0.8\textwidth}	
-	\begin{itemize}
-		\item[2005 - 2011] BSc and MSc of Science in Biology \\
-							Evolutionary genetics, \\ immune memory in Drosophila \\[5mm]
+	\begin{itemize}		
+		\item[since 2015] Bioinformatics Postdoc \\
+							Next Generation Sequencing \\
+							autoinflammatory diseases \& \\
+							innate immunity \\[5mm]
 		\item[2011 - 2015] PhD in Biology \\
 							Is the immune system of plants required to adapt to flowering time change? \\[5mm]
-		\item[since 2015] Bioinformatics Postdoc \\
-							Autoinflammatory diseases \& innate immunity \\
-							Next Generation Sequencing
+		\item[2005 - 2011] BSc and MSc of Science in Biology \\
+							evolutionary genetics, \\ immune memory in Drosophila \\				
 	\end{itemize}
 
 	\column{0.05\textwidth}	
 	
 	\begin{tikzpicture}[remember picture,overlay]
-	\node[xshift=-2cm,yshift=-2.3cm] at (current page.north east) {\includegraphics[width=3cm]{images/Bewerbungsfoto}};
+	\node[xshift=-2cm,yshift=-2.3cm] at (current page.north east) {\includegraphics[width=3cm]{images/Bewerbungsfoto.jpg}};
 	\end{tikzpicture}
 
 	\end{columns}
 \end{frame}
 
+\note{
+	\begin{itemize}
+		\item Before I start, I want to quickly introduce myself:
+		\item I am a bioinformatics postdoc
+		\item working with next generation sequencing data,
+		\item like RNA-seq for transcriptomics,
+		\item whole genome sequencing for variant analysis,
+		\item ATAC- or Chip-seq for chromatin and epigenetic information.
+		\item My own research focuses on questions relating to autoinflammatory diseases
+		\item and innate immune mechanisms
+	\end{itemize}
+	
+	\begin{itemize}
+		\item I earned my PhD in biology from the University of Münster in 2015
+		\item working with RNA-seq data to determine how plant defense has co-evolved with and potentially shaped different life-history strategies
+	\end{itemize}
+	
+	\begin{itemize}
+		\item Before that, during my BSc and MSc I worked on questions about evolutionary genetics and immune memory in Drosophila
+		\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%
+%	TABLE OF CONTENTS
+%%%%%%%%%%%%%%%%%%%%%
+
+	\begin{frame}[c]
+		\frametitle{Table of contents}
+		\alert{Building meaningful machine learning models for disease prediction}
+		\vspace{0.5cm}
+			\tableofcontents[hideallsubsections]
+
+	\end{frame}
+
+\note{
+	\begin{itemize}
+		\item Now, let's start with the topic about which you're here:
+		\item Machine learning is a powerful approach for developing sophisticated, \\
+			automatic, and objective models for the analysis of complex biomedical data
+	\end{itemize}
+	
+	\begin{itemize}
+		\item I titled my talk: "Building meaningful machine learning models for disease prediction"
+		\item with the emphasis on \textbf{meaningful}
+		\item So, first, I want to introduce to you what it is I mean exactly with \textbf{meaningful models}
+		\item Then, I will give you a few examples of how machine learning is currently being used in disease modeling and clinical data science
+		\item Before I delve into the nitty-gritty of modeling, I will quickly recap the most important concepts of ML
+		\item And finally, I will show how to build ML models in R
+		\item and how to evaluate the performance of such models
+	\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%
+%	SECTION
+%	What makes a model meaningful?
 %%%%%%%%%%%%%%%%%%%%%
 
 \section{What makes a model meaningful?}
 
-\note{
-	Machine learning is a powerful approach for developing sophisticated, automatic, and objective algorithms for analysis of high-dimensional and multimodal biomedical data. \\
-	
-	\vspace{0.2cm}
-	A key aspect of the precision medicine effort is the development of informatics tools that can analyze and interpret 'big data' sets in an automated and adaptive fashion while providing accurate and actionable clinical information. \\
-	
-	\vspace{0.1cm}
-	ML based model can improve detection, diagnosis, and therapeutic monitoring of disease. \\
-}
-
 \begin{frame}
-	\frametitle{\textsl{Meaningful} models}
+	\frametitle{What makes a model meaningful?}
+	
+	\alert{\textsl{Meaningful} models}
+	\vspace{0.2cm}
 	
 	\begin{itemize}
 		\item answer the question(s) posed...
 		\item ... with sufficient accuracy to be trustworthy
 	\end{itemize}
 
-\vspace{0.6cm}
+	\vspace{0.6cm}
 
 	\begin{center}
 		{\Large \alert{Accuracy depends on the problem!}}
@@ -220,68 +277,121 @@
 \end{frame}
 
 \note{
-	I want to begin with an introduction to the main question of my talk: what makes a model \textsl{good} or \textsl{meaningful}? \\
-	\vspace{0.1cm}
-	
-	A meaningful model
 	\begin{itemize}
-		\item answers the questions or questions posed...
-		\item ... with sufficient accuracy to be trustworthy
+		\item I want to begin with an introduction to the main question of my talk: 
+		\item what makes a model \textsl{good} or \textsl{meaningful}?
+	\end{itemize}
+	
+	\begin{enumerate}
+		\item It answers a \textbf{specific} question or addresses a specific problem, \\
+			e.g. does a mammogram image show a healthy breast or is there a tumor? \\
+			Or does an ECG show a normal heart rhythm or arrhythmia?
+		\item And it produces a correct outcome (e.g. a diagnosis) often enough that we trust it!
+	\end{enumerate}
+	
+	\begin{itemize}
+		\item If we build models, we therefore need to evaluate its accuracy 
+		\item before we can decide whether it is trustworthy enough to implement in real-life, 
+		\item like in a hospital where it could e.g. assist doctors in making decisions on treatment
 	\end{itemize}
 
-	\vspace{0.1cm}
-	But what we mean exactly with \textsl{accuracy} can not be defined with a one-size-fits-all approach: it depends on the problem we want to model. 	
-
-	\vspace{0.1cm}
-	Let me illustrate what I mean with the following examples:
 	\begin{itemize}
-		\item \textbf{Ideal case:} Of course, we all want to achieve ideal modeling results where overall prediction accuracy is very high. \\ With a model like that, we can be very confident that a healthy person is indeed healthy and a sick person is not. \\
-		\item But in reality, we often achieve prediction accuracies that are much less nice. \\
-		\item This forces us to evaluate how we want to define a good model
-		\item \alert{Scenarios 1 and 2:} Le's consider two possible scenarios: 
-		\item in case 1, we can be very confident that a person who got classified as "healthy" is indeed healthy, \\ while a person who has been diagnosed as diseased might as well be healthy based on these prediction accuracies
-		\item in case 2, it is the other way around.
-		\item We now need to make a decision which scenario is better and in which direction we want to optimize our model: \\ do we rather want to refer a few healthy people for further checking because the model predicted them as diseased? \\ Or do we rather want to be as certain as possible that a predicted disease is actually true \\ and accept that we might miss a few disease cases?
+		\item But what exactly is \textsl{high accuracy} can not be defined with a one-size-fits-all approach: 
+		\item it depends on the problem we want to model. 	
 	\end{itemize}
 }
+
+\note{
+	Let me illustrate what I mean with the following examples:
+	\begin{itemize}
+		\item \alert{Ideal case:} Of course, we all want to achieve ideal modeling results where overall prediction accuracy is very high. \\ 
+		With a model like that, we can be very confident that a healthy person is indeed healthy and a sick person is not. \\
+		\item But in reality, we often achieve prediction accuracies that are much less nice. \\
+		\item \alert{Scenarios 1 and 2:} Le's consider two possible scenarios: 
+		\item in scenario 1, we can be very confident that a person who got classified as "healthy" is indeed healthy, \\ 
+		while a person who has been diagnosed as diseased might as well be healthy based on these prediction accuracies
+		\item in case 2, it is the other way around.
+		\item We now need to make a decision which scenario is better and in which direction we want to optimize our model: \\ 
+		do we rather want to refer a few healthy people for further checking because the model predicted them as diseased? \\ 
+		Or do we rather want to be as certain as possible that a predicted disease is actually true \\ 
+		and accept that we might miss a few disease cases?
+	\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%
+%	SECTION
+%	Machine Learning (ML) in disease modeling
 %%%%%%%%%%%%%%%%%%%%%
 
 \section{Machine Learning (ML) in disease modeling}
-
-%publications
 
 \begin{frame}
 	\frametitle{ML in disease modeling}
 	
 	\begin{itemize}
-		\item falls into the field of \alert{artificial intelligence (AI)}
-		\item algorithms \alert{learn} by being trained on observed data
-		\item learned models can \alert{predict unknown data}
-		\item ML concepts are not new, but the increase in computational capacity has made them more accessible
+		\item tools that can interpret "big medical data" 
+		\item and provide fast, accurate and actionable information
+		\item for precision or personalized medicine
 	\end{itemize}
 
-\vspace{0.2cm}
+	\vspace{0.5cm}
 
-\alert{Examples:} 
-\begin{itemize}
-	\item Computer-aided diagnosis of breast cancer from mammograms,
-	\item early diagnosis of osteoporosis from chest radiographs, etc. \footfullcite{Kunio}
-	\item Identifying signatures of Brain Cancer from MRSI \footfullcite{doi:10.1146/annurev.bioeng.8.061505.095802}
-\end{itemize}
+	\alert{Examples:} 
+	\begin{itemize}
+		\item computer-aided diagnosis of breast cancer from mammograms \&
+		\item early diagnosis of osteoporosis from chest radiographs\footfullcite{Kunio}
+		\item identifying signatures of Brain Cancer from MRSI \footfullcite{doi:10.1146/annurev.bioeng.8.061505.095802}
+		\item ... and many more ...
+	\end{itemize}
 	
 	%\footcite{}
 	
 \end{frame}
 
 \note{
-	Computer-aided diagnosis (CAD) has become one of the major research subjects in medical imaging and diagnostic radiology \\
-	With CAD, radiologists use the computer output as a 'second opinion' and make the final decisions. \\
+	\begin{itemize}
+		\item A key aspect of precision medicine is the development of informatics tools 
+		\item that can analyze and interpret 'big data' sets 
+		\item in an automated and adaptive fashion 
+		\item while providing accurate and actionable clinical information
+		\item ML based models can improve detection, diagnosis, and therapeutic monitoring of disease
+	\end{itemize}
 	
-	\vspace{0.2cm}
-	In vivo magnetic resonance spectroscopy imaging (MRSI) allows noninvasive characterization and quantification of molecular markers of potentially high clinical utility for improving detection, identification, and treatment for a variety of diseases, most notably brain cancers. \\
-	
-	\vspace{0.2cm}
-	1. Unsupervised matrix decomposition methods, such as nonnegative matrix
+	\begin{itemize}
+		\item Computer-aided diagnosis (CAD) has become one of the major research subjects in medical imaging and diagnostic radiology
+		\item With CAD, radiologists use the computer output as a 'second opinion' and make the final decisions
+		\item In vivo magnetic resonance spectroscopy imaging (MRSI) allows noninvasive characterization 
+		\item and quantification of molecular markers of potentially high clinical utility 
+		\item for improving detection, identification, and treatment for a variety of diseases, most notably brain cancers
+	\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%
+%	SECTION
+%	A quick recap of ML basics
+%%%%%%%%%%%%%%%%%%%%%
+
+\section{A quick recap of ML basics}
+
+\begin{frame}
+	\frametitle{Machine learning}
+
+	\begin{itemize}
+		\item artificial intelligence (AI)
+		\item algorithms \alert{learn} by being trained on observed data...
+		\item ... and \alert{predict unknown data}
+		\item ML concepts are not new, but the increase in computational capacity has made them more accessible
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Supervised vs Unsupervised algorithms}
+
+\end{frame}
+
+\note{
+		1. Unsupervised matrix decomposition methods, such as nonnegative matrix
 	factorization, which impose general, although physically meaningful, constraints,
 	are able to recover biomarkers of disease and toxicity, generating a
 	natural basis for data visualization and pattern classification. \\
@@ -298,16 +408,8 @@
 	model the uncertainty and variability inherent to biomedical data as well
 	as provide a framework for an array of analysis, including classification,
 	segmentation, and compression. \\
+
 }
-
-%%%%%%%%%%%%%%%%%%%%%
-
-\section{A quick recap of ML basics}
-
-\begin{frame}
-	\frametitle{Supervised vs Unsupervised algorithms}
-
-\end{frame}
 
 
 \begin{frame}
@@ -319,32 +421,47 @@
 \begin{frame}
 	\frametitle{Features}
 	
+	Features are the variables used for model training. \\
+	Using the right features is crucial.
+	
+		\vspace{0.5cm}
+
+	\alert{More is not necessarily better (overfitting)!}
+	
+		\vspace{0.5cm}
+
 	\begin{itemize}
 		\item feature selection
-		\item feature extraction
-		\item feature engineering
+		\item feature extraction/ engineering
 	\end{itemize}
 \end{frame}
 
-% factorial vs numeric
-% preprocessing
-
 \note{
+	Machine learning uses so called features (i.e. variables or attributes) to generate predictive models. Using a suitable combination of features is essential for obtaining high precision and accuracy. Because too many (unspecific) features pose the problem of overfitting the model, we generally want to restrict the features in our models to those, that are most relevant for the response variable we want to predict. Using as few features as possible will also reduce the complexity of our models, which means it needs less time and computer power to run and is easier to understand. \\
+
 	extraction of salient structure in the data that is more informative than the raw data itself (the feature extraction problem)
 }
 
 \subsection{Training, validation and test data}
 
-% preventing overfitting, we want our models to be generalizeable
+% preventing overfitting, we want our models to be generalizable
 
 \subsection{Cross-validation}
 
-\subsection{Missing data}
-
 \subsection{Grid Search}
 
-%imputation
+\begin{frame}[plain, c]
+	
+	\begin{center}
+	\usebeamerfont*{frametitle} \usebeamercolor[fg]{frametitle} {\Huge \textbf{Take home messages:}}
+	\end{center}
 
+	\vspace{0.5cm}
+
+	\begin{itemize}
+		\item ...
+	\end{itemize}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -353,83 +470,238 @@
 \begin{frame}
 	\frametitle{Session setup}
 	
+	\begin{itemize}
+		\item RStudio
+		\item Breast Cancer Wisconsin Dataset
+		\item caret
+		\item h2o
+	\end{itemize}
+	
+	\vspace{0.5cm}
+	
+	\centering
 	Code will be available on \href{https://shiring.github.io}{my website} and on \href{https://github.com/ShirinG/Webinar_ML_for_disease}{Github}
 	
-	Breast cancer Wisconsin dataset
-	
-	caret package
-	
-	h2o package
-\end{frame}
-
-\subsection{Get to know your data}
-
-\begin{frame}
-	\frametitle{Distribution}
-	
-	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/unnamed-chunk-6-1} \end{center}
-\end{frame}
-
-
-\subsection{Classification}
-
-\subsubsection{Tree based models}
-
-\begin{frame}
-	\frametitle{Decision trees}
-	
-	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/unnamed-chunk-12-1} \end{center}
-	
 \end{frame}
 
 \begin{frame}
-	\frametitle{Random Forest}
+	\frametitle{Get to know your data}
 	
+	\alert{Missing data}
+	\begin{itemize}
+		\item Is there missing data?
+		\item Can we afford to loose data points with missing values?
+		\item Or do we use imputation (and introduce additional uncertainty)?
+	\end{itemize}
 	
+		\vspace{0.5cm}
+		
+	\alert{Response variable}
+	\begin{itemize}
+		\item Is it balanced?
+	\end{itemize}
+
+\begin{columns}	
+	\column{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{webinar_code_files/figure-latex/response_classification-1.pdf}
+	
+	\column{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{webinar_code_files/figure-latex/response_regression-1.pdf}
+
+\end{columns}
 \end{frame}
+
+\note{
+	If we have lots of data and few missing values, we can afford to loose these data points. \\
+	If we don't have that much data though, our model will probably loose significant power if we remove the samples. \\
+	In that case, we would rather introduce a certain uncertainty by imputing missing values. 
+	
+		\vspace{0.2cm}
+	
+	We are especially interested in our response variable, that we want to classify or regress on. \\
+	Most important to know is the distribution: are the classes balanced? \\
+	If we have unbalanced data, this will effect our model later on \\
+	We would have to consider over- or undersampling.
+}
+
+\begin{frame}
+	\frametitle{Get to know your data}
+	\alert{Principal Component Analysis (PCA)}
+	
+	\vspace{0.5cm}
+
+	\centering
+	\includegraphics[width=0.9\textwidth]{webinar_code_files/figure-latex/pca-1.pdf}
+\end{frame}
+
+\note{
+	To get an idea about the dimensionality and variance of the datasets, I am first looking at PCA plots for samples 	and features. The first two principal components (PCs) show the two components that explain the majority of 		variation in the data.
+}
+
+\begin{frame}
+	\frametitle{Get to know your data}
+	\alert{Principal Component Analysis (PCA)}
+	
+	\vspace{0.5cm}
+
+	\centering
+	\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/pca_features-1.pdf}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Get to know your data}
+	\alert{Features}
+	
+	\begin{itemize}
+		\item factors or numeric
+		\item pre-processing
+	\end{itemize}
+	
+	\centering
+	\includegraphics[width=0.7\textwidth]{webinar_code_files/figure-latex/features-1.pdf}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Get to know your data}
+	\alert{Correlation}
+
+	\centering
+	\includegraphics[width=0.9\textwidth]{webinar_code_files/figure-latex/corr_plot-1.pdf}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Training, validation and test data}
+	
+	We need to split the data into training and test sets \\
+	ideally \alert{stratified} by response class.
+	
+	\vspace{0.5cm}
+
+	
+	\alert{Density distribution}
+	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/distribution-1} \end{center}
+\end{frame}
+
+\note{
+	For accurate predictions, density distribution should be similar in training and test data!
+}
+
+
+\begin{frame}
+	\frametitle{Classification with tree-based models}
+	\alert{Decision trees}
+		
+	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/decision_tree-1} \end{center}
+
+\end{frame}
+
+\note{
+	To get an idea about how each feature contributes to the prediction of the outcome, I first built a decision tree based on the training data.
+}
+
+\begin{frame}
+	\frametitle{Tree-based classification with caret}
+	
+	\alert{Random Forest or Gradient boosting}
+	
+	\textsl{add verbatim code}
+	\textsl{cite caret}
+
+\end{frame}
+
+\note{
+This function sets up a grid of tuning parameters for a number of classification and regression routines, fits each model and calculates a resampling based performance measure.
+
+train can be used to tune models by picking the complexity parameters that are associated with the optimal resampling statistics. For particular model, a grid of parameters (if any) is created and the model is trained on slightly different data for each candidate combination of tuning parameters. Across each data set, the performance of held-out samples is calculated and the mean and standard deviation is summarized for each combination. The combination with the optimal resampling statistic is chosen as the final model and the entire training set is used to fit a final model.
+
+The predictors in x can be most any object as long as the underlying model fit function can deal with the object class. The function was designed to work with simple matrices and data frame inputs, so some functionality may not work (e.g. pre-processing). When using string kernels, the vector of character strings should be converted to a matrix with a single column.
+}
 
 \begin{frame}
 	\frametitle{Feature importance}
 	
-	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/unnamed-chunk-11-1.pdf} \end{center}
+	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/importance_rf-1.pdf} \end{center}
 \end{frame}
 
-\subsection{Regression}
+\note{
+	Not all of the features I created will be equally important to the model. The decision tree already gave me an idea of which features might be most important but I also want to estimate feature importance using a Random Forest approach with repeated cross validation.
 
-\subsubsection{Linear Models}
+}
+
 
 \begin{frame}
-	\frametitle{(Generalized) Linear Models}
+	\frametitle{Regression with (Generalized) Linear Models}
 	
-	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/unnamed-chunk-21-1.pdf} \end{center}
+	%\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/unnamed-chunk-21-1.pdf} \end{center}
 \end{frame}
 
-\subsubsection{Deep learning with neural network}
+\subsubsection{}
 
-% h2o
 
+\begin{frame}
+	\frametitle{Deep learning with neural networks}
+	
+	\alert{h2o}
+	
+	\alert{Grid Search}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%
 
-\section{Evaluating ML model performance}
-
-\subsection{Validation vs test set performance}
+\section{Evaluating model performance}
 
 \begin{frame}
-	\frametitle{AUC and MSE}
+	\frametitle{Area Under the Curve (AUC}
 	
-	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/unnamed-chunk-29-1.pdf} \end{center}
+	\centering
+	\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/auc_curve-1.pdf} 
+\end{frame}
+
+\begin{frame}
+	\frametitle{AUC and mean squared error (MSE)}
 	
-	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/unnamed-chunk-42-1} \end{center}
+	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/auc_mse-1.pdf} \end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Predictions on test data}
+	\alert{Classification}
+	
+	\textsl{add confusion matrix verbatim}
+	
+	\begin{columns}
+	
+	\column{0.5\textwidth}
+	\centering
+	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/results_bar_rf-1.pdf}
+	
+	\column{0.5\textwidth}
+	\centering
+	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/results_jitter_rf-1.pdf} 
+	\end{columns}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Predictions on test data}
 	
-	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/unnamed-chunk-31-1.pdf}
-	
-	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/unnamed-chunk-31-2.pdf} \end{center}
+	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/final_predictions_rf-1.pdf} 
+
+	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/final_predictions_rf-2.pdf} 
 \end{frame}
+
+
+\begin{frame}
+	\frametitle{Predictions on test data}
+	\alert{Regression}
+	
+	\centering
+	\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/regression_result-1.pdf}
+\end{frame}
+
 
 % accuracy
 % Kappa
