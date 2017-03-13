@@ -1,0 +1,8 @@
+\BOOKMARK [2][]{Outline0.1}{What makes a model meaningful?}{}% 1
+\BOOKMARK [2][]{Outline0.2}{Machine Learning \(ML\) in disease modeling}{}% 2
+\BOOKMARK [2][]{Outline0.3}{A quick recap of ML basics}{}% 3
+\BOOKMARK [3][]{Outline0.3.1.22}{Training, validation and test data}{Outline0.3}% 4
+\BOOKMARK [3][]{Outline0.3.2.22}{Cross-validation}{Outline0.3}% 5
+\BOOKMARK [3][]{Outline0.3.3.22}{Grid Search}{Outline0.3}% 6
+\BOOKMARK [2][]{Outline0.4}{How to build ML models in R}{}% 7
+\BOOKMARK [2][]{Outline0.5}{Evaluating model performance}{}% 8

@@ -1,0 +1,21 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\beamer@endinputifotherversion {3.36pt}
+\defcounter {refsection}{0}\relax 
+\select@language {german}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {1}{What makes a model meaningful?}{7}{0}{1}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {2}{Machine Learning (ML) in disease modeling}{11}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {3}{A quick recap of ML basics}{15}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {3}{1}{Training, validation and test data}{22}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {3}{2}{Cross-validation}{22}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {3}{3}{Grid Search}{22}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {4}{How to build ML models in R}{23}{0}{4}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {5}{Evaluating model performance}{42}{0}{5}
