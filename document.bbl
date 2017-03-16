@@ -44,6 +44,159 @@
       \field{pages}{198\bibrangedash 2011}
       \range{pages}{1814}
     \endentry
+    \entry{h2o}{manual}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=956c50fd62f72988be1d1b4fa87582bc}{%
+           family={H2O.ai},
+           familyi={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{956c50fd62f72988be1d1b4fa87582bc}
+      \strng{fullhash}{956c50fd62f72988be1d1b4fa87582bc}
+      \strng{authornamehash}{956c50fd62f72988be1d1b4fa87582bc}
+      \strng{authorfullhash}{956c50fd62f72988be1d1b4fa87582bc}
+      \field{sortinit}{H}
+      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 3.10.3.6}
+      \field{title}{h2o: R Interface for H2O}
+      \field{year}{2017}
+      \verb{url}
+      \verb https://CRAN.R-project.org/package=h2o
+      \endverb
+    \endentry
+    \entry{caret}{manual}{}
+      \name{author}{16}{}{%
+        {{uniquename=0,hash=3305789acf03200ed22f154007d4fab9}{%
+           family={Kuhn},
+           familyi={K\bibinitperiod},
+           given={Max},
+           giveni={M\bibinitperiod}}}%
+        {{uniquename=0,hash=ec68c3522f9efcea572c430618fb4ada}{%
+           family={Wing},
+           familyi={W\bibinitperiod},
+           given={Jed},
+           giveni={J\bibinitperiod}}}%
+        {{uniquename=0,hash=71558f6c95c26f241f839821c70baae9}{%
+           family={Weston},
+           familyi={W\bibinitperiod},
+           given={Steve},
+           giveni={S\bibinitperiod}}}%
+        {{uniquename=0,hash=37b68312a7a2fb41775a0387cc3b1382}{%
+           family={Williams},
+           familyi={W\bibinitperiod},
+           given={Andre},
+           giveni={A\bibinitperiod}}}%
+        {{uniquename=0,hash=1b397a6f5ceed2ea035ab463bf75d06c}{%
+           family={Keefer},
+           familyi={K\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod}}}%
+        {{uniquename=0,hash=332a68972fc38e1337fec3ac1ef59588}{%
+           family={Engelhardt},
+           familyi={E\bibinitperiod},
+           given={Allan},
+           giveni={A\bibinitperiod}}}%
+        {{uniquename=0,hash=6dcdb82639b62b20f84499323de1aad2}{%
+           family={Cooper},
+           familyi={C\bibinitperiod},
+           given={Tony},
+           giveni={T\bibinitperiod}}}%
+        {{uniquename=0,hash=2cb6b178b8f573c920dc845cb6766b92}{%
+           family={Mayer},
+           familyi={M\bibinitperiod},
+           given={Zachary},
+           giveni={Z\bibinitperiod}}}%
+        {{uniquename=0,hash=1afec58c92bbb70eafaa3fbd855a43c9}{%
+           family={Kenkel},
+           familyi={K\bibinitperiod},
+           given={Brenton},
+           giveni={B\bibinitperiod}}}%
+        {{uniquename=0,hash=fbf69fa9c25f5d5e71c91d83b9ff1785}{%
+           family={R\bibnamedelima Core\bibnamedelima Team},
+           familyi={R\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim T\bibinitperiod},
+           prefix={the},
+           prefixi={t\bibinitperiod}}}%
+        {{uniquename=0,hash=9c63aa70433d165d24d07f6c715d0352}{%
+           family={Benesty},
+           familyi={B\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{uniquename=0,hash=c967870e2377284b876b15e3156ebcea}{%
+           family={Lescarbeau},
+           familyi={L\bibinitperiod},
+           given={Reynald},
+           giveni={R\bibinitperiod}}}%
+        {{uniquename=0,hash=135b3f4c118557d5a64ec7cf4dd256a2}{%
+           family={Ziem},
+           familyi={Z\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{uniquename=0,hash=85aa13a1067dc37f392d9dd5209c254d}{%
+           family={Scrucca},
+           familyi={S\bibinitperiod},
+           given={Luca},
+           giveni={L\bibinitperiod}}}%
+        {{uniquename=0,hash=cee39f71272fa2c9f004d3adbc43dc73}{%
+           family={Tang},
+           familyi={T\bibinitperiod},
+           given={Yuan},
+           giveni={Y\bibinitperiod}}}%
+        {{uniquename=0,hash=155235ec7acbc02b41a3f9589765feec}{%
+           family={Candan.},
+           familyi={C\bibinitperiod},
+           given={Can},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed4723d2bc122a0cd08cbbd462b61b7f}
+      \strng{fullhash}{8f876df1f6129404db3c1a169b8a609e}
+      \strng{authornamehash}{ed4723d2bc122a0cd08cbbd462b61b7f}
+      \strng{authorfullhash}{8f876df1f6129404db3c1a169b8a609e}
+      \field{sortinit}{K}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 6.0-71}
+      \field{title}{caret: Classification and Regression Training}
+      \field{year}{2016}
+      \verb{url}
+      \verb https://CRAN.R-project.org/package=caret
+      \endverb
+    \endentry
+    \entry{Levenson}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=9220ac030e182f86ec5e4bc2be787fbc}{%
+           family={Levenson},
+           familyi={L\bibinitperiod},
+           given={Deborah},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{9220ac030e182f86ec5e4bc2be787fbc}
+      \strng{fullhash}{9220ac030e182f86ec5e4bc2be787fbc}
+      \strng{authornamehash}{9220ac030e182f86ec5e4bc2be787fbc}
+      \strng{authorfullhash}{9220ac030e182f86ec5e4bc2be787fbc}
+      \field{sortinit}{L}
+      \field{sortinithash}{7bba64db83423e3c29ad597f3b682cf3}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1552-4833}
+      \field{journaltitle}{American Journal of Medical Genetics Part A}
+      \field{number}{10}
+      \field{title}{Facial analysis technology aids diagnoses of genetic disorders}
+      \field{volume}{164}
+      \field{year}{2014}
+      \field{pages}{vii\bibrangedash viii}
+      \range{pages}{2}
+      \verb{doi}
+      \verb 10.1002/ajmg.a.36755
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1002/ajmg.a.36755
+      \endverb
+    \endentry
     \entry{doi:10.1146/annurev.bioeng.8.061505.095802}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,hash=6dcf36b71e9b851ea7fe5e4b2e1ea47a}{%

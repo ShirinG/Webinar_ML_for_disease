@@ -1,0 +1,24 @@
+\frametitle{Tree-based classification}
+
+	\begin{itemize}
+		\item \alert{Random Forest or Gradient boosting}
+		\item  with \textsl{caret}\footfullcite{caret}
+	\end{itemize}
+
+	\centering
+	\begin{Verbatim}[fontsize=\footnotesize]
+caret::train(classes ~ .,
+             data = train_data,
+             method = "rf",  # or "xgb"
+             preProcess = c("scale", "center"),
+             trControl = trainControl(method = "repeatedcv",
+                                      number = 10,
+                                      repeats = 10,
+                                      savePredictions = TRUE,
+                                      verboseIter = FALSE))
+
+##           benign malignant class.error
+## benign       313         8  0.02492212
+## malignant      4       165  0.02366864
+	\end{Verbatim}
+

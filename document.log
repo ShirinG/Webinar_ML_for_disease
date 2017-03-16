@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.2.9)  13 MAR 2017 08:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.2.9)  16 MAR 2017 09:45
 entering extended mode
 **./document.tex
 (document.tex
@@ -238,8 +238,8 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 
-(C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\xcolor\svgnam.def
-File: svgnam.def 2016/05/11 v2.12 Predefined colors according to SVG 1.1 (UK)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 ))
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcor
 e.code.tex
@@ -779,16 +779,7 @@ LaTeX Info: Redefining \textlatin on input line 1448.
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\babel-german\german.ldf"
-Language: german 2016/11/02 v2.9 German support for babel (traditional orthogra
-phy)
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\babel-german\germanb.ldf"
-Language: germanb 2016/11/02 v2.9 German support for babel (traditional orthogr
-aphy)
-Package babel Info: Making " an active character on input line 139.
-)))
+))
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks43
@@ -1101,6 +1092,18 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \TX@cols=\count174
 \TX@ftn=\toks48
 )
+(C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyvrb\fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count175
+\FV@InFile=\read2
+\FV@TabBox=\box80
+\c@FancyVerbLine=\count176
+\FV@StepNumber=\count177
+\FV@OutFile=\write5
+)
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tik
 z\libraries\tikzlibrarymindmap.code.tex
 File: tikzlibrarymindmap.code.tex 2013/07/16 v3.0.1a (rcs-revision 1.10)
@@ -1118,11 +1121,11 @@ decorations.code.tex
 \pgfdecoratedinputsegmentcompleteddistance=\dimen295
 \pgfdecoratedinputsegmentremainingdistance=\dimen296
 \pgf@decorate@distancetomove=\dimen297
-\pgf@decorate@repeatstate=\count175
+\pgf@decorate@repeatstate=\count178
 \pgfdecorationsegmentamplitude=\dimen298
 \pgfdecorationsegmentlength=\dimen299
 )
-\tikz@lib@dec@box=\box80
+\tikz@lib@dec@box=\box81
 ))
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tik
 z\libraries\tikzlibraryshadows.code.tex
@@ -1139,26 +1142,26 @@ File: pgflibraryfadings.code.tex 2008/02/07 v3.0.1a (rcs-revision 1.3)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
 Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 \multirow@colwidth=\skip63
-\multirow@cntb=\count176
+\multirow@cntb=\count179
 \multirow@dima=\skip64
 \bigstrutjot=\dimen300
 )
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\changepage\changepage.s
 ty
 Package: changepage 2009/10/20 v1.0c check page and change page layout
-\c@cp@cntr=\count177
-\cp@tempcnt=\count178
+\c@cp@cntr=\count180
+\cp@tempcnt=\count181
 )
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\biblatex\biblatex.sty
 Package: biblatex 2016/12/05 v3.7 programmable bibliographies (PK/JW/AB)
 
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\etoolbox\etoolbox.sty
 Package: etoolbox 2016/12/01 v2.2b e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count179
+\etb@tempcnta=\count182
 )
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\logreq\logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count180
+\lrq@indent=\count183
 
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\logreq\logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
@@ -1168,50 +1171,50 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\xstring\xstring.sty
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\generic\xstring\xstring.tex
-\@xs@message=\write5
-\integerpart=\count181
-\decimalpart=\count182
+\@xs@message=\write6
+\integerpart=\count184
+\decimalpart=\count185
 )
 Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 )
-\c@tabx@nest=\count183
-\c@listtotal=\count184
-\c@listcount=\count185
-\c@liststart=\count186
-\c@liststop=\count187
-\c@citecount=\count188
-\c@citetotal=\count189
-\c@multicitecount=\count190
-\c@multicitetotal=\count191
-\c@instcount=\count192
-\c@maxnames=\count193
-\c@minnames=\count194
-\c@maxitems=\count195
-\c@minitems=\count196
-\c@citecounter=\count197
-\c@savedcitecounter=\count198
-\c@uniquelist=\count199
-\c@uniquename=\count266
-\c@refsection=\count267
-\c@refsegment=\count268
-\c@maxextratitle=\count269
-\c@maxextratitleyear=\count270
-\c@maxextrayear=\count271
-\c@maxextraalpha=\count272
-\c@abbrvpenalty=\count273
-\c@highnamepenalty=\count274
-\c@lownamepenalty=\count275
-\c@maxparens=\count276
-\c@parenlevel=\count277
-\blx@tempcnta=\count278
-\blx@tempcntb=\count279
-\blx@tempcntc=\count280
-\blx@maxsection=\count281
-\blx@maxsegment@0=\count282
-\blx@notetype=\count283
-\blx@parenlevel@text=\count284
-\blx@parenlevel@foot=\count285
-\blx@sectionciteorder@0=\count286
+\c@tabx@nest=\count186
+\c@listtotal=\count187
+\c@listcount=\count188
+\c@liststart=\count189
+\c@liststop=\count190
+\c@citecount=\count191
+\c@citetotal=\count192
+\c@multicitecount=\count193
+\c@multicitetotal=\count194
+\c@instcount=\count195
+\c@maxnames=\count196
+\c@minnames=\count197
+\c@maxitems=\count198
+\c@minitems=\count199
+\c@citecounter=\count266
+\c@savedcitecounter=\count267
+\c@uniquelist=\count268
+\c@uniquename=\count269
+\c@refsection=\count270
+\c@refsegment=\count271
+\c@maxextratitle=\count272
+\c@maxextratitleyear=\count273
+\c@maxextrayear=\count274
+\c@maxextraalpha=\count275
+\c@abbrvpenalty=\count276
+\c@highnamepenalty=\count277
+\c@lownamepenalty=\count278
+\c@maxparens=\count279
+\c@parenlevel=\count280
+\blx@tempcnta=\count281
+\blx@tempcntb=\count282
+\blx@tempcntc=\count283
+\blx@maxsection=\count284
+\blx@maxsegment@0=\count285
+\blx@notetype=\count286
+\blx@parenlevel@text=\count287
+\blx@parenlevel@foot=\count288
+\blx@sectionciteorder@0=\count289
 \labelnumberwidth=\skip65
 \labelalphawidth=\skip66
 \biblabelsep=\skip67
@@ -1220,11 +1223,11 @@ Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 \bibinitsep=\skip70
 \bibparsep=\skip71
 \bibhang=\skip72
-\blx@bcfin=\read2
-\blx@bcfout=\write6
-\c@mincomprange=\count287
-\c@maxcomprange=\count288
-\c@mincompwidth=\count289
+\blx@bcfin=\read3
+\blx@bcfout=\write7
+\c@mincomprange=\count290
+\c@maxcomprange=\count291
+\c@mincompwidth=\count292
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\biblatex\blx-dm.def)
@@ -1232,72 +1235,72 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'authoryear-comp.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count290
-\c@savedafterword=\count291
-\c@annotator=\count292
-\c@savedannotator=\count293
-\c@author=\count294
-\c@savedauthor=\count295
-\c@bookauthor=\count296
-\c@savedbookauthor=\count297
-\c@commentator=\count298
-\c@savedcommentator=\count299
-\c@editor=\count300
-\c@savededitor=\count301
-\c@editora=\count302
-\c@savededitora=\count303
-\c@editorb=\count304
-\c@savededitorb=\count305
-\c@editorc=\count306
-\c@savededitorc=\count307
-\c@foreword=\count308
-\c@savedforeword=\count309
-\c@holder=\count310
-\c@savedholder=\count311
-\c@introduction=\count312
-\c@savedintroduction=\count313
-\c@namea=\count314
-\c@savednamea=\count315
-\c@nameb=\count316
-\c@savednameb=\count317
-\c@namec=\count318
-\c@savednamec=\count319
-\c@translator=\count320
-\c@savedtranslator=\count321
-\c@shortauthor=\count322
-\c@savedshortauthor=\count323
-\c@shorteditor=\count324
-\c@savedshorteditor=\count325
-\c@labelname=\count326
-\c@savedlabelname=\count327
-\c@institution=\count328
-\c@savedinstitution=\count329
-\c@lista=\count330
-\c@savedlista=\count331
-\c@listb=\count332
-\c@savedlistb=\count333
-\c@listc=\count334
-\c@savedlistc=\count335
-\c@listd=\count336
-\c@savedlistd=\count337
-\c@liste=\count338
-\c@savedliste=\count339
-\c@listf=\count340
-\c@savedlistf=\count341
-\c@location=\count342
-\c@savedlocation=\count343
-\c@organization=\count344
-\c@savedorganization=\count345
-\c@origlocation=\count346
-\c@savedoriglocation=\count347
-\c@origpublisher=\count348
-\c@savedorigpublisher=\count349
-\c@publisher=\count350
-\c@savedpublisher=\count351
-\c@language=\count352
-\c@savedlanguage=\count353
-\c@pageref=\count354
-\c@savedpageref=\count355
+\c@afterword=\count293
+\c@savedafterword=\count294
+\c@annotator=\count295
+\c@savedannotator=\count296
+\c@author=\count297
+\c@savedauthor=\count298
+\c@bookauthor=\count299
+\c@savedbookauthor=\count300
+\c@commentator=\count301
+\c@savedcommentator=\count302
+\c@editor=\count303
+\c@savededitor=\count304
+\c@editora=\count305
+\c@savededitora=\count306
+\c@editorb=\count307
+\c@savededitorb=\count308
+\c@editorc=\count309
+\c@savededitorc=\count310
+\c@foreword=\count311
+\c@savedforeword=\count312
+\c@holder=\count313
+\c@savedholder=\count314
+\c@introduction=\count315
+\c@savedintroduction=\count316
+\c@namea=\count317
+\c@savednamea=\count318
+\c@nameb=\count319
+\c@savednameb=\count320
+\c@namec=\count321
+\c@savednamec=\count322
+\c@translator=\count323
+\c@savedtranslator=\count324
+\c@shortauthor=\count325
+\c@savedshortauthor=\count326
+\c@shorteditor=\count327
+\c@savedshorteditor=\count328
+\c@labelname=\count329
+\c@savedlabelname=\count330
+\c@institution=\count331
+\c@savedinstitution=\count332
+\c@lista=\count333
+\c@savedlista=\count334
+\c@listb=\count335
+\c@savedlistb=\count336
+\c@listc=\count337
+\c@savedlistc=\count338
+\c@listd=\count339
+\c@savedlistd=\count340
+\c@liste=\count341
+\c@savedliste=\count342
+\c@listf=\count343
+\c@savedlistf=\count344
+\c@location=\count345
+\c@savedlocation=\count346
+\c@organization=\count347
+\c@savedorganization=\count348
+\c@origlocation=\count349
+\c@savedoriglocation=\count350
+\c@origpublisher=\count351
+\c@savedorigpublisher=\count352
+\c@publisher=\count353
+\c@savedpublisher=\count354
+\c@language=\count355
+\c@savedlanguage=\count356
+\c@pageref=\count357
+\c@savedpageref=\count358
 \shorthandwidth=\skip73
 \shortjournalwidth=\skip74
 \shortserieswidth=\skip75
@@ -1314,13 +1317,13 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
  (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\biblatex\biblatex.def
 File: biblatex.def 2016/12/05 v3.7 biblatex compatibility (PK/JW/AB)
-\c@textcitecount=\count356
-\c@textcitetotal=\count357
-\c@textcitemaxnames=\count358
-\c@biburlnumpenalty=\count359
-\c@biburlucpenalty=\count360
-\c@biburllcpenalty=\count361
-\c@smartand=\count362
+\c@textcitecount=\count359
+\c@textcitetotal=\count360
+\c@textcitemaxnames=\count361
+\c@biburlnumpenalty=\count362
+\c@biburlucpenalty=\count363
+\c@biburllcpenalty=\count364
+\c@smartand=\count365
 )
 Package biblatex Info: Trying to load bibliography style 'authoryear-comp'...
 Package biblatex Info: ... file 'authoryear-comp.bbx' found.
@@ -1341,8 +1344,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\biblatex\bbx\standard.b
 bx
 File: standard.bbx 2016/12/05 v3.7 biblatex bibliography style (PK/JW/AB)
-\c@bbx:relatedcount=\count363
-\c@bbx:relatedtotal=\count364
+\c@bbx:relatedcount=\count366
+\c@bbx:relatedtotal=\count367
 )))
 Package biblatex Info: Trying to load citation style 'authoryear-comp'...
 Package biblatex Info: ... file 'authoryear-comp.cbx' found.
@@ -1374,12 +1377,6 @@ Package biblatex Warning: 'firstinits' option is deprecated, use 'giveninits' i
 nstead.
 
 )
-Package biblatex Info: Trying to load language 'german'...
-Package biblatex Info: ... file 'german.lbx' found.
-
-(C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\biblatex\lbx\german.lbx
-File: german.lbx 2016/12/05 v3.7 biblatex localization (PK/JW/AB)
-)
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
@@ -1395,31 +1392,31 @@ Package biblatex Warning: Patching footnotes failed.
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count365
-\@quotereset=\count366
+\@quotelevel=\count368
+\@quotereset=\count369
 
 Package biblatex Warning: Conflicting options.
 (biblatex)                '<namepart>inits' conflicts with 'uniquename=full'.
-(biblatex)                Setting 'uniquename=init' on input line 147.
+(biblatex)                Setting 'uniquename=init' on input line 149.
 
 (document.aux)
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 147.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 149.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd"
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
@@ -1459,16 +1456,16 @@ File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count367
+\scratchcounter=\count370
 \scratchdimen=\dimen301
-\scratchbox=\box81
-\nofMPsegments=\count368
-\nofMParguments=\count369
+\scratchbox=\box82
+\nofMPsegments=\count371
+\nofMParguments=\count372
 \everyMPshowfont=\toks49
-\MPscratchCnt=\count370
+\MPscratchCnt=\count373
 \MPscratchDim=\dimen302
-\MPnumerator=\count371
-\makeMPintoPDFobject=\count372
+\MPnumerator=\count374
+\makeMPintoPDFobject=\count375
 \everyMPtoPDFconversion=\toks50
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1484,8 +1481,8 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box82
-Package hyperref Info: Link coloring ON on input line 147.
+\AtBeginShipoutBox=\box83
+Package hyperref Info: Link coloring ON on input line 149.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1493,15 +1490,15 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count373
+\c@section@level=\count376
 )
-LaTeX Info: Redefining \ref on input line 147.
-LaTeX Info: Redefining \pageref on input line 147.
-LaTeX Info: Redefining \nameref on input line 147.
+LaTeX Info: Redefining \ref on input line 149.
+LaTeX Info: Redefining \pageref on input line 149.
+LaTeX Info: Redefining \nameref on input line 149.
 
 (document.out) (document.out)
-\@outlinefile=\write7
-\openout7 = `document.out'.
+\@outlinefile=\write8
+\openout8 = `document.out'.
 
 
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\beamer\base\translator\
@@ -1530,83 +1527,82 @@ Dictionary: translator-numbers-dictionary, Language: English
 dicts\translator-theorem-dictionary\translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 147.
+LaTeX Info: Redefining \includegraphics on input line 149.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 Package biblatex Info: Input encoding 'latin1' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'latin1'.
-\openout6 = `document.bcf'.
+\openout7 = `document.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'document.bbl' found.
 (document.bbl)
-Package biblatex Info: Reference section=0 on input line 147.
-Package biblatex Info: Reference segment=0 on input line 147.
+Package biblatex Info: Reference section=0 on input line 149.
+Package biblatex Info: Reference segment=0 on input line 149.
  (document.nav)
-LaTeX Font Info:    Try loading font information for U+msa on input line 147.
+LaTeX Font Info:    Try loading font information for U+msa on input line 149.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 147.
+LaTeX Font Info:    Try loading font information for U+msb on input line 149.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/s_glan02/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+phv on input line 162.
+LaTeX Font Info:    Try loading font information for OMS+phv on input line 164.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsphv.fd"
 File: omsphv.fd 
 )
 LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <6> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 162.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 164.
  [2
 
 ]
-<images/Bewerbungsfoto.jpg, id=97, 470.50781pt x 554.82281pt>
-File: images/Bewerbungsfoto.jpg Graphic file (type jpg)
+<images/bild.png, id=85, 472.76625pt x 683.55376pt>
+File: images/bild.png Graphic file (type png)
+ <use images/bild.png>
+Package pdftex.def Info: images/bild.png used on input line 195.
+(pdftex.def)             Requested size: 85.35826pt x 123.40985pt.
 
-<use images/Bewerbungsfoto.jpg>
-Package pdftex.def Info: images/Bewerbungsfoto.jpg used on input line 193.
-(pdftex.def)             Requested size: 85.35826pt x 100.65112pt.
- [3
+[3
 
- <./images/Bewerbungsfoto.jpg>] [4
+ <./images/bild.png>] [4
 
-]
-(document.toc) [5
+] (document.toc) [5
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <6> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 245.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 252.
  [6
 
 ] [7
 
 ]
-<images/meaningful_1.pdf, id=149, 289.08pt x 216.81pt>
+<images/meaningful_1.pdf, id=139, 289.08pt x 216.81pt>
 File: images/meaningful_1.pdf Graphic file (type pdf)
 
 <use images/meaningful_1.pdf>
-Package pdftex.def Info: images/meaningful_1.pdf used on input line 277.
+Package pdftex.def Info: images/meaningful_1.pdf used on input line 285.
 (pdftex.def)             Requested size: 113.00427pt x 84.75073pt.
 
-<images/meaningful_2.pdf, id=150, 289.08pt x 216.81pt>
+<images/meaningful_2.pdf, id=140, 289.08pt x 216.81pt>
 File: images/meaningful_2.pdf Graphic file (type pdf)
 
 <use images/meaningful_2.pdf>
-Package pdftex.def Info: images/meaningful_2.pdf used on input line 277.
+Package pdftex.def Info: images/meaningful_2.pdf used on input line 285.
 (pdftex.def)             Requested size: 113.00427pt x 84.75073pt.
 
-<images/meaningful_3.pdf, id=151, 289.08pt x 216.81pt>
+<images/meaningful_3.pdf, id=141, 289.08pt x 216.81pt>
 File: images/meaningful_3.pdf Graphic file (type pdf)
 
 <use images/meaningful_3.pdf>
-Package pdftex.def Info: images/meaningful_3.pdf used on input line 277.
+Package pdftex.def Info: images/meaningful_3.pdf used on input line 285.
 (pdftex.def)             Requested size: 113.00427pt x 84.75073pt.
  [8
 
@@ -1618,15 +1614,22 @@ Package pdftex.def Info: images/meaningful_3.pdf used on input line 277.
 ] [11
 
 ]
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 349.
+<images/mammogram.png, id=189, 258.21469pt x 353.82187pt>
+File: images/mammogram.png Graphic file (type png)
+
+<use images/mammogram.png>
+Package pdftex.def Info: images/mammogram.png used on input line 362.
+(pdftex.def)             Requested size: 85.35826pt x 116.96133pt.
  [12
 
-] [13
+ <./images/mammogram.png>] [13
 
 ] [14
 
-] [15
+]
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 437.
+ [15
 
 ]
 [16
@@ -1635,260 +1638,323 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
 
 ] [18
 
-] [19
+] <images/clustering1.png, id=248, 2007.5pt x 2160.07pt>
+File: images/clustering1.png Graphic file (type png)
 
-] [20
+<use images/clustering1.png>
+Package pdftex.def Info: images/clustering1.png used on input line 540.
+(pdftex.def)             Requested size: 85.60883pt x 92.09015pt.
+
+<images/clustering2.png, id=249, 1045.9075pt x 1027.84pt>
+File: images/clustering2.png Graphic file (type png)
+
+<use images/clustering2.png>
+Package pdftex.def Info: images/clustering2.png used on input line 540.
+(pdftex.def)             Requested size: 85.60883pt x 84.12659pt.
+ [19
+
+ <./images/clustering1.png> <./images/clustering2.png>] [20
 
 ] [21
 
-]
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 498.
- [22
+] [22
 
 ] [23
 
 ] [24
 
+] [25
+
+] [26
+
+] [27
+
+] [28
+
+] [29
+
+] [30
+
+] [31
+
 ]
-<webinar_code_files/figure-latex/response_classification-1.pdf, id=285, 345.29p
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 759.
+
+<images/R_logo.png, id=344, 2007.5pt x 1555.8125pt>
+File: images/R_logo.png Graphic file (type png)
+ <use images/R_logo.png>
+Package pdftex.def Info: images/R_logo.png used on input line 759.
+(pdftex.def)             Requested size: 85.35826pt x 66.13896pt.
+
+[32
+
+ <./images/R_logo.png>]
+<webinar_code_files/figure-latex/response_classification-1.pdf, id=352, 345.29p
 t x 206.7725pt>
 File: webinar_code_files/figure-latex/response_classification-1.pdf Graphic fil
 e (type pdf)
 
 <use webinar_code_files/figure-latex/response_classification-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/response_classificatio
-n-1.pdf used on input line 548.
+n-1.pdf used on input line 788.
 (pdftex.def)             Requested size: 154.09483pt x 92.27692pt.
 
-<webinar_code_files/figure-latex/response_regression-1.pdf, id=286, 351.3125pt 
+<webinar_code_files/figure-latex/response_regression-1.pdf, id=353, 351.3125pt 
 x 207.77625pt>
 File: webinar_code_files/figure-latex/response_regression-1.pdf Graphic file (t
 ype pdf)
  <use webinar_code_files/figure-latex/response_regression-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/response_regression-1.
-pdf used on input line 548.
+pdf used on input line 788.
 (pdftex.def)             Requested size: 154.09483pt x 91.13965pt.
 
-[25
+[33
 
  <./webinar_code_files/figure-latex/response_classification-1.pdf> <./webinar_c
-ode_files/figure-latex/response_regression-1.pdf>] [26
+ode_files/figure-latex/response_regression-1.pdf>] [34
 
 ]
-<webinar_code_files/figure-latex/pca-1.pdf, id=316, 349.305pt x 209.78375pt>
+<webinar_code_files/figure-latex/pca-1.pdf, id=382, 349.305pt x 209.78375pt>
 File: webinar_code_files/figure-latex/pca-1.pdf Graphic file (type pdf)
 
 <use webinar_code_files/figure-latex/pca-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/pca-1.pdf used on inpu
-t line 571.
+t line 817.
 (pdftex.def)             Requested size: 308.18968pt x 185.1pt.
- [27
+ [35
 
- <./webinar_code_files/figure-latex/pca-1.pdf>] [28
-
-]
-<webinar_code_files/figure-latex/pca_features-1.pdf, id=343, 459.7175pt x 315.1
+ <./webinar_code_files/figure-latex/pca-1.pdf>]
+<webinar_code_files/figure-latex/pca_features-1.pdf, id=401, 459.7175pt x 315.1
 775pt>
 File: webinar_code_files/figure-latex/pca_features-1.pdf Graphic file (type pdf
 )
  <use webinar_code_files/figure-latex/pca_features-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/pca_features-1.pdf use
-d on input line 585.
+d on input line 827.
 (pdftex.def)             Requested size: 273.9493pt x 187.8239pt.
- [29
+ [36
 
- <./webinar_code_files/figure-latex/pca_features-1.pdf>]
-<webinar_code_files/figure-latex/features-1.pdf, id=361, 562.1pt x 423.5825pt>
+ <./webinar_code_files/figure-latex/pca_features-1.pdf>] [37
+
+]
+<webinar_code_files/figure-latex/features-1.pdf, id=428, 562.1pt x 423.5825pt>
 File: webinar_code_files/figure-latex/features-1.pdf Graphic file (type pdf)
 
 <use webinar_code_files/figure-latex/features-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/features-1.pdf used on
- input line 598.
+ input line 848.
 (pdftex.def)             Requested size: 239.70367pt x 180.63097pt.
- [30
+ [38
 
  <./webinar_code_files/figure-latex/features-1.pdf>]
-<webinar_code_files/figure-latex/corr_plot-1.pdf, id=378, 439.6425pt x 301.125p
+<webinar_code_files/figure-latex/corr_plot-1.pdf, id=445, 439.6425pt x 301.125p
 t>
 File: webinar_code_files/figure-latex/corr_plot-1.pdf Graphic file (type pdf)
  <use webinar_code_files/figure-latex/corr_plot-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/corr_plot-1.pdf used o
-n input line 606.
+n input line 856.
 (pdftex.def)             Requested size: 308.18968pt x 211.0939pt.
- [31
+ [39
 
  <./webinar_code_files/figure-latex/corr_plot-1.pdf>]
-<webinar_code_files/figure-latex/distribution-1.pdf, id=394, 562.1pt x 279.0425
+<webinar_code_files/figure-latex/distribution-1.pdf, id=460, 562.1pt x 279.0425
 pt>
 File: webinar_code_files/figure-latex/distribution-1.pdf Graphic file (type pdf
 )
  <use webinar_code_files/figure-latex/distribution-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/distribution-1.pdf use
-d on input line 621.
+d on input line 868.
 (pdftex.def)             Requested size: 342.43532pt x 169.99426pt.
 
-Overfull \vbox (5.52438pt too high) detected at line 621
+Overfull \vbox (5.52438pt too high) detected at line 868
  []
 
-[32
+[40
 
- <./webinar_code_files/figure-latex/distribution-1.pdf>] [33
+ <./webinar_code_files/figure-latex/distribution-1.pdf>] [41
 
 ]
-<webinar_code_files/figure-latex/decision_tree-1.pdf, id=419, 644.4075pt x 310.
+<webinar_code_files/figure-latex/decision_tree-1.pdf, id=485, 644.4075pt x 310.
 15875pt>
 File: webinar_code_files/figure-latex/decision_tree-1.pdf Graphic file (type pd
 f)
  <use webinar_code_files/figure-latex/decision_tree-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/decision_tree-1.pdf us
-ed on input line 634.
+ed on input line 880.
 (pdftex.def)             Requested size: 342.43532pt x 164.82349pt.
- [34
+ [42
 
- <./webinar_code_files/figure-latex/decision_tree-1.pdf>] [35
-
-] [36
-
-] [37
+ <./webinar_code_files/figure-latex/decision_tree-1.pdf>] [43
 
 ]
-<webinar_code_files/figure-latex/importance_rf-1.pdf, id=458, 321.2pt x 179.671
+\openout4 = `document.vrb'.
+
+ (document.vrb
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 9.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1pcr.fd"
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)) [44
+
+] [45
+
+]
+<webinar_code_files/figure-latex/importance_rf-1.pdf, id=525, 321.2pt x 179.671
 25pt>
 File: webinar_code_files/figure-latex/importance_rf-1.pdf Graphic file (type pd
 f)
  <use webinar_code_files/figure-latex/importance_rf-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/importance_rf-1.pdf us
-ed on input line 662.
-(pdftex.def)             Requested size: 342.43532pt x 191.55544pt.
- [38
+ed on input line 940.
+(pdftex.def)             Requested size: 273.9493pt x 153.2449pt.
+ [46
 
- <./webinar_code_files/figure-latex/importance_rf-1.pdf>] [39
+ <./webinar_code_files/figure-latex/importance_rf-1.pdf>] [47
 
-] [40
+] [48
 
-] [41
+] [49
 
-] [42
+] [50
 
 ]
-<webinar_code_files/figure-latex/auc_curve-1.pdf, id=499, 404.51125pt x 322.203
+<webinar_code_files/figure-latex/auc_curve-1.pdf, id=567, 404.51125pt x 322.203
 75pt>
 File: webinar_code_files/figure-latex/auc_curve-1.pdf Graphic file (type pdf)
  <use webinar_code_files/figure-latex/auc_curve-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/auc_curve-1.pdf used o
-n input line 696.
+n input line 979.
 (pdftex.def)             Requested size: 273.9493pt x 218.2107pt.
- [43
+ [51
 
  <./webinar_code_files/figure-latex/auc_curve-1.pdf>]
-<webinar_code_files/figure-latex/auc_mse-1.pdf, id=515, 529.98pt x 334.24875pt>
+<webinar_code_files/figure-latex/auc_mse-1.pdf, id=582, 529.98pt x 334.24875pt>
 File: webinar_code_files/figure-latex/auc_mse-1.pdf Graphic file (type pdf)
 <use webinar_code_files/figure-latex/auc_mse-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/auc_mse-1.pdf used on 
-input line 702.
+input line 985.
 (pdftex.def)             Requested size: 342.43532pt x 215.96875pt.
- [44
+ [52
 
  <./webinar_code_files/figure-latex/auc_mse-1.pdf>]
-<webinar_code_files/figure-latex/results_bar_rf-1.pdf, id=532, 345.29pt x 206.7
+<images/results_matrix.pdf, id=599, 256.35239pt x 357.22748pt>
+File: images/results_matrix.pdf Graphic file (type pdf)
+
+<use images/results_matrix.pdf>
+Package pdftex.def Info: images/results_matrix.pdf used on input line 1002.
+(pdftex.def)             Requested size: 154.09483pt x 214.73605pt.
+
+<webinar_code_files/figure-latex/results_bar_rf-1.pdf, id=600, 345.29pt x 206.7
 725pt>
 File: webinar_code_files/figure-latex/results_bar_rf-1.pdf Graphic file (type p
 df)
  <use webinar_code_files/figure-latex/results_bar_rf-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/results_bar_rf-1.pdf u
-sed on input line 720.
+sed on input line 1002.
 (pdftex.def)             Requested size: 171.21765pt x 102.53096pt.
 
-<webinar_code_files/figure-latex/results_jitter_rf-1.pdf, id=533, 345.29pt x 20
+<webinar_code_files/figure-latex/results_jitter_rf-1.pdf, id=601, 345.29pt x 20
 6.7725pt>
 File: webinar_code_files/figure-latex/results_jitter_rf-1.pdf Graphic file (typ
 e pdf)
  <use webinar_code_files/figure-latex/results_jitter_rf-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/results_jitter_rf-1.pd
-f used on input line 720.
+f used on input line 1002.
 (pdftex.def)             Requested size: 171.21765pt x 102.53096pt.
 
-[45
+[53
 
- <./webinar_code_files/figure-latex/results_bar_rf-1.pdf> <./webinar_code_files
-/figure-latex/results_jitter_rf-1.pdf>]
-<webinar_code_files/figure-latex/final_predictions_rf-1.pdf, id=557, 634.37pt x
+ <./images/results_matrix.pdf> <./webinar_code_files/figure-latex/results_bar_r
+f-1.pdf> <./webinar_code_files/figure-latex/results_jitter_rf-1.pdf>]
+<webinar_code_files/figure-latex/final_predictions_rf-1.pdf, id=651, 634.37pt x
  206.7725pt>
 File: webinar_code_files/figure-latex/final_predictions_rf-1.pdf Graphic file (
 type pdf)
  <use webinar_code_files/figure-latex/final_predictions_rf-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/final_predictions_rf-1
-.pdf used on input line 728.
+.pdf used on input line 1010.
 (pdftex.def)             Requested size: 342.43532pt x 111.62077pt.
 
-<webinar_code_files/figure-latex/final_predictions_rf-2.pdf, id=558, 634.37pt x
+<webinar_code_files/figure-latex/final_predictions_rf-2.pdf, id=652, 634.37pt x
  206.7725pt>
 File: webinar_code_files/figure-latex/final_predictions_rf-2.pdf Graphic file (
 type pdf)
  <use webinar_code_files/figure-latex/final_predictions_rf-2.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/final_predictions_rf-2
-.pdf used on input line 728.
+.pdf used on input line 1010.
 (pdftex.def)             Requested size: 342.43532pt x 111.62077pt.
 
-[46
+[54
 
  <./webinar_code_files/figure-latex/final_predictions_rf-1.pdf> <./webinar_code
 _files/figure-latex/final_predictions_rf-2.pdf>]
-<webinar_code_files/figure-latex/regression_result-1.pdf, id=579, 351.3125pt x 
+<webinar_code_files/figure-latex/regression_result-1.pdf, id=673, 351.3125pt x 
 206.7725pt>
 File: webinar_code_files/figure-latex/regression_result-1.pdf Graphic file (typ
 e pdf)
  <use webinar_code_files/figure-latex/regression_result-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/regression_result-1.pd
-f used on input line 737.
+f used on input line 1024.
 (pdftex.def)             Requested size: 273.9493pt x 161.25034pt.
 
-[47
+[55
 
- <./webinar_code_files/figure-latex/regression_result-1.pdf>] [48
+ <./webinar_code_files/figure-latex/regression_result-1.pdf>] [56
 
-] [49
+] [57
 
 ]
-\tf@nav=\write8
-\openout8 = `document.nav'.
+[58
 
-\tf@toc=\write9
-\openout9 = `document.toc'.
+]
+\tf@nav=\write9
+\openout9 = `document.nav'.
 
-\tf@snm=\write10
-\openout10 = `document.snm'.
+\tf@toc=\write10
+\openout10 = `document.toc'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 783.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 783.
+\tf@snm=\write11
+\openout11 = `document.snm'.
 
-(document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 783.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 783.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1083.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1083.
+ (document.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1083.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1083.
+
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: AB1AB3FBA02FB7A192ABEE1EC4B93BE4;548.
+(rerunfilecheck)             Checksum: BEF7D6A88FC5BD12102CE59A2ED1A656;334.
 Package logreq Info: Writing requests to 'document.run.xml'.
 \openout1 = `document.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 783.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1083.
  ) 
 Here is how much of TeX's memory you used:
- 32201 strings out of 493333
- 658393 string characters out of 3139186
- 1131736 words of memory out of 3000000
- 34909 multiletter control sequences out of 15000+200000
- 49766 words of font info for 69 fonts, out of 3000000 for 9000
- 1143 hyphenation exceptions out of 8191
- 56i,19n,82p,1182b,2039s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/ur
-w/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhv
-ro8a.pfb>
-Output written on document.pdf (49 pages, 508846 bytes).
+ 32621 strings out of 493333
+ 665259 string characters out of 3139186
+ 1129569 words of memory out of 3000000
+ 35305 multiletter control sequences out of 15000+200000
+ 53277 words of font info for 73 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 61i,19n,82p,1182b,2041s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{cite.0@doi:10.1146/annurev.bioeng.8.061505.095802
+} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{cite.0@Levenson} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{cite.0@Kunio} has been referenced but does not exis
+t, replaced by a fixed one
+
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/h
+elvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on document.pdf (58 pages, 2048795 bytes).
 PDF statistics:
- 651 PDF objects out of 1000 (max. 8388607)
- 108 named destinations out of 1000 (max. 500000)
- 333 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 757 PDF objects out of 1000 (max. 8388607)
+ 126 named destinations out of 1000 (max. 500000)
+ 334 words of extra memory for PDF output out of 10000 (max. 10000000)
 

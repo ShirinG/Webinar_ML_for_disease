@@ -127,7 +127,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortlocale</bcf:key>
-      <bcf:value>german</bcf:value>
+      <bcf:value>english</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortscheme</bcf:key>
@@ -2145,6 +2145,11 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1">Kunio</bcf:citekey>
-    <bcf:citekey order="2">doi:10.1146/annurev.bioeng.8.061505.095802</bcf:citekey>
+    <bcf:citekey order="2">Levenson</bcf:citekey>
+    <bcf:citekey order="3">doi:10.1146/annurev.bioeng.8.061505.095802</bcf:citekey>
+    <bcf:citekey order="4">caret</bcf:citekey>
+    <bcf:citekey order="5">h2o</bcf:citekey>
+    <bcf:citekey order="6">caret</bcf:citekey>
+    <bcf:citekey order="7">h2o</bcf:citekey>
   </bcf:section>
 </bcf:controlfile>
