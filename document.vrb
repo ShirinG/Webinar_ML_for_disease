@@ -1,24 +1,26 @@
-\frametitle{Tree-based classification}
+\frametitle{Hyper-parameter tuning}
 
+	\alert{Grid Search}
 	\begin{itemize}
-		\item \alert{Random Forest or Gradient boosting}
-		\item  with \textsl{caret}\footfullcite{caret}
+		\item with \textsl{h2o}\footfullcite{h2o}
 	\end{itemize}
 
-	\centering
+\centering
 	\begin{Verbatim}[fontsize=\footnotesize]
-caret::train(classes ~ .,
-             data = train_data,
-             method = "rf",  # or "xgb"
-             preProcess = c("scale", "center"),
-             trControl = trainControl(method = "repeatedcv",
-                                      number = 10,
-                                      repeats = 10,
-                                      savePredictions = TRUE,
-                                      verboseIter = FALSE))
+hyper_params <- list(
+                     ntrees = c(25, 50, 75, 100),
+                     max_depth = c(10, 20, 30),
+                     min_rows = c(1, 3, 5)
+                     )
 
-##           benign malignant class.error
-## benign       313         8  0.02492212
-## malignant      4       165  0.02366864
+search_criteria <- list(
+                        strategy = "RandomDiscrete",
+                        max_models = 50,
+                        max_runtime_secs = 360,
+                        stopping_rounds = 5,
+                        stopping_metric = "AUC",
+                        stopping_tolerance = 0.0005,
+                        seed = 42
+                        )
 	\end{Verbatim}
 

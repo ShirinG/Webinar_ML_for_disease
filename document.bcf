@@ -2150,6 +2150,7 @@
     <bcf:citekey order="4">caret</bcf:citekey>
     <bcf:citekey order="5">h2o</bcf:citekey>
     <bcf:citekey order="6">caret</bcf:citekey>
-    <bcf:citekey order="7">h2o</bcf:citekey>
+    <bcf:citekey order="7">caret</bcf:citekey>
+    <bcf:citekey order="8">h2o</bcf:citekey>
   </bcf:section>
 </bcf:controlfile>

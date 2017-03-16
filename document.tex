@@ -261,21 +261,27 @@
 \begin{frame}
 	\frametitle{What makes a model meaningful?}
 	
+	\begin{itemize}
+		\item creating ML models is relatively easy
+		\item creating \alert{good or meaningful} models is hard
+	\end{itemize}
+	
+	\vspace{0.2cm}
 	\alert{\textsl{Meaningful} models}
 	\vspace{0.2cm}
 	
 	\begin{itemize}
+		\item are generalizable
 		\item answer the question(s) posed...
 		\item ... with sufficient accuracy to be trustworthy
-		\item are generalizable
 	\end{itemize}
 
-	\vspace{0.6cm}
+	\vspace{0.2cm}
 
 	\begin{center}
 		{\Large \alert{Accuracy depends on the problem!}}
 		
-		\vspace{1cm}
+		\vspace{0.5cm}
 		
 		\includegraphics[width=0.33\textwidth]{images/meaningful_1}
 		\includegraphics[width=0.33\textwidth]{images/meaningful_2}
@@ -286,16 +292,18 @@
 
 \note{
 	\begin{itemize}
+		\item With a little bit of practice, anybody can build machine learning models
+		\item what is hard though, is to build 'good' or 'meaningful' models
 		\item I want to begin with an introduction to the main question of my talk: 
 		\item what makes a model \textsl{good} or \textsl{meaningful}?
 	\end{itemize}
 	
 	\begin{enumerate}
+		\item it needs to be generalizable, i.e. it needs to perform well on unseen data
 		\item It answers a \textbf{specific} question or addresses a specific problem, \\
 			e.g. does a mammogram image show a healthy breast or is there a tumor? \\
 			Or does an ECG show a normal heart rhythm or arrhythmia?
 		\item And it produces a correct outcome (e.g. a diagnosis) often enough that we trust it!
-		\item And it needs to be generalizable, i.e. it needs to perform well on unseen data
 	\end{enumerate}
 	
 	\begin{itemize}
@@ -307,6 +315,9 @@
 	\begin{itemize}
 		\item But what exactly is \textsl{high accuracy} can not be defined with a one-size-fits-all approach: 
 		\item it depends on the problem we want to model. 	
+		\item a model needs to perform well in the real world, not in the lab (i.e. on training data)
+		\item just because a model performs well in the lab, doesn't mean it will also perform well in deployment
+		\item the context might change: distribution, missing data, noise, class size, etc.
 	\end{itemize}
 }
 
@@ -657,12 +668,19 @@
 \begin{frame}
 	\frametitle{Features}
 	
-	Features are the variables used for model training. \\
-	Using the right features is crucial.
+	\begin{columns}
+		\column{0.5\textwidth}
 	
+	\begin{itemize}
+	\item Features are the variables used for model training.
+	\item Using the right features is crucial.
+	\end{itemize}
+
 		\vspace{0.5cm}
 
-	\alert{More is not necessarily better (overfitting)!}
+	\begin{itemize}
+		\item \alert{More is not necessarily better (overfitting)!}
+	\end{itemize}
 	
 		\vspace{0.5cm}
 
@@ -670,6 +688,13 @@
 		\item feature selection
 		\item feature extraction/ engineering
 	\end{itemize}
+
+	\column{0.5\textwidth}
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[xshift=-3cm,yshift=4.5cm] at (current page.south east) {\includegraphics[width=5cm]{images/Overfitting}};
+	\end{tikzpicture}
+	
+	\end{columns}
 \end{frame}
 
 \note{
@@ -945,24 +970,73 @@ The predictors in x can be most any object as long as the underlying model fit f
 }
 
 
-\begin{frame}
-	\frametitle{Regression with (Generalized) Linear Models}
+\begin{frame}[fragile]
+	\frametitle{Regression with Linear Models}
+	
+	\begin{itemize}
+		\item \alert{Generalized Linear Models}
+		\item  with \textsl{caret}\footfullcite{caret}
+	\end{itemize}
+	
+	\centering
+	\begin{Verbatim}[fontsize=\footnotesize]
+model_glm <- caret::train(clump_thickness ~ .,
+                          data = train_data,
+                          method = "glm",
+                          preProcess = c("scale", "center"),
+                          trControl = trainControl(
+                                        method = "repeatedcv", 
+                                        number = 10, 
+                                        repeats = 10, 
+                                        savePredictions = TRUE, 
+                                        verboseIter = FALSE))
+	\end{Verbatim}
 	
 \end{frame}
 
 \subsubsection{}
 
 
-\begin{frame}
-	\frametitle{Deep learning with neural networks}
-	
-	\begin{itemize}
-		\item for BIG data
-		\item with \textsl{h2o}\footfullcite{h2o}
-	\end{itemize}
+\begin{frame}[fragile]
+	\frametitle{Hyper-parameter tuning}
 	
 	\alert{Grid Search}
+	\begin{itemize}
+		\item with \textsl{h2o}\footfullcite{h2o}
+	\end{itemize}
+
+\centering
+	\begin{Verbatim}[fontsize=\footnotesize]
+hyper_params <- list(
+                     ntrees = c(25, 50, 75, 100),
+                     max_depth = c(10, 20, 30),
+                     min_rows = c(1, 3, 5)
+                     )
+
+search_criteria <- list(
+                        strategy = "RandomDiscrete", 
+                        max_models = 50,
+                        max_runtime_secs = 360,
+                        stopping_rounds = 5,          
+                        stopping_metric = "AUC",      
+                        stopping_tolerance = 0.0005,
+                        seed = 42
+                        )
+	\end{Verbatim}
+
 \end{frame}
+
+\note{
+	Of course, you need quite a bit of experience and intuition to hit on a good combination of parameters. That?s why it usually makes sense to do a grid search for hyper-parameter tuning. Hyper-parameter tuning with grid search allows us to test different combinations of hyper-parameters and find one with improved accuracy.
+	
+	Keep in mind though, that hyper-parameter tuning can only improve the model so much without overfitting. If you can?t achieve sufficient accuracy, the input features might simply not be adequate for the predictions you are trying to model. It might be necessary to go back to the original features and try e.g. feature engineering methods.
+	
+	We can use the h2o.grid() function to perform a Random Grid Search (RGS). We could also test all possible combinations of parameters with Cartesian Grid or exhaustive search, but RGS is much faster when we have a large number of possible combinations and usually finds sufficiently accurate models.
+	
+	For RGS, we first define a set of hyper-parameters and search criteria to fine-tune our models. Because there are many hyper-parameters, each with a range of possible values, we want to find an (ideally) optimal combination to maximize our model?s accuracy. We can also specify how long we want to run the grid search for. Based on the results of each model tested in the grid, we can choose the one with the highest accuracy or best performance for the question on hand.
+	
+	We now want to extract the best model from the grid model list. What makes a model the best depends on the question you want to address with it: in some cases, the model with highest AUC is the most suitable, or the one with the lowest mean squared error, etc. We first use the  h2o.getGrid() function to sort all models by the quality metric we choose (depending on the metric, you want it ordered by descending or ascending values). We can then get the model that?s the first in the list to work with further. This model?s hyper-parameters can be found with . You can now work with your best model as with any regular model in h2o.
+}
 
 %%%%%%%%%%%%%%%%%%%%%
 %	SECTION
@@ -970,6 +1044,30 @@ The predictors in x can be most any object as long as the underlying model fit f
 %%%%%%%%%%%%%%%%%%%%%
 
 \section{Evaluating model performance}
+
+\begin{frame}[plain, c]
+	\begin{center}
+		\usebeamerfont*{frametitle} \usebeamercolor[fg]{frametitle} {\Huge \textbf{Never use the same data}}
+		
+		\vspace{0.2cm}
+		
+		\usebeamerfont*{frametitle} \usebeamercolor[fg]{frametitle} {\Huge \textbf{for evaluation that you used}}
+		
+		\vspace{0.2cm}
+		
+		\usebeamerfont*{frametitle} \usebeamercolor[fg]{frametitle} {\Huge \textbf{for training!}}
+	\end{center}
+\end{frame}
+
+\note{
+	\begin{itemize}
+		\item Golden Rule of ML: always test model performance on indepenent data
+		\item otherwise you will get overly optimistic performance measures
+	\end{itemize}
+
+The ultimate performance test for our model will be it?s prediction accuracy on the test set it hasn?t seen before. Here, I will compare the AUC and mean squared error for each best model from before. You could of course look at any other quality metric that is most appropriate for your model.
+}
+
 
 \begin{frame}
 	\frametitle{Area Under the Curve (AUC}

@@ -1,14 +1,5 @@
 base
-lattice
 ggplot2
-caret
-dplyr
-tidyr
-rpart
-rpart.plot
-randomForest
-xgboost
-plyr
 ellipse
 BiocGenerics
 S4Vectors
@@ -16,3 +7,12 @@ IRanges
 XVector
 Biostrings
 pcaGoPromoter
+tidyr
+lattice
+caret
+dplyr
+rpart
+rpart.plot
+randomForest
+xgboost
+plyr
