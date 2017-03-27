@@ -233,6 +233,46 @@
       \verb http://dx.doi.org/10.1146/annurev.bioeng.8.061505.095802
       \endverb
     \endentry
+    \entry{Wolberg01121990}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=eb39225fc6b168f8365bb1255e05f696}{%
+           family={Wolberg},
+           familyi={W\bibinitperiod},
+           given={W\bibnamedelima H},
+           giveni={W\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{uniquename=0,hash=b0faf52e33d610864096ea1ae56609f7}{%
+           family={Mangasarian},
+           familyi={M\bibinitperiod},
+           given={O\bibnamedelima L},
+           giveni={O\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{7edc43d5b0b9fa0194d01d59f251a84d}
+      \strng{fullhash}{7edc43d5b0b9fa0194d01d59f251a84d}
+      \strng{authornamehash}{7edc43d5b0b9fa0194d01d59f251a84d}
+      \strng{authorfullhash}{7edc43d5b0b9fa0194d01d59f251a84d}
+      \field{sortinit}{W}
+      \field{sortinithash}{6d25b3eefe5aa2147d1f339686808918}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Multisurface pattern separation is a mathematical method for distinguishing between elements of two pattern sets. Each element of the pattern sets is comprised of various scalar observations. In this paper, we use the diagnosis of breast cytology to demonstrate the applicability of this method to medical diagnosis and decision making. Each of 11 cytological characteristics of breast fine-needle aspirates reported to differ between benign and malignant samples was graded 1 to 10 at the time of sample collection. Nine characteristics were found to differ significantly between benign and malignant samples. Mathematically, these values for each sample were represented by a point in a nine-dimensional space of real variables. Benign points were separated from malignant ones by planes determined by linear programming. Correct separation was accomplished in 369 of 370 samples (201 benign and 169 malignant). In the one misclassified malignant case, the fine-needle aspirate cytology was so definitely benign and the cytology of the excised cancer so definitely malignant that we believe the tumor was missed on aspiration. Our mathematical method is applicable to other medical diagnostic and decision-making problems.}
+      \field{journaltitle}{Proceedings of the National Academy of Sciences}
+      \field{number}{23}
+      \field{title}{Multisurface method of pattern separation for medical diagnosis applied to breast cytology.}
+      \field{volume}{87}
+      \field{year}{1990}
+      \field{pages}{9193\bibrangedash 9196}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1073/pnas.87.23.9193
+      \endverb
+      \verb{eprint}
+      \verb http://www.pnas.org/content/87/23/9193.full.pdf
+      \endverb
+      \verb{url}
+      \verb http://www.pnas.org/content/87/23/9193.abstract
+      \endverb
+    \endentry
   \endsortlist
 \endrefsection
 \endinput

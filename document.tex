@@ -1,10 +1,10 @@
 \documentclass[notes, c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
 
 % print notes only:
-%\documentclass[notes=only, c, 11pt, xcolor=svgnames, hyperref={colorlinks,citecolor=DeepPink4,linkcolor=DarkRed,urlcolor=DarkBlue}]{beamer}
+%\documentclass[notes=only, c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
 
-% print only frames:
-%\documentclass[c, 11pt, xcolor=svgnames, hyperref={colorlinks,citecolor=DeepPink4,linkcolor=DarkRed,urlcolor=DarkBlue}]{beamer}
+%print only frames:
+%\documentclass[c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
 
 % print handouts:
 %\documentclass[handout, c, 11pt, xcolor=svgnames, hyperref={colorlinks,citecolor=DeepPink4,linkcolor=DarkRed,urlcolor=DarkBlue}]{beamer} 
@@ -366,6 +366,7 @@
 
 	\begin{tikzpicture}[remember picture,overlay]
 	\node[xshift=-2cm,yshift=4cm] at (current page.south east) {\includegraphics[width=3cm]{images/mammogram}};
+	\node[xshift=-3cm,yshift=0.8cm] at (current page.south east) {\footnotesize{\textit{Image source: Wikimedia Commons}}};
 	\end{tikzpicture}
 
 	%\footfullcite{}
@@ -428,29 +429,52 @@
 	\end{itemize}
 }
 
-\begin{frame}[plain, c]
-	
+\begin{frame}
+
 	\begin{center}
-		\usebeamerfont*{frametitle} \usebeamercolor[fg]{frametitle} {\LARGE{the elephant in the room} \\ \vspace{0.5cm} \Huge{\textbf{Trust!}}}
+		\usebeamerfont*{frametitle} \usebeamercolor[fg]{frametitle} {\Huge{\textbf{Can we trust \\ \vspace{0.3cm} a model?}}}
 	\end{center}
 	
 	\vspace{0.5cm}
 	
 	\begin{itemize}
-		\item we don't know \alert{WHY} ML models make decisions
+		\item most ML algorithms model high-degree interactions between variables 
+		\item we often don't know \alert{WHY} \\ ML models make decisions \\
 		\item inherent problem with ML models: \\ they are hard (or impossible) to interpret
 	\end{itemize}
-
+	
 	\begin{itemize}
-		\item therefore, it is crucial that our models are \alert{accurate} \\
-				and \alert{meaningful}
+		\item therefore, it is crucial that our models are \alert{meaningful}
 	\end{itemize}
+
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[xshift=-2.2cm,yshift=-1.5cm] at (current page.north east) {\includegraphics[width=5cm]{images/elephant}};
+	\node[xshift=-2cm,yshift=-8.5cm] at (current page.north east) {\footnotesize{\textit{Image source: Pixabay}}};
+	\end{tikzpicture}
 \end{frame}
 
 \note{
 	\begin{itemize}
-		\item almost by definition one cannot really understand a good model.
-		\item 
+		\item the elephant in the room
+		\item machine learning algorithms tend to create nonlinear, 
+		\item non-monotonic, 
+		\item non-polynomial, 
+		\item and even non-continuous functions 
+		\item that approximate the relationship between independent and dependent variables in a data set
+		\item most ML algorithms model high-degree interactions between variables (meaning the effect of combining many?i.e., more than two or three?variables together)
+	\end{itemize}
+
+	\begin{itemize}
+		\item When working with data you should be asking yourselves some very hard questions: 
+		\item do I understand my data? 
+		\item Do I understand the model and answers my machine learning algorithm is giving me? 
+		\item And do I trust these answers? 
+		\item Unfortunately, the complexity that bestows the extraordinary predictive abilities on machine learning algorithms also makes the answers the algorithms produce hard to understand, 
+		\item and maybe even hard to trust.
+		\item almost by definition one cannot really understand a good model
+		\item difficulties in interpretation still present a barrier for the widespread, practical use of ML
+		\item trusting models and results is a general requirement for good (data) science
+		\item we want to understand them as well as possible
 	\end{itemize}
 }
 
@@ -533,6 +557,8 @@
 		
 		\draw[->,thick,shorten >=5pt,shorten <=5pt] (rf.south) -- (prediction.north);
 		\end{tikzpicture}
+		
+		\footnotesize{\textit{}}
 	\end{center}
 
 	\column{0.5\textwidth}
@@ -546,6 +572,8 @@
 	\includegraphics[width=0.5\textwidth]{images/clustering1}
 	
 	\includegraphics[width=0.5\textwidth]{images/clustering2}
+	
+	\footnotesize{\textit{Wikipedia}}
 	
 	\end{columns}
 \end{frame}
@@ -582,6 +610,43 @@
 		
 		\column{0.5\textwidth}
 		
+				\begin{block}{}
+			\centering
+			\alert{Regression} \\
+			e.g. weight loss
+		\end{block}
+		
+		\begin{center}
+			\begin{tikzpicture}
+			\tiny
+			\node[rectangle, rounded corners, align=center,text width=8em,text centered,minimum height=2em, fill = Dandelion] (select) at (2.5,-3) {Data};
+			
+			\node[ellipse,align=center,text width=4.5em,text centered,minimum height=3em, fill = SpringGreen] (training) at (1,-4.4) {Training set};
+			
+			\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = SpringGreen, very thick] (class1) at (1,-5.4) {\textbf{Numeric \\ variable}: response variable in model};
+			
+			\node[ellipse,align=center,text width=4.5em,text centered,minimum height=3em, fill = Cerulean] (test) at (4,-4.4) {Test \\ set};
+			
+			\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = Cerulean, very thick] (class2) at (4,-5.4) {\textbf{Numeric output}: \\ unknown};
+			
+			\node[rectangle, align=center,text width=8em,text centered,minimum height=2em, fill = Lavender] (rf) at (1,-7.0) {Machine \\ Learning \\ model};
+			
+			\node[ellipse,align=center,text width=5em,text centered,minimum height=2em, fill = Lavender] (prediction) at (2.5,-8.5) {Prediction};
+			
+			\draw[->,thick,shorten >=5pt,shorten <=5pt] (select.south) -- (training.north);
+			\draw[->,thick,shorten >=5pt,shorten <=5pt] (select.south) -- (test.north);
+			
+			\draw[->,thick,shorten >=5pt,shorten <=5pt] (class1.south) -- (rf.north);
+			\draw[->,thick,shorten >=5pt,shorten <=5pt] (class2.south) -- (prediction.north);
+			
+			\draw[->,thick,shorten >=5pt,shorten <=5pt] (rf.south) -- (prediction.north);
+			\end{tikzpicture}
+		\end{center}
+		
+		\column{0.5\textwidth}
+		
+		\pause
+		
 		\begin{block}{}
 			\centering
 			\alert{Classification} \\
@@ -615,43 +680,6 @@
 			\end{tikzpicture}
 		\end{center}
 		
-		\column{0.5\textwidth}
-		
-		\pause
-		
-		\begin{block}{}
-			\centering
-			\alert{Regression} \\
-			e.g. weight loss
-		\end{block}
-		
-		\begin{center}
-			\begin{tikzpicture}
-			\tiny
-			\node[rectangle, rounded corners, align=center,text width=8em,text centered,minimum height=2em, fill = Dandelion] (select) at (2.5,-3) {Data};
-			
-			\node[ellipse,align=center,text width=4.5em,text centered,minimum height=3em, fill = SpringGreen] (training) at (1,-4.4) {Training set};
-			
-			\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = SpringGreen, very thick] (class1) at (1,-5.4) {\textbf{Numeric \\ variable}: response variable in model};
-			
-			\node[ellipse,align=center,text width=4.5em,text centered,minimum height=3em, fill = Cerulean] (test) at (4,-4.4) {Test \\ set};
-			
-			\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = Cerulean, very thick] (class2) at (4,-5.4) {\textbf{Numeric output}: \\ unknown};
-			
-			\node[rectangle, align=center,text width=8em,text centered,minimum height=2em, fill = Lavender] (rf) at (1,-7.0) {Machine \\ Learning \\ model};
-			
-			\node[ellipse,align=center,text width=5em,text centered,minimum height=2em, fill = Lavender] (prediction) at (2.5,-8.5) {Prediction};
-			
-			\draw[->,thick,shorten >=5pt,shorten <=5pt] (select.south) -- (training.north);
-			\draw[->,thick,shorten >=5pt,shorten <=5pt] (select.south) -- (test.north);
-			
-			\draw[->,thick,shorten >=5pt,shorten <=5pt] (class1.south) -- (rf.north);
-			\draw[->,thick,shorten >=5pt,shorten <=5pt] (class2.south) -- (prediction.north);
-			
-			\draw[->,thick,shorten >=5pt,shorten <=5pt] (rf.south) -- (prediction.north);
-			\end{tikzpicture}
-		\end{center}
-		
 	\end{columns}
 \end{frame}
 
@@ -661,6 +689,21 @@
 		\item Your learning algorithm seeks a function from inputs to the respective targets. 
 		\item If the targets are expressed in some classes, it is called classification problem. 
 		\item Alternatively, if the target space is continuous, it is called regression problem.
+	\end{itemize}
+
+	\begin{itemize}
+		\item Functions created by linear regression algorithms are probably the most interpretable class of models.
+		\item For this reason, linear models were the go-to applied predictive modeling tool for decades, 
+		\item even though it usually meant giving up a couple points on the accuracy scale. 
+		\item These models will be referred to here as 'linear and monotonic',
+		\item meaning that for a change in any given independent variable, the response function changes at a defined rate, 
+		\item in only one direction, and at a magnitude represented by a readily available coefficient
+	\end{itemize}
+
+	\begin{itemize}
+		\item Most machine learning algorithms create nonlinear, non-monotonic response functions. 
+		\item This class of functions is the most difficult to interpret, as they can change in a positive and negative direction and at a varying rate for any change in an independent variable. 
+		\item Typically, the only standard interpretability measure these functions provide are relative variable importance measures
 	\end{itemize}
 }
 
@@ -692,15 +735,20 @@
 	\column{0.5\textwidth}
 	\begin{tikzpicture}[remember picture,overlay]
 	\node[xshift=-3cm,yshift=4.5cm] at (current page.south east) {\includegraphics[width=5cm]{images/Overfitting}};
+	\node[xshift=-1.5cm,yshift=1.5cm] at (current page.south east) {{\footnotesize \textit{Wikipedia}}};
 	\end{tikzpicture}
 	
 	\end{columns}
 \end{frame}
 
 \note{
-	Machine learning uses so called features (i.e. variables or attributes) to generate predictive models. Using a suitable combination of features is essential for obtaining high precision and accuracy. Because too many (unspecific) features pose the problem of overfitting the model, we generally want to restrict the features in our models to those, that are most relevant for the response variable we want to predict. Using as few features as possible will also reduce the complexity of our models, which means it needs less time and computer power to run and is easier to understand. \\
-
-	extraction of salient structure in the data that is more informative than the raw data itself (the feature extraction problem)
+	\begin{itemize}
+		\item Machine learning uses so called features (i.e. variables or attributes) to generate predictive models
+		\item Using a suitable combination of features is essential for obtaining high precision and accuracy. 
+		\item Because too many (unspecific) features pose the problem of overfitting the model, we generally want to restrict the features in our models to those, that are most relevant for the response variable we want to predict. 
+		\item Using as few features as possible will also reduce the complexity of our models, which means it needs less time and computer power to run and is easier to understand. 
+		\item Sometimes extraction of salient structure in the data that is more informative than the raw data itself (the feature extraction problem)
+	\end{itemize}
 }
 
 \begin{frame}
@@ -766,8 +814,9 @@
 	\frametitle{Session setup}
 	
 	\begin{itemize}
-		\item RStudio
-		\item Breast Cancer Wisconsin Dataset
+		\item \href{http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/}{Breast Cancer Wisconsin Dataset}\footfullcite{Wolberg01121990} \\ \vspace{0.1cm}
+		\includegraphics[height=2cm]{images/Needle_Biopsy.jpg}
+		\includegraphics[height=2cm]{images/fna.jpg} \vspace{0.1cm}
 		\item caret\footfullcite{caret}
 		\item h2o\footfullcite{h2o}
 	\end{itemize}
@@ -782,6 +831,35 @@
 	\end{tikzpicture}
 	
 \end{frame}
+
+\note{
+	\begin{itemize}
+		\item This breast cancer databases was obtained from the University of Wisconsin Hospitals, Madison
+		\item from Dr. William H. Wolberg
+	\end{itemize}
+	
+	\begin{itemize}
+		\item It looks at the predictor classes:
+		\item malignant or
+		\item benign breast mass
+	\end{itemize}
+	
+	\begin{itemize}
+		\item The features characterise cell nucleus properties
+		\item and were generated from image analysis of fine needle aspirates (FNA) of breast masses:
+		\item Sample ID (code number)
+		\item Clump thickness
+		\item Uniformity of cell size
+		\item Uniformity of cell shape
+		\item Marginal adhesion
+		\item Single epithelial cell size
+		\item Number of bare nuclei
+		\item Bland chromatin
+		\item Number of normal nuclei
+		\item Mitosis
+		\item Classes, i.e. diagnosis
+	\end{itemize}
+}
 
 \begin{frame}
 	\frametitle{Get to know your data}
@@ -853,8 +931,20 @@
 
 \note{
 	\begin{itemize}
+		\item Most real data sets are hard to see because they have many variables and many rows
+		\item visualization can help when we reduce the complexity
+		\item There are many techniques for projecting the rows of a data set from a usually high-dimensional original space into a more visually understandable lower-dimensional space:
+		\item Principal Component Analysis (PCA)
+		\item Multidimensional Scaling (MDS)
+		\item t-distributed Stochastic Neighbor Embedding (t-SNE)
+		\item Each of these techniques has strengths and weaknesses, but the key idea they all share is to represent the rows of a data set in a meaningful low-dimensional space. 
+	\end{itemize}
+
+	\begin{itemize}
 		\item To get an idea about the dimensionality and variance of the datasets, I am first looking at PCA plots
 		\item for samples and features
+		\item Principal component analysis (PCA) is a statistical procedure that uses an orthogonal transformation ...
+		\item ... to convert a set of observations into a set of values of linearly uncorrelated variables called principal components
 		\item The first two principal components (PCs) show the two components that explain the majority of variation in the data
 	\end{itemize}
 }
@@ -881,6 +971,23 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Get to know your data}
+	\alert{Correlation graphs}
+
+	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/cor_graph-1} \end{center}
+\end{frame}
+
+\note{
+	\begin{itemize}
+		\item A correlation graph is a two-dimensional representation of the relationships (correlation) in a data set
+		\item Pearson correlation coefficient between features
+		\item node size: sum of correlation coefficients
+		\item edge width: correlation coefficient
+	\end{itemize}
+}
+
+
+\begin{frame}
 	\frametitle{Training, validation and test data}
 	
 	We need to split the data into training and test sets - \\
@@ -894,6 +1001,64 @@
 
 \note{
 	For accurate predictions, density distribution should be similar in training and test data!
+}
+
+\begin{frame}
+	\frametitle{Model examples}
+	
+	\begin{columns}
+		
+		\column{0.6\textwidth}
+		
+		\alert{Regression with Linear Models}
+		\begin{itemize}
+			\item e.g. Generalized Linear Models
+			\item with \textsl{caret}
+		\end{itemize}
+		
+		\vspace{0.5cm}
+		
+		\alert{Tree-based classification}
+		\begin{itemize}
+			\item Random Forest or Gradient boosting trees
+			\item  with \textsl{caret}
+		\end{itemize}
+		
+		\vspace{0.5cm}
+		
+		\alert{Hyper-parameter tuning}
+		\begin{itemize}
+			\item Grid Search
+			\item  with \textsl{h2o}
+		\end{itemize}
+	
+		\column{0.4\textwidth}
+		
+		\includegraphics[width=0.9\textwidth]{webinar_code_files/figure-latex/regression_result-1.pdf}
+		
+		\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/decision_tree-1}
+		
+		\includegraphics[width=0.9\textwidth]{webinar_code_files/figure-latex/auc_mse-1.pdf}
+	\end{columns}
+	
+	
+\end{frame}
+
+\note{
+	There are over 250 ML algorithms implemented with caret alone. I am going to focus on two of the most widely used.
+	
+	\begin{itemize}
+		\item traditional linear models tend to create linear, monotonic, and continuous functions 
+		\item Even though they?re not always the most accurate predictors, the elegant simplicity of linear models makes the results they generate easy to interpret.
+	\end{itemize}
+
+	\begin{itemize}
+		\item Of course, you need quite a bit of experience and intuition to hit on a good combination of parameters.
+		\item That's why it usually makes sense to do a grid search for hyper-parameter tuning. 
+		\item Hyper-parameter tuning with grid search allows us to test different combinations of hyper-parameters and find one with improved accuracy.
+		\item We can use the h2o.grid() function to perform a Random Grid Search (RGS). We could also test all possible combinations of parameters with Cartesian Grid or exhaustive search, but RGS is much faster when we have a large number of possible combinations and usually finds sufficiently accurate models.
+		\item Based on the results of each model tested in the grid, we can choose the one with the highest accuracy or best performance for the question on hand
+	\end{itemize}
 }
 
 \begin{frame}
@@ -916,46 +1081,11 @@
 	\begin{itemize}
 		\item Random Forests produces multiple decision trees
 		\item with some level of randomness
+		\item Every node in the decision trees is a condition on a single feature, designed to split the dataset into two so that similar response values end up in the same set
 		\item each tree is evaluated regarding how well it classified the samples (cross-validation)
-		\item if two trees are equally accurate, the tree with fewer nodes is preferred
-		\item 'information gain' is the measure that tells us how good a tree model is
+		\item ensemble of all trees is used for prediction
 		\item better generalization than individual trees
 	\end{itemize}
-}
-
-\begin{frame}[fragile]
-	\frametitle{Tree-based classification}
-	
-	\begin{itemize}
-		\item \alert{Random Forest or Gradient boosting}
-		\item  with \textsl{caret}\footfullcite{caret}
-	\end{itemize}
-
-	\centering
-	\begin{Verbatim}[fontsize=\footnotesize]
-caret::train(classes ~ .,
-             data = train_data,
-             method = "rf",  # or "xgb"
-             preProcess = c("scale", "center"),
-             trControl = trainControl(method = "repeatedcv", 
-                                      number = 10, 
-                                      repeats = 10, 
-                                      savePredictions = TRUE, 
-                                      verboseIter = FALSE))
-                                      
-##           benign malignant class.error
-## benign       313         8  0.02492212
-## malignant      4       165  0.02366864
-	\end{Verbatim}
-
-\end{frame}
-
-\note{
-This function sets up a grid of tuning parameters for a number of classification and regression routines, fits each model and calculates a resampling based performance measure.
-
-train can be used to tune models by picking the complexity parameters that are associated with the optimal resampling statistics. For particular model, a grid of parameters (if any) is created and the model is trained on slightly different data for each candidate combination of tuning parameters. Across each data set, the performance of held-out samples is calculated and the mean and standard deviation is summarized for each combination. The combination with the optimal resampling statistic is chosen as the final model and the entire training set is used to fit a final model.
-
-The predictors in x can be most any object as long as the underlying model fit function can deal with the object class. The function was designed to work with simple matrices and data frame inputs, so some functionality may not work (e.g. pre-processing). When using string kernels, the vector of character strings should be converted to a matrix with a single column.
 }
 
 \begin{frame}
@@ -965,77 +1095,17 @@ The predictors in x can be most any object as long as the underlying model fit f
 \end{frame}
 
 \note{
-	Not all of the features I created will be equally important to the model. The decision tree already gave me an idea of which features might be most important but I also want to estimate feature importance using a Random Forest approach with repeated cross validation.
-
-}
-
-
-\begin{frame}[fragile]
-	\frametitle{Regression with Linear Models}
-	
 	\begin{itemize}
-		\item \alert{Generalized Linear Models}
-		\item  with \textsl{caret}\footfullcite{caret}
+		\item Not all of the features I created will be equally important to the model. 
+		\item A benefit of using ensembles of decision tree methods is that they can automatically provide estimates of feature importance from a trained predictive model.
+		\item Generally, importance provides a score that indicates how useful or valuable each feature was in the construction of the decision trees within the model. 
+		\item The more an attribute is used to make key decisions with decision trees, the higher its relative importance.
+		\item Importance is calculated for a single decision tree by the amount that each attribute split point improves the performance measure, weighted by the number of observations the node is responsible for.
+		\item The feature importances are then averaged across all of the the decision trees within the model.
+		\item when training a tree, it can be computed how much each feature decreases the weighted impurity in a tree. For a forest, the impurity decrease from each feature can be averaged and the features are ranked according to this measure.
+		\item 'information gain' is the measure that tells us how good a tree model is
+		\item the measure based on which the (locally) optimal condition is chosen is called impurity. For classification, it is typically either Gini impurity or information gain/entropy and for regression trees it is variance
 	\end{itemize}
-	
-	\centering
-	\begin{Verbatim}[fontsize=\footnotesize]
-model_glm <- caret::train(clump_thickness ~ .,
-                          data = train_data,
-                          method = "glm",
-                          preProcess = c("scale", "center"),
-                          trControl = trainControl(
-                                        method = "repeatedcv", 
-                                        number = 10, 
-                                        repeats = 10, 
-                                        savePredictions = TRUE, 
-                                        verboseIter = FALSE))
-	\end{Verbatim}
-	
-\end{frame}
-
-\subsubsection{}
-
-
-\begin{frame}[fragile]
-	\frametitle{Hyper-parameter tuning}
-	
-	\alert{Grid Search}
-	\begin{itemize}
-		\item with \textsl{h2o}\footfullcite{h2o}
-	\end{itemize}
-
-\centering
-	\begin{Verbatim}[fontsize=\footnotesize]
-hyper_params <- list(
-                     ntrees = c(25, 50, 75, 100),
-                     max_depth = c(10, 20, 30),
-                     min_rows = c(1, 3, 5)
-                     )
-
-search_criteria <- list(
-                        strategy = "RandomDiscrete", 
-                        max_models = 50,
-                        max_runtime_secs = 360,
-                        stopping_rounds = 5,          
-                        stopping_metric = "AUC",      
-                        stopping_tolerance = 0.0005,
-                        seed = 42
-                        )
-	\end{Verbatim}
-
-\end{frame}
-
-\note{
-	Of course, you need quite a bit of experience and intuition to hit on a good combination of parameters. That?s why it usually makes sense to do a grid search for hyper-parameter tuning. Hyper-parameter tuning with grid search allows us to test different combinations of hyper-parameters and find one with improved accuracy.
-	
-	Keep in mind though, that hyper-parameter tuning can only improve the model so much without overfitting. If you can?t achieve sufficient accuracy, the input features might simply not be adequate for the predictions you are trying to model. It might be necessary to go back to the original features and try e.g. feature engineering methods.
-	
-	We can use the h2o.grid() function to perform a Random Grid Search (RGS). We could also test all possible combinations of parameters with Cartesian Grid or exhaustive search, but RGS is much faster when we have a large number of possible combinations and usually finds sufficiently accurate models.
-	
-	For RGS, we first define a set of hyper-parameters and search criteria to fine-tune our models. Because there are many hyper-parameters, each with a range of possible values, we want to find an (ideally) optimal combination to maximize our model?s accuracy. We can also specify how long we want to run the grid search for. Based on the results of each model tested in the grid, we can choose the one with the highest accuracy or best performance for the question on hand.
-	
-	We now want to extract the best model from the grid model list. What makes a model the best depends on the question you want to address with it: in some cases, the model with highest AUC is the most suitable, or the one with the lowest mean squared error, etc. We first use the  h2o.getGrid() function to sort all models by the quality metric we choose (depending on the metric, you want it ordered by descending or ascending values). We can then get the model that?s the first in the list to work with further. This model?s hyper-parameters can be found with . You can now work with your best model as with any regular model in h2o.
 }
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -1063,24 +1133,47 @@ search_criteria <- list(
 	\begin{itemize}
 		\item Golden Rule of ML: always test model performance on indepenent data
 		\item otherwise you will get overly optimistic performance measures
+		\item The ultimate performance test for our model will be it's prediction accuracy on the test set it hasn't seen before.
 	\end{itemize}
-
-The ultimate performance test for our model will be it?s prediction accuracy on the test set it hasn?t seen before. Here, I will compare the AUC and mean squared error for each best model from before. You could of course look at any other quality metric that is most appropriate for your model.
 }
 
 
 \begin{frame}
-	\frametitle{Area Under the Curve (AUC}
+	\frametitle{Predictions on test data}
+	\alert{Regression}
+	
+	\begin{itemize}
+		\item RMSE: 1.97
+		\item R\textsuperscript{2}: 0.50
+	\end{itemize}
+	
+	\vspace{0.2cm}
 	
 	\centering
-	\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/auc_curve-1.pdf} 
+	\includegraphics[width=0.5\textwidth]{webinar_code_files/figure-latex/regression_result-1.pdf}
+	\includegraphics[width=0.5\textwidth]{webinar_code_files/figure-latex/residuals-1.pdf}
 \end{frame}
 
-\begin{frame}
-	\frametitle{AUC and mean squared error (MSE)}
+\note{
+	\begin{itemize}
+		\item Residuals refer to the difference between the recorded value the predicted value
+		\item Generally, the residuals of a well-fit model should be randomly distributed because good models will account for most phenomena in a data set, except for random error.
+	\end{itemize}
+
+	\begin{itemize}
+		\item In regression analysis, the term mean squared error refers to the unbiased estimate of error variance:
+		\item the residual sum of squares divided by the number of degrees of freedom
+		\item RMSE is a commonly used error metric to measure the performance of regression models.
+		\item in regression the predictor variable is a real number, therefore to measure the quality of the predicted value from some X algorithm you need to find some sort of difference between them. You do this by calculating the square of the error, take the mean across all test objects and take square root
+		\item A small RMSE means good prediction and large means bad model.
+		\item RMSE is strongly influenced by outliers!
+	\end{itemize}
 	
-	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/auc_mse-1.pdf} \end{center}
-\end{frame}
+	\begin{itemize}
+		\item R-squared is the ratio of explained variance to the total variance.
+		\item it is a measure of how much of the variance in y is explained by the model. If R2 is close to one, then the model?s predictions mirror true outcome
+	\end{itemize}
+}
 
 \begin{frame}
 	\frametitle{Predictions on test data}
@@ -1099,26 +1192,73 @@ The ultimate performance test for our model will be it?s prediction accuracy on 
 	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/results_jitter_rf-1.pdf} 
 \end{columns}\end{frame}
 
+\note{
+	\begin{itemize}
+		\item precision == positive predictive value: fraction of predictions that are correct
+		\item positive and negative predictive values: proportions of true positive and true negative results, depend on prevalence
+		\item prevalence: how often each category occurs in the population
+		\item recall == sensitivity == True Positive Rate: proportion of positives that are correctly identified (e.g., the percentage of sick people who are correctly identified as having the condition).
+		\item Specificity == True Negative Rate: proportion of negatives that are correctly identified (e.g., the percentage of healthy people who are correctly identified as not having the condition)
+		\item Inverse Precision and Recall: Precision and Recall where positive and negative labels are exchanged
+		\item detection rate == sensitivity
+	\end{itemize}
+
+	\begin{itemize}
+		\item Accuracy:  weighted arithmetic mean of Precision and Recall
+		\item Given a confusion matrix of classification results, the accuracy can be a misleading performance measure. Specifically,
+		it may falsely suggest above-chance generalizability:
+		\item in binary classification, a training set consisting of different numbers of representatives from either class may result in a classifier that is biased towards the more frequent class
+		\item  this classifier may yield an optimistic accuracy estimate
+		\item Balanced accuracy:  average accuracy obtained on either class. Based on a confusion matrix
+	\end{itemize}
+
+	\begin{itemize}
+		\item p-value: one-sided test to see if the accuracy is better than the "no information rate"
+		\item No Information Rate: the proportion of classes that you would guess right if you randomly allocated them
+		\item Kappa: can have values between -1 and 1. 1 or -1 show complete agreement, zero shows complete disagreement
+		\item McNemar's test: statistical test applied to 2 x 2 contingency tables to determine whether the row and column marginal frequencies are equal
+	\end{itemize}
+}
+
+\begin{frame}
+	\frametitle{Area Under the Curve (AUC}
+	
+	\centering
+	\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/auc_curve-1.pdf} 
+\end{frame}
+
+\note{
+	\begin{itemize}
+		\item AUC usually refers to area under ROC curve (mathematically known as definite integral): Receiver Operating Characteristic
+		\item metric for binary classification
+		\item Accuracy deals with ones and zeros, meaning you either got the class label right or you didn?t. But many classifiers are able to quantify their uncertainty about the answer by outputting a probability value.
+		\item From a random classifier you can expect as many true positives as false positives. That?s the dashed line on the plot.
+		\item A score for a perfect classifier would be 1
+	\end{itemize}
+}
+
+\begin{frame}
+	\frametitle{AUC and mean squared error (MSE)}
+	
+	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/auc_mse-1.pdf} \end{center}
+\end{frame}
+
+\note{
+	In statistics, the mean squared error (MSE) or mean squared deviation (MSD) of an estimator (of a procedure for estimating an unobserved quantity) measures the average of the squares of the errors or deviations?that is, the difference between the estimator and what is estimated. MSE is a risk function, corresponding to the expected value of the squared error loss or quadratic loss. The difference occurs because of randomness or because the estimator doesn't account for information that could produce a more accurate estimate.[1]
+	
+	The MSE is a measure of the quality of an estimator?it is always non-negative, and values closer to zero are better.
+	
+	The MSE is the second moment (about the origin) of the error, and thus incorporates both the variance of the estimator and its bias. For an unbiased estimator, the MSE is the variance of the estimator. Like the variance, MSE has the same units of measurement as the square of the quantity being estimated. In an analogy to standard deviation, taking the square root of MSE yields the root-mean-square error or root-mean-square deviation (RMSE or RMSD), which has the same units as the quantity being estimated; for an unbiased estimator, the RMSE is the square root of the variance, known as the standard deviation.
+	
+	The MSE assesses the quality of an estimator (i.e., a mathematical function mapping a sample of data to a parameter of the population from which the data is sampled) or a predictor (i.e., a function mapping arbitrary inputs to a sample of values of some random variable). Definition of an MSE differs according to whether one is describing an estimator or a predictor.
+}
+
 \begin{frame}
 	\frametitle{Predictions on test data}
 	
 	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/final_predictions_rf-1.pdf} 
 
 	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/final_predictions_rf-2.pdf} 
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Predictions on test data}
-	\alert{Regression}
-	
-	\begin{itemize}
-		\item RMSE: 1.974296
-		\item Rsquared: 0.5016141
-	\end{itemize}
-	
-	\centering
-	\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/regression_result-1.pdf}
 \end{frame}
 
 

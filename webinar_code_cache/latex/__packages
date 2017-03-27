@@ -16,3 +16,5 @@ rpart.plot
 randomForest
 xgboost
 plyr
+igraph
+tsne

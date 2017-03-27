@@ -356,6 +356,145 @@ Missing values are imputed with the \emph{mice} package.
 \begin{itemize}
 \tightlist
 \item
+  Multidimensional Scaling
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:Biostrings':
+## 
+##     collapse, intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:XVector':
+## 
+##     slice
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:IRanges':
+## 
+##     collapse, desc, intersect, regroup, setdiff, slice, union
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:S4Vectors':
+## 
+##     first, intersect, rename, setdiff, setequal, union
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:BiocGenerics':
+## 
+##     combine, intersect, setdiff, union
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{(bc_data, -}\DecValTok{1}\NormalTok{) %>%}
+\StringTok{  }\KeywordTok{dist}\NormalTok{() %>%}
+\StringTok{  }\NormalTok{cmdscale %>%}
+\StringTok{  }\KeywordTok{as.data.frame}\NormalTok{() %>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{group =} \NormalTok{bc_data$classes) %>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{V1, }\DataTypeTok{y =} \NormalTok{V2, }\DataTypeTok{color =} \NormalTok{group)) +}
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{webinar_code_files/figure-latex/mds_plot-1.pdf}
+
+\begin{itemize}
+\tightlist
+\item
+  t-SNE dimensionality reduction
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tsne)}
+
+\KeywordTok{select}\NormalTok{(bc_data, -}\DecValTok{1}\NormalTok{) %>%}
+\StringTok{  }\KeywordTok{dist}\NormalTok{() %>%}
+\StringTok{  }\KeywordTok{tsne}\NormalTok{() %>%}
+\StringTok{  }\KeywordTok{as.data.frame}\NormalTok{() %>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{group =} \NormalTok{bc_data$classes) %>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{V1, }\DataTypeTok{y =} \NormalTok{V2, }\DataTypeTok{color =} \NormalTok{group)) +}
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## sigma summary: Min. : 0.2945 |1st Qu. : 0.5325 |Median : 0.5978 |Mean : 0.7045 |3rd Qu. : 0.9128 |Max. : 1.417 |
+\end{verbatim}
+
+\begin{verbatim}
+## Epoch: Iteration #100 error is: 12.9051118607517
+\end{verbatim}
+
+\begin{verbatim}
+## Epoch: Iteration #200 error is: 0.55100578564023
+\end{verbatim}
+
+\begin{verbatim}
+## Epoch: Iteration #300 error is: 0.507964548605455
+\end{verbatim}
+
+\begin{verbatim}
+## Epoch: Iteration #400 error is: 0.497858645047617
+\end{verbatim}
+
+\begin{verbatim}
+## Epoch: Iteration #500 error is: 0.494929061688897
+\end{verbatim}
+
+\begin{verbatim}
+## Epoch: Iteration #600 error is: 0.493629390821366
+\end{verbatim}
+
+\begin{verbatim}
+## Epoch: Iteration #700 error is: 0.492881739116146
+\end{verbatim}
+
+\begin{verbatim}
+## Epoch: Iteration #800 error is: 0.492432292261577
+\end{verbatim}
+
+\begin{verbatim}
+## Epoch: Iteration #900 error is: 0.492109439434399
+\end{verbatim}
+
+\begin{verbatim}
+## Epoch: Iteration #1000 error is: 0.491872988560014
+\end{verbatim}
+
+\includegraphics{webinar_code_files/figure-latex/tsne_plot-1.pdf}
+
+\begin{itemize}
+\tightlist
+\item
   Features
 \end{itemize}
 
@@ -371,6 +510,74 @@ Missing values are imputed with the \emph{mice} package.
 \end{Shaded}
 
 \includegraphics{webinar_code_files/figure-latex/features-1.pdf}
+
+\begin{itemize}
+\tightlist
+\item
+  Correlation graphs
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\NormalTok{co_mat_benign <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(bc_data, classes ==}\StringTok{ "benign"}\NormalTok{) %>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(-}\DecValTok{1}\NormalTok{) %>%}
+\StringTok{  }\KeywordTok{cor}\NormalTok{()}
+
+\NormalTok{co_mat_malignant <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(bc_data, classes ==}\StringTok{ "malignant"}\NormalTok{) %>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(-}\DecValTok{1}\NormalTok{) %>%}
+\StringTok{  }\KeywordTok{cor}\NormalTok{()}
+
+\KeywordTok{library}\NormalTok{(igraph)}
+\NormalTok{g_benign <-}\StringTok{ }\KeywordTok{graph.adjacency}\NormalTok{(co_mat_benign,}
+                         \DataTypeTok{weighted =} \OtherTok{TRUE}\NormalTok{,}
+                         \DataTypeTok{diag =} \OtherTok{FALSE}\NormalTok{,}
+                         \DataTypeTok{mode =} \StringTok{"upper"}\NormalTok{)}
+
+\NormalTok{g_malignant <-}\StringTok{ }\KeywordTok{graph.adjacency}\NormalTok{(co_mat_malignant,}
+                         \DataTypeTok{weighted =} \OtherTok{TRUE}\NormalTok{,}
+                         \DataTypeTok{diag =} \OtherTok{FALSE}\NormalTok{,}
+                         \DataTypeTok{mode =} \StringTok{"upper"}\NormalTok{)}
+
+
+\CommentTok{# http://kateto.net/networks-r-igraph}
+
+\NormalTok{cut.off_b <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(}\KeywordTok{E}\NormalTok{(g_benign)$weight)}
+\NormalTok{cut.off_m <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(}\KeywordTok{E}\NormalTok{(g_malignant)$weight)}
+
+\NormalTok{g_benign_2 <-}\StringTok{ }\KeywordTok{delete_edges}\NormalTok{(g_benign, }\KeywordTok{E}\NormalTok{(g_benign)[weight <}\StringTok{ }\NormalTok{cut.off_b])}
+\NormalTok{g_malignant_2 <-}\StringTok{ }\KeywordTok{delete_edges}\NormalTok{(g_malignant, }\KeywordTok{E}\NormalTok{(g_malignant)[weight <}\StringTok{ }\NormalTok{cut.off_m])}
+
+\NormalTok{c_g_benign_2 <-}\StringTok{ }\KeywordTok{cluster_fast_greedy}\NormalTok{(g_benign_2) }
+\NormalTok{c_g_malignant_2 <-}\StringTok{ }\KeywordTok{cluster_fast_greedy}\NormalTok{(g_malignant_2) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+
+\KeywordTok{plot}\NormalTok{(c_g_benign_2, g_benign_2,}
+     \DataTypeTok{vertex.size =} \KeywordTok{colSums}\NormalTok{(co_mat_benign) *}\StringTok{ }\DecValTok{10}\NormalTok{,}
+     \DataTypeTok{vertex.frame.color =} \OtherTok{NA}\NormalTok{, }
+     \DataTypeTok{vertex.label.color =} \StringTok{"black"}\NormalTok{, }
+     \DataTypeTok{vertex.label.cex =} \FloatTok{0.8}\NormalTok{,}
+     \DataTypeTok{edge.width =} \KeywordTok{E}\NormalTok{(g_benign_2)$weight *}\StringTok{ }\DecValTok{15}\NormalTok{,}
+     \DataTypeTok{layout =} \KeywordTok{layout_with_fr}\NormalTok{(g_benign_2),}
+     \DataTypeTok{main =} \StringTok{"Benign tumors"}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(c_g_malignant_2, g_malignant_2,}
+     \DataTypeTok{vertex.size =} \KeywordTok{colSums}\NormalTok{(co_mat_malignant) *}\StringTok{ }\DecValTok{10}\NormalTok{,}
+     \DataTypeTok{vertex.frame.color =} \OtherTok{NA}\NormalTok{, }
+     \DataTypeTok{vertex.label.color =} \StringTok{"black"}\NormalTok{, }
+     \DataTypeTok{vertex.label.cex =} \FloatTok{0.8}\NormalTok{,}
+     \DataTypeTok{edge.width =} \KeywordTok{E}\NormalTok{(g_malignant_2)$weight *}\StringTok{ }\DecValTok{15}\NormalTok{,}
+     \DataTypeTok{layout =} \KeywordTok{layout_with_fr}\NormalTok{(g_malignant_2),}
+     \DataTypeTok{main =} \StringTok{"Malignant tumors"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{webinar_code_files/figure-latex/cor_graph-1.pdf}
 
 \subsection{Machine Learning packages for
 R}\label{machine-learning-packages-for-r}
@@ -409,6 +616,90 @@ data}\label{training-validation-and-test-data}
 \end{Shaded}
 
 \begin{center}\includegraphics{webinar_code_files/figure-latex/distribution-1} \end{center}
+
+\paragraph{Regression}\label{regression}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{42}\NormalTok{)}
+\NormalTok{model_glm <-}\StringTok{ }\NormalTok{caret::}\KeywordTok{train}\NormalTok{(clump_thickness ~}\StringTok{ }\NormalTok{.,}
+                          \DataTypeTok{data =} \NormalTok{train_data,}
+                          \DataTypeTok{method =} \StringTok{"glm"}\NormalTok{,}
+                          \DataTypeTok{preProcess =} \KeywordTok{c}\NormalTok{(}\StringTok{"scale"}\NormalTok{, }\StringTok{"center"}\NormalTok{),}
+                          \DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\DataTypeTok{method =} \StringTok{"repeatedcv"}\NormalTok{, }
+                                                  \DataTypeTok{number =} \DecValTok{10}\NormalTok{, }
+                                                  \DataTypeTok{repeats =} \DecValTok{10}\NormalTok{, }
+                                                  \DataTypeTok{savePredictions =} \OtherTok{TRUE}\NormalTok{, }
+                                                  \DataTypeTok{verboseIter =} \OtherTok{FALSE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_glm}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Generalized Linear Model 
+## 
+## 490 samples
+##   9 predictor
+## 
+## Pre-processing: scaled (9), centered (9) 
+## Resampling: Cross-Validated (10 fold, repeated 10 times) 
+## Summary of sample sizes: 441, 441, 440, 442, 441, 440, ... 
+## Resampling results:
+## 
+##   RMSE      Rsquared 
+##   1.974296  0.5016141
+## 
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predictions <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(model_glm, test_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# model_glm$finalModel$linear.predictors == model_glm$finalModel$fitted.values}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{residuals =} \KeywordTok{resid}\NormalTok{(model_glm),}
+           \DataTypeTok{predictors =} \NormalTok{model_glm$finalModel$linear.predictors) %>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{predictors, }\DataTypeTok{y =} \NormalTok{residuals)) +}
+\StringTok{    }\KeywordTok{geom_jitter}\NormalTok{() +}
+\StringTok{    }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{webinar_code_files/figure-latex/residuals-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# y == train_data$clump_thickness}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{residuals =} \KeywordTok{resid}\NormalTok{(model_glm),}
+           \DataTypeTok{y =} \NormalTok{model_glm$finalModel$y) %>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{y, }\DataTypeTok{y =} \NormalTok{residuals)) +}
+\StringTok{    }\KeywordTok{geom_jitter}\NormalTok{() +}
+\StringTok{    }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{webinar_code_files/figure-latex/residuals-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{actual =} \NormalTok{test_data$clump_thickness,}
+           \DataTypeTok{predicted =} \NormalTok{predictions) %>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{actual, }\DataTypeTok{y =} \NormalTok{predicted)) +}
+\StringTok{    }\KeywordTok{geom_jitter}\NormalTok{() +}
+\StringTok{    }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{webinar_code_files/figure-latex/regression_result-1.pdf}
 
 \paragraph{Classification}\label{classification}
 
@@ -693,58 +984,6 @@ Here, I show a classification task.
 
 \includegraphics{webinar_code_files/figure-latex/results_jitter_xgb-1.pdf}
 
-\paragraph{Regression}\label{regression}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{set.seed}\NormalTok{(}\DecValTok{42}\NormalTok{)}
-\NormalTok{model_glm <-}\StringTok{ }\NormalTok{caret::}\KeywordTok{train}\NormalTok{(clump_thickness ~}\StringTok{ }\NormalTok{.,}
-                          \DataTypeTok{data =} \NormalTok{train_data,}
-                          \DataTypeTok{method =} \StringTok{"glm"}\NormalTok{,}
-                          \DataTypeTok{preProcess =} \KeywordTok{c}\NormalTok{(}\StringTok{"scale"}\NormalTok{, }\StringTok{"center"}\NormalTok{),}
-                          \DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\DataTypeTok{method =} \StringTok{"repeatedcv"}\NormalTok{, }
-                                                  \DataTypeTok{number =} \DecValTok{10}\NormalTok{, }
-                                                  \DataTypeTok{repeats =} \DecValTok{10}\NormalTok{, }
-                                                  \DataTypeTok{savePredictions =} \OtherTok{TRUE}\NormalTok{, }
-                                                  \DataTypeTok{verboseIter =} \OtherTok{FALSE}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{model_glm}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Generalized Linear Model 
-## 
-## 490 samples
-##   9 predictor
-## 
-## Pre-processing: scaled (9), centered (9) 
-## Resampling: Cross-Validated (10 fold, repeated 10 times) 
-## Summary of sample sizes: 441, 441, 440, 442, 441, 440, ... 
-## Resampling results:
-## 
-##   RMSE      Rsquared 
-##   1.974296  0.5016141
-## 
-## 
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{actual =} \NormalTok{test_data$clump_thickness,}
-           \DataTypeTok{predicted =} \KeywordTok{predict}\NormalTok{(model_glm, test_data)) %>%}
-\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{actual, }\DataTypeTok{y =} \NormalTok{predicted)) +}
-\StringTok{    }\KeywordTok{geom_jitter}\NormalTok{() +}
-\StringTok{    }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{webinar_code_files/figure-latex/regression_result-1.pdf}
-
 \subsubsection{Feature Selection}\label{feature-selection}
 
 Machine learning uses so called features (i.e.~variables or attributes)
@@ -790,7 +1029,7 @@ correlation higher than 0.7, keeping the feature with the lower mean.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-24-1.pdf}
+\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-25-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -884,7 +1123,7 @@ as well, like feature selection processes in machine learning.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-32-1.pdf}
+\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-33-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -908,15 +1147,23 @@ deep learning.
 \end{Shaded}
 
 \begin{verbatim}
-##  Connection successful!
+## 
+## H2O is not running yet, starting it now...
+## 
+## Note:  In case of errors look at the following log files:
+##     C:\Users\s_glan02\AppData\Local\Temp\RtmpMnhd0g/h2o_s_glan02_started_from_r.out
+##     C:\Users\s_glan02\AppData\Local\Temp\RtmpMnhd0g/h2o_s_glan02_started_from_r.err
+## 
+## 
+## Starting H2O JVM and connecting: . Connection successful!
 ## 
 ## R is connected to the H2O cluster: 
-##     H2O cluster uptime:         1 minutes 50 seconds 
+##     H2O cluster uptime:         1 seconds 832 milliseconds 
 ##     H2O cluster version:        3.10.3.6 
-##     H2O cluster version age:    22 days  
-##     H2O cluster name:           H2O_started_from_R_s_glan02_pzm476 
+##     H2O cluster version age:    1 month and 5 days  
+##     H2O cluster name:           H2O_started_from_R_s_glan02_tvy462 
 ##     H2O cluster total nodes:    1 
-##     H2O cluster total memory:   3.21 GB 
+##     H2O cluster total memory:   3.54 GB 
 ##     H2O cluster total cores:    8 
 ##     H2O cluster allowed cores:  8 
 ##     H2O cluster healthy:        TRUE 
@@ -1100,18 +1347,6 @@ decomposition of the Gram matrix with the power method.
 
 \paragraph{Classification}\label{classification-1}
 
-Of course, you need quite a bit of experience and intuition to hit on a
-good combination of parameters. That's why it usually makes sense to do
-a grid search for hyper-parameter tuning. Hyper-parameter tuning with
-grid search allows us to test different combinations of hyper-parameters
-and find one with improved accuracy.
-
-Keep in mind though, that hyper-parameter tuning can only improve the
-model so much without overfitting. If you can't achieve sufficient
-accuracy, the input features might simply not be adequate for the
-predictions you are trying to model. It might be necessary to go back to
-the original features and try e.g.~feature engineering methods.
-
 We can use the \texttt{h2o.grid()} function to perform a Random Grid
 Search (RGS). We could also test all possible combinations of parameters
 with Cartesian Grid or exhaustive search, but RGS is much faster when we
@@ -1255,10 +1490,6 @@ your model.
 
 \includegraphics{webinar_code_files/figure-latex/auc_mse-1.pdf}
 
-I will then create a dataframe with predictions for each test sample
-with all best models. As in last week's post, I want to compare the
-default predictions with stringent predictions.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{for (model_id in rf_models) \{}
@@ -1344,12 +1575,6 @@ default predictions with stringent predictions.
 
 \includegraphics{webinar_code_files/figure-latex/final_predictions_rf-2.pdf}
 
-With predictions made by different models, we can see where each model
-performs best. This obviously corresponds with the quality metric we
-chose to define the best model. Stringent prediction thresholds reduced
-the number of false predictions but of course also the number of
-predictions made at all.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{rf_model <-}\StringTok{ }\KeywordTok{h2o.loadModel}\NormalTok{(}\StringTok{"U:}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Github_blog}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Webinar}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Webinar_ML_for_disease}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{models}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{rf_grid_model_6"}\NormalTok{)}
@@ -1365,7 +1590,7 @@ predictions made at all.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-41-1.pdf}
+\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-42-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1415,7 +1640,7 @@ We can also plot the classification error.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-44-1} \end{center}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-45-1} \end{center}
 
 Next to the classification error, we are usually interested in the
 logistic loss (negative log-likelihood or log loss). It describes the
@@ -1432,7 +1657,7 @@ we ignore potential overfitting).
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-45-1} \end{center}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-46-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1442,7 +1667,7 @@ we ignore potential overfitting).
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-46-1} \end{center}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-47-1} \end{center}
 
 We can also plot the mean squared error (MSE). The MSE tells us the
 average of the prediction errors squared, i.e.~the estimator's variance
@@ -1456,7 +1681,7 @@ and bias. The closer to zero, the better a model.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-47-1} \end{center}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-48-1} \end{center}
 
 Next, we want to know the area under the curve (AUC). AUC is an
 important metric for measuring binary classification model performances.
@@ -1496,12 +1721,10 @@ independent of class labels.
 ## [1] 0.9890496
 \end{verbatim}
 
-Now that we have a good idea about model performance on validation data,
-we want to know how it performed on unseen test data. A good model
-should find an optimal balance between accuracy on training and test
-data. A model that has 0\% error on the training data but 40\% error on
-the test data is in effect useless. It overfit on the training data and
-is thus not able to generalize to unknown data.
+A good model should find an optimal balance between accuracy on training
+and test data. A model that has 0\% error on the training data but 40\%
+error on the test data is in effect useless. It overfit on the training
+data and is thus not able to generalize to unknown data.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1704,7 +1927,7 @@ column that tells me whether they were accurate.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-52-1.pdf}
+\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-53-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1718,161 +1941,7 @@ column that tells me whether they were accurate.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-52-2.pdf}
-
-\subparagraph{Deep learning with neural
-networks}\label{deep-learning-with-neural-networks}
-
-Deep learning with neural networks is arguably one of the most rapidly
-growing applications of machine learning and AI today. They allow
-building complex models that consist of multiple hidden layers within
-artifiical networks and are able to find non-linear patterns in
-unstructured data. Deep neural networks are usually feed-forward, which
-means that each layer feeds its output to subsequent layers, but
-recurrent or feed-back neural networks can also be built. Feed-forward
-neural networks are also called multilayer perceptrons (MLPs).
-
-We can specify quite a few parameters, like
-
-\begin{itemize}
-\item
-  \textbf{Cross-validation}: Cross validation can tell us the training
-  and validation errors for each model. The final model will be
-  overwritten with the best model, if we don't specify otherwise.
-\item
-  \textbf{Adaptive learning rate}: For deep learning with h2o, we by
-  default use stochastic gradient descent optimization with an an
-  adaptive learning rate. The two corresponding parameters \emph{rho}
-  and \emph{epsilon} help us find global (or near enough) optima.
-\item
-  \textbf{Epochs}: Increasing the number of epochs (one full training
-  cycle on all training samples) can increase model performance, but we
-  also run the risk of overfitting. To determine the optimal number of
-  epochs, we need to use early stopping.
-\item
-  \textbf{Early stopping}: By default, early stopping is enabled. This
-  means that training will be stopped when we reach a certain validation
-  error to prevent overfitting. \texttt{stopping\_metric}: metric that
-  we want to use as stopping criterion. \texttt{stopping\_tolerance} and
-  \texttt{stopping\_rounds}: training stops when the the stopping metric
-  does not improve by the stopping tolerance proportion any more
-  (e.g.~by 0.05 or 5\%) for the number of consecutive rounds defined by
-  stopping rounds.
-\item
-  \textbf{Activation Functions}: The activation function defines the
-  node output relative to a given set of inputs. We want our activation
-  function to be non-linear and continuously differentiable.
-\end{itemize}
-
-\texttt{Rectifier}: is the default activation function. It is the
-fastest and most versatile option. It can lead to instability though and
-tends to be lower in accuracy. \texttt{Tanh}: The hyperbolic tangent is
-a scaled and shifted variant of the sigmoid activation function. It can
-take on values from -1 to 1 and centers around 0. Tanh needs more
-computational power than e.g.~the Rectifier function. \texttt{Maxout}:
-is an activation function that is the max of the inputs. It is
-computationally quite demanding but can produce high accuracy models.
-
-\texttt{...WithDropout}: When we specify \texttt{with\ dropout}, a
-random subset of the network is trained and the weights of all
-sub-networks are averaged. It works together with the parameter
-\texttt{hidden\_dropout\_ratios}, which controls the amount of layer
-neurons that are randomly dropped for each hidden layer. Hidden dropout
-ratios are useful for preventing overfitting on learned features.
-
-\begin{itemize}
-\item
-  \textbf{Hidden layers}: Defines the number of hidden layers and the
-  number of nodes per layer and are the most important hyper-parameter
-  to set for deep neural networks, as they specify how many hidden
-  layers and how many nodes per hidden layer the model should learn
-\item
-  \textbf{L1 and L2 penalties}: \texttt{L1}: lets only strong weights
-  survive. \texttt{L2}: prevents any single weight from getting too big.
-\item
-  \textbf{Rho and Epsilon}: \texttt{rho}: similar to prior weight
-  updates. \texttt{epsilon}: prevents getting stuck in local optima
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{hyper_params <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}
-                     \DataTypeTok{activation =} \KeywordTok{c}\NormalTok{(}\StringTok{"Rectifier"}\NormalTok{, }\StringTok{"Maxout"}\NormalTok{, }\StringTok{"Tanh"}\NormalTok{, }\StringTok{"RectifierWithDropout"}\NormalTok{, }
-                                    \StringTok{"MaxoutWithDropout"}\NormalTok{, }\StringTok{"TanhWithDropout"}\NormalTok{), }
-                     \DataTypeTok{hidden =} \KeywordTok{list}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{50}\NormalTok{)),}
-                     \DataTypeTok{epochs =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{200}\NormalTok{),}
-                     \DataTypeTok{l1 =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.00001}\NormalTok{, }\FloatTok{0.0001}\NormalTok{), }
-                     \DataTypeTok{l2 =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.00001}\NormalTok{, }\FloatTok{0.0001}\NormalTok{),}
-                     \DataTypeTok{rate =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{01}\NormalTok{, }\FloatTok{0.005}\NormalTok{, }\FloatTok{0.001}\NormalTok{),}
-                     \DataTypeTok{rate_annealing =} \KeywordTok{c}\NormalTok{(}\FloatTok{1e-8}\NormalTok{, }\FloatTok{1e-7}\NormalTok{, }\FloatTok{1e-6}\NormalTok{),}
-                     \DataTypeTok{rho =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.9}\NormalTok{,}\FloatTok{0.95}\NormalTok{,}\FloatTok{0.99}\NormalTok{,}\FloatTok{0.999}\NormalTok{),}
-                     \DataTypeTok{epsilon =} \KeywordTok{c}\NormalTok{(}\FloatTok{1e-10}\NormalTok{,}\FloatTok{1e-8}\NormalTok{,}\FloatTok{1e-6}\NormalTok{,}\FloatTok{1e-4}\NormalTok{),}
-                     \DataTypeTok{input_dropout_ratio =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.1}\NormalTok{, }\FloatTok{0.2}\NormalTok{),}
-                     \DataTypeTok{max_w2 =} \KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{1000}\NormalTok{, }\FloatTok{3.4028235e+38}\NormalTok{)}
-                     \NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-Now, we can train the model with combinations of hyper-parameters from
-our specified stopping criteria and hyper-parameter grid.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{dl_grid <-}\StringTok{ }\KeywordTok{h2o.grid}\NormalTok{(}\DataTypeTok{algorithm =} \StringTok{"deeplearning"}\NormalTok{, }
-                    \DataTypeTok{x =} \NormalTok{features,}
-                    \DataTypeTok{y =} \NormalTok{response,}
-                    \DataTypeTok{grid_id =} \StringTok{"dl_grid"}\NormalTok{,}
-                    \DataTypeTok{training_frame =} \NormalTok{train,}
-                    \DataTypeTok{validation_frame =} \NormalTok{valid,}
-                    \DataTypeTok{nfolds =} \DecValTok{25}\NormalTok{,                           }
-                    \DataTypeTok{fold_assignment =} \StringTok{"Stratified"}\NormalTok{,}
-                    \DataTypeTok{hyper_params =} \NormalTok{hyper_params,}
-                    \DataTypeTok{search_criteria =} \NormalTok{search_criteria,}
-                    \DataTypeTok{seed =} \DecValTok{42}
-                    \NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{grid <-}\StringTok{ }\KeywordTok{h2o.getGrid}\NormalTok{(}\StringTok{"dl_grid"}\NormalTok{, }\DataTypeTok{sort_by =} \StringTok{"auc"}\NormalTok{, }\DataTypeTok{decreasing =} \OtherTok{TRUE}\NormalTok{)}
-  
-\NormalTok{model_ids <-}\StringTok{ }\NormalTok{grid@model_ids}
-\NormalTok{best_model <-}\StringTok{ }\KeywordTok{h2o.getModel}\NormalTok{(model_ids[[}\DecValTok{1}\NormalTok{]])}
-\end{Highlighting}
-\end{Shaded}
-
-Because training can take a while, depending on how many samples,
-features, nodes and hidden layers you are training on, it is a good idea
-to save your model.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{h2o.saveModel}\NormalTok{(best_model, }\DataTypeTok{path =} \StringTok{"models"}\NormalTok{, }\DataTypeTok{force =} \OtherTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-We can then re-load the model again any time to check the model quality
-and make predictions on new data.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{dl_model <-}\StringTok{ }\KeywordTok{h2o.loadModel}\NormalTok{(}\StringTok{"models/dl_grid_model_8"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-We now want to know how our model performed on the validation data. The
-\emph{summary()} function will give us a detailed overview of our model.
-I am not showing the output here, because it is quite extensive.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{perf <-}\StringTok{ }\KeywordTok{h2o.performance}\NormalTok{(dl_model, test)}
-\KeywordTok{plot}\NormalTok{(perf)}
-
-\KeywordTok{h2o.confusionMatrix}\NormalTok{(dl_model, test)}
-\end{Highlighting}
-\end{Shaded}
+\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-53-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1913,11 +1982,11 @@ category listing for \textbf{machine\_learning} on my blog}.
 ## other attached packages:
 ##  [1] ggrepel_0.6.5        reshape2_1.4.2       h2o_3.10.3.6        
 ##  [4] corrplot_0.77        plyr_1.8.4           xgboost_0.6-4       
-##  [7] randomForest_4.6-12  rpart.plot_2.1.1     rpart_4.1-10        
-## [10] dplyr_0.5.0          caret_6.0-73         lattice_0.20-34     
-## [13] tidyr_0.6.1          pcaGoPromoter_1.18.0 Biostrings_2.42.1   
-## [16] XVector_0.14.0       IRanges_2.8.1        S4Vectors_0.12.1    
-## [19] BiocGenerics_0.20.0  ellipse_0.3-8        ggplot2_2.2.1.9000  
+##  [7] randomForest_4.6-12  caret_6.0-73         lattice_0.20-34     
+## [10] igraph_1.0.1         tidyr_0.6.1          dplyr_0.5.0         
+## [13] pcaGoPromoter_1.18.0 Biostrings_2.42.1    XVector_0.14.0      
+## [16] IRanges_2.8.1        S4Vectors_0.12.1     BiocGenerics_0.20.0 
+## [19] ellipse_0.3-8        ggplot2_2.2.1.9000  
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_0.12.9          class_7.3-14         assertthat_0.1      
@@ -1929,16 +1998,15 @@ category listing for \textbf{machine\_learning} on my blog}.
 ## [19] nloptr_1.0.4         Matrix_1.2-8         rmarkdown_1.3       
 ## [22] labeling_0.3         splines_3.3.3        lme4_1.1-12         
 ## [25] stringr_1.2.0        RCurl_1.95-4.8       munsell_0.4.3       
-## [28] compiler_3.3.3       mgcv_1.8-17          htmltools_0.3.5     
-## [31] nnet_7.3-12          tibble_1.2           codetools_0.2-15    
-## [34] bitops_1.0-6         MASS_7.3-45          ModelMetrics_1.1.0  
-## [37] grid_3.3.3           jsonlite_1.3         nlme_3.1-131        
-## [40] gtable_0.2.0         DBI_0.6              magrittr_1.5        
-## [43] scales_0.4.1         stringi_1.1.2        RColorBrewer_1.1-2  
-## [46] iterators_1.0.8      tools_3.3.3          Biobase_2.34.0      
-## [49] pbkrtest_0.4-6       yaml_2.1.14          AnnotationDbi_1.36.2
-## [52] colorspace_1.3-2     memoise_1.0.0        knitr_1.15.1        
-## [55] quantreg_5.29
+## [28] mgcv_1.8-17          htmltools_0.3.5      nnet_7.3-12         
+## [31] tibble_1.2           codetools_0.2-15     MASS_7.3-45         
+## [34] bitops_1.0-6         ModelMetrics_1.1.0   grid_3.3.3          
+## [37] nlme_3.1-131         jsonlite_1.3         gtable_0.2.0        
+## [40] DBI_0.6              magrittr_1.5         scales_0.4.1        
+## [43] stringi_1.1.2        RColorBrewer_1.1-2   iterators_1.0.8     
+## [46] tools_3.3.3          Biobase_2.34.0       pbkrtest_0.4-6      
+## [49] yaml_2.1.14          AnnotationDbi_1.36.2 colorspace_1.3-2    
+## [52] memoise_1.0.0        knitr_1.15.1         quantreg_5.29
 \end{verbatim}
 
 

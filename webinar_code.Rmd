@@ -215,6 +215,37 @@ ggplot(data = pcaOutput2, aes(x = PC1, y = PC2, group = groups, color = groups))
          y = paste0("PC2: ", round(pcaOutput$pov[2], digits = 2) * 100, "% variance")) 
 ```
 
+<br>
+
+- Multidimensional Scaling 
+
+```{r mds_plot}
+library(dplyr)
+select(bc_data, -1) %>%
+  dist() %>%
+  cmdscale %>%
+  as.data.frame() %>%
+  mutate(group = bc_data$classes) %>%
+  ggplot(aes(x = V1, y = V2, color = group)) +
+    geom_point()
+```
+
+<br>
+
+- t-SNE dimensionality reduction 
+
+```{r tsne_plot, cache=TRUE}
+library(tsne)
+
+select(bc_data, -1) %>%
+  dist() %>%
+  tsne() %>%
+  as.data.frame() %>%
+  mutate(group = bc_data$classes) %>%
+  ggplot(aes(x = V1, y = V2, color = group)) +
+    geom_point()
+```
+
 - Features
 
 ```{r features, fig.width=8, fig.height=6, message=FALSE, warning=FALSE}
@@ -224,6 +255,66 @@ gather(bc_data, x, y, clump_thickness:mitosis) %>%
   ggplot(aes(x = y, color = classes, fill = classes)) +
     geom_density(alpha = 0.3) +
     facet_wrap( ~ x, scales = "free", ncol = 3)
+```
+
+<br>
+
+- Correlation graphs
+
+```{r warning=FALSE, message=FALSE, fig.width=10, fig.height=5}
+library(dplyr)
+co_mat_benign <- filter(bc_data, classes == "benign") %>%
+  select(-1) %>%
+  cor()
+
+co_mat_malignant <- filter(bc_data, classes == "malignant") %>%
+  select(-1) %>%
+  cor()
+
+library(igraph)
+g_benign <- graph.adjacency(co_mat_benign,
+                         weighted = TRUE,
+                         diag = FALSE,
+                         mode = "upper")
+
+g_malignant <- graph.adjacency(co_mat_malignant,
+                         weighted = TRUE,
+                         diag = FALSE,
+                         mode = "upper")
+
+
+# http://kateto.net/networks-r-igraph
+
+cut.off_b <- mean(E(g_benign)$weight)
+cut.off_m <- mean(E(g_malignant)$weight)
+
+g_benign_2 <- delete_edges(g_benign, E(g_benign)[weight < cut.off_b])
+g_malignant_2 <- delete_edges(g_malignant, E(g_malignant)[weight < cut.off_m])
+
+c_g_benign_2 <- cluster_fast_greedy(g_benign_2) 
+c_g_malignant_2 <- cluster_fast_greedy(g_malignant_2) 
+```
+
+```{r cor_graph, warning=FALSE, message=FALSE, fig.width=12, fig.height=7}
+par(mfrow=c(1,2))
+
+plot(c_g_benign_2, g_benign_2,
+     vertex.size = colSums(co_mat_benign) * 10,
+     vertex.frame.color = NA, 
+     vertex.label.color = "black", 
+     vertex.label.cex = 0.8,
+     edge.width	= E(g_benign_2)$weight * 15,
+     layout = layout_with_fr(g_benign_2),
+     main = "Benign tumors")
+
+plot(c_g_malignant_2, g_malignant_2,
+     vertex.size = colSums(co_mat_malignant) * 10,
+     vertex.frame.color = NA, 
+     vertex.label.color = "black", 
+     vertex.label.cex = 0.8,
+     edge.width	= E(g_malignant_2)$weight * 15,
+     layout = layout_with_fr(g_malignant_2),
+     main = "Malignant tumors")
 ```
 
 <br>
@@ -256,6 +347,61 @@ rbind(data.frame(group = "train", train_data),
   ggplot(aes(x = y, color = group, fill = group)) +
     geom_density(alpha = 0.3) +
     facet_wrap( ~ x, scales = "free", ncol = 3)
+```
+
+<br>
+
+#### Regression
+
+```{r cache=TRUE}
+set.seed(42)
+model_glm <- caret::train(clump_thickness ~ .,
+                          data = train_data,
+                          method = "glm",
+                          preProcess = c("scale", "center"),
+                          trControl = trainControl(method = "repeatedcv", 
+                                                  number = 10, 
+                                                  repeats = 10, 
+                                                  savePredictions = TRUE, 
+                                                  verboseIter = FALSE))
+```
+
+```{r echo=FALSE, eval=FALSE}
+save(model_glm, file = "models/model_glm.RData")
+```
+
+```{r echo=FALSE}
+load("models/model_glm.RData")
+```
+
+```{r}
+model_glm
+
+predictions <- predict(model_glm, test_data)
+```
+
+```{r residuals, fig.width=5, fig.height=3}
+# model_glm$finalModel$linear.predictors == model_glm$finalModel$fitted.values
+data.frame(residuals = resid(model_glm),
+           predictors = model_glm$finalModel$linear.predictors) %>%
+  ggplot(aes(x = predictors, y = residuals)) +
+    geom_jitter() +
+    geom_smooth(method = "lm")
+
+# y == train_data$clump_thickness
+data.frame(residuals = resid(model_glm),
+           y = model_glm$finalModel$y) %>%
+  ggplot(aes(x = y, y = residuals)) +
+    geom_jitter() +
+    geom_smooth(method = "lm")
+```
+
+```{r regression_result, fig.width=5, fig.height=3}
+data.frame(actual = test_data$clump_thickness,
+           predicted = predictions) %>%
+  ggplot(aes(x = actual, y = predicted)) +
+    geom_jitter() +
+    geom_smooth(method = "lm")
 ```
 
 <br>
@@ -467,43 +613,6 @@ ggplot(results, aes(x = prediction, fill = correct)) +
 ```{r results_jitter_xgb, fig.width=5, fig.height=3}
 ggplot(results, aes(x = prediction, y = benign, color = correct, shape = correct)) +
   geom_jitter(size = 3, alpha = 0.6)
-```
-
-<br>
-
-#### Regression
-
-```{r cache=TRUE}
-set.seed(42)
-model_glm <- caret::train(clump_thickness ~ .,
-                          data = train_data,
-                          method = "glm",
-                          preProcess = c("scale", "center"),
-                          trControl = trainControl(method = "repeatedcv", 
-                                                  number = 10, 
-                                                  repeats = 10, 
-                                                  savePredictions = TRUE, 
-                                                  verboseIter = FALSE))
-```
-
-```{r echo=FALSE, eval=FALSE}
-save(model_glm, file = "models/model_glm.RData")
-```
-
-```{r echo=FALSE}
-load("models/model_glm.RData")
-```
-
-```{r}
-model_glm
-```
-
-```{r regression_result, fig.width=5, fig.height=3}
-data.frame(actual = test_data$clump_thickness,
-           predicted = predict(model_glm, test_data)) %>%
-  ggplot(aes(x = actual, y = predicted)) +
-    geom_jitter() +
-    geom_smooth(method = "lm")
 ```
 
 <br>
