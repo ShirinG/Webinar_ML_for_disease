@@ -324,6 +324,11 @@ plot(c_g_malignant_2, g_malignant_2,
 ### [caret](http://topepo.github.io/caret/index.html)
 
 ```{r warning=FALSE, message=FALSE}
+# configure multicore
+library(doParallel)
+cl <- makeCluster(detectCores())
+registerDoParallel(cl)
+
 library(caret)
 ```
 
@@ -376,7 +381,6 @@ load("models/model_glm.RData")
 
 ```{r}
 model_glm
-
 predictions <- predict(model_glm, test_data)
 ```
 
@@ -710,6 +714,91 @@ plot(model_ga) # Plot mean fitness (AUC) by generation
 train_data_ga <- train_data[, c(1, which(colnames(train_data) %in% model_ga$ga$final))]
 ```
 
+<br>
+
+### Grid search with caret
+
+- Automatic Grid
+
+There are two ways to tune an algorithm in the Caret R package, the first is by allowing the system to do it automatically. This can be done by setting the tuneLength to indicate the number of different values to try for each algorithm parameter.
+
+This only supports integer and categorical algorithm parameters, and it makes a crude guess as to what values to try, but it can get you up and running very quickly.
+
+One search strategy that we can use is to try random values within a range.
+
+This can be good if we are unsure of what the value might be and we want to overcome any biases we may have for setting the parameter (like the suggested equation above).
+
+Let’s try a random search for mtry using caret:
+
+```{r eval=FALSE}
+set.seed(42)
+model_rf_tune_auto <- caret::train(classes ~ .,
+                         data = train_data,
+                         method = "rf",
+                         preProcess = c("scale", "center"),
+                         trControl = trainControl(method = "repeatedcv", 
+                                                  number = 10, 
+                                                  repeats = 10, 
+                                                  savePredictions = TRUE, 
+                                                  verboseIter = FALSE,
+                                                  search = "random"),
+                         tuneLength = 15)
+```
+
+When you specify `savePredictions = TRUE`, you can access the cross-validation resuls with `model_rf$pred`.
+
+```{r echo=FALSE, eval=FALSE}
+save(model_rf_tune_auto, file = "models/model_rf_tune_auto.RData")
+```
+
+```{r echo=FALSE}
+load("models/model_rf_tune_auto.RData")
+```
+
+```{r}
+model_rf_tune_auto
+plot(model_rf_tune_auto)
+```
+
+<br>
+
+- Manual Grid
+
+The second way to search algorithm parameters is to specify a tune grid manually. In the grid, each algorithm parameter can be specified as a vector of possible values. These vectors combine to define all the possible combinations to try.
+
+- mtry: Number of variables randomly sampled as candidates at each split.
+
+By default the only parameter you can tune for a random forest is mtry. However you can still pass the others parameters to train. But those will have a fix value an so won't be tuned by train.
+
+```{r eval=FALSE}
+set.seed(42)
+grid <- expand.grid(mtry = c(1:10))
+
+model_rf_tune_man <- caret::train(classes ~ .,
+                         data = train_data,
+                         method = "rf",
+                         preProcess = c("scale", "center"),
+                         trControl = trainControl(method = "repeatedcv", 
+                                                  number = 10, 
+                                                  repeats = 10, 
+                                                  savePredictions = TRUE, 
+                                                  verboseIter = FALSE,
+                                                  search = "random"),
+                         tuneGrid = grid)
+```
+
+```{r echo=FALSE, eval=FALSE}
+save(model_rf_tune_man, file = "models/model_rf_tune_man.RData")
+```
+
+```{r echo=FALSE}
+load("models/model_rf_tune_man.RData")
+```
+
+```{r}
+model_rf_tune_man
+plot(model_rf_tune_man)
+```
 
 <br>
 
@@ -1055,6 +1144,17 @@ Plotting the test performance's AUC plot shows us approximately how good the pre
 plot(perf)
 ```
 
+```{r eval=FALSE, echo=FALSE}
+perf@metrics$thresholds_and_metric_scores %>%
+  ggplot(aes(x = fpr, y = tpr)) +
+    geom_point() +
+    geom_line() +
+    geom_abline(slope = 1, intercept = 0) +
+    labs(x = "False Positive Rate",
+         y = "True Positive Rate")
+```
+
+
 We also want to know the log loss, MSE and AUC values, as well as other model metrics for the test data:
 
 ```{r }
@@ -1102,6 +1202,42 @@ finalRf_predictions %>%
     scale_fill_brewer(palette = "Set1") +
     labs(fill = "Were\npredictions\naccurate?",
          title = "Stringent predictions")
+```
+
+```{r prop_table, fig.height=3, fig.width=6}
+df <- finalRf_predictions[, c(1, 3, 4)]
+
+thresholds <- seq(from = 0, to = 1, by = 0.1)
+
+prop_table <- data.frame(threshold = thresholds, prop_true_b = NA, prop_true_m = NA)
+
+for (threshold in thresholds) {
+  pred <- ifelse(df$benign > threshold, "benign", "malignant")
+  pred_t <- ifelse(pred == df$actual, TRUE, FALSE)
+  
+  group <- data.frame(df, "pred" = pred_t) %>%
+  group_by(actual, pred) %>%
+  dplyr::summarise(n = n())
+  
+  group_b <- filter(group, actual == "benign")
+  
+  prop_b <- sum(filter(group_b, pred == TRUE)$n) / sum(group_b$n)
+  prop_table[prop_table$threshold == threshold, "prop_true_b"] <- prop_b
+  
+  group_m <- filter(group, actual == "malignant")
+  
+  prop_m <- sum(filter(group_m, pred == TRUE)$n) / sum(group_m$n)
+  prop_table[prop_table$threshold == threshold, "prop_true_m"] <- prop_m
+}
+
+prop_table %>%
+  gather(x, y, prop_true_b:prop_true_m) %>%
+  ggplot(aes(x = threshold, y = y, color = x)) +
+    geom_point() +
+    geom_line() +
+    scale_color_brewer(palette = "Set1") +
+    labs(y = "proportion of true predictions",
+         color = "b: benign cases\nm: malignant cases")
 ```
 
 ```{r eval=FALSE}

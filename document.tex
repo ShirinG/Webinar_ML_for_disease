@@ -1,7 +1,7 @@
-\documentclass[notes, c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
+%\documentclass[notes, c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
 
 % print notes only:
-%\documentclass[notes=only, c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
+\documentclass[notes=only, c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
 
 %print only frames:
 %\documentclass[c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
@@ -253,93 +253,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%
 %	SECTION
-%	What makes a model meaningful?
-%%%%%%%%%%%%%%%%%%%%%
-
-\section{What makes a model meaningful?}
-
-\begin{frame}
-	\frametitle{What makes a model meaningful?}
-	
-	\begin{itemize}
-		\item creating ML models is relatively easy
-		\item creating \alert{good or meaningful} models is hard
-	\end{itemize}
-	
-	\vspace{0.2cm}
-	\alert{\textsl{Meaningful} models}
-	\vspace{0.2cm}
-	
-	\begin{itemize}
-		\item are generalizable
-		\item answer the question(s) posed...
-		\item ... with sufficient accuracy to be trustworthy
-	\end{itemize}
-
-	\vspace{0.2cm}
-
-	\begin{center}
-		{\Large \alert{Accuracy depends on the problem!}}
-		
-		\vspace{0.5cm}
-		
-		\includegraphics[width=0.33\textwidth]{images/meaningful_1}
-		\includegraphics[width=0.33\textwidth]{images/meaningful_2}
-		\includegraphics[width=0.33\textwidth]{images/meaningful_3}
-	\end{center}
-	
-\end{frame}
-
-\note{
-	\begin{itemize}
-		\item With a little bit of practice, anybody can build machine learning models
-		\item what is hard though, is to build 'good' or 'meaningful' models
-		\item I want to begin with an introduction to the main question of my talk: 
-		\item what makes a model \textsl{good} or \textsl{meaningful}?
-	\end{itemize}
-	
-	\begin{enumerate}
-		\item it needs to be generalizable, i.e. it needs to perform well on unseen data
-		\item It answers a \textbf{specific} question or addresses a specific problem, \\
-			e.g. does a mammogram image show a healthy breast or is there a tumor? \\
-			Or does an ECG show a normal heart rhythm or arrhythmia?
-		\item And it produces a correct outcome (e.g. a diagnosis) often enough that we trust it!
-	\end{enumerate}
-	
-	\begin{itemize}
-		\item If we build models, we therefore need to evaluate its accuracy 
-		\item before we can decide whether it is trustworthy enough to implement in real-life, 
-		\item like in a hospital where it could e.g. assist doctors in making decisions on treatment
-	\end{itemize}
-
-	\begin{itemize}
-		\item But what exactly is \textsl{high accuracy} can not be defined with a one-size-fits-all approach: 
-		\item it depends on the problem we want to model. 	
-		\item a model needs to perform well in the real world, not in the lab (i.e. on training data)
-		\item just because a model performs well in the lab, doesn't mean it will also perform well in deployment
-		\item the context might change: distribution, missing data, noise, class size, etc.
-	\end{itemize}
-}
-
-\note{
-	Let me illustrate what I mean with the following examples:
-	\begin{itemize}
-		\item \alert{Ideal case:} Of course, we all want to achieve ideal modeling results where overall prediction accuracy is very high. \\ 
-		With a model like that, we can be very confident that a healthy person is indeed healthy and a sick person is not. \\
-		\item But in reality, we often achieve prediction accuracies that are much less nice. \\
-		\item \alert{Scenarios 1 and 2:} Le's consider two possible scenarios: 
-		\item in scenario 1, we can be very confident that a person who got classified as "healthy" is indeed healthy, \\ 
-		while a person who has been diagnosed as diseased might as well be healthy based on these prediction accuracies
-		\item in case 2, it is the other way around.
-		\item We now need to make a decision which scenario is better and in which direction we want to optimize our model: \\ 
-		do we rather want to refer a few healthy people for further checking because the model predicted them as diseased? \\ 
-		Or do we rather want to be as certain as possible that a predicted disease is actually true \\ 
-		and accept that we might miss a few disease cases?
-	\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%
-%	SECTION
 %	Machine Learning (ML) in disease modeling
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -429,8 +342,16 @@
 	\end{itemize}
 }
 
-\begin{frame}
 
+%%%%%%%%%%%%%%%%%%%%%
+%	SECTION
+%	What makes a model meaningful?
+%%%%%%%%%%%%%%%%%%%%%
+
+\section{What makes a model meaningful?}
+
+\begin{frame}
+	
 	\begin{center}
 		\usebeamerfont*{frametitle} \usebeamercolor[fg]{frametitle} {\Huge{\textbf{Can we trust \\ \vspace{0.3cm} a model?}}}
 	\end{center}
@@ -438,24 +359,25 @@
 	\vspace{0.5cm}
 	
 	\begin{itemize}
-		\item most ML algorithms model high-degree interactions between variables 
-		\item we often don't know \alert{WHY} \\ ML models make decisions \\
-		\item inherent problem with ML models: \\ they are hard (or impossible) to interpret
+		\item most ML algorithms model high-degree interactions \\ between variables 
+		\item ML models are hard (or impossible) to interpret!
+		\item we often don't know \alert{WHY} they make decisions
 	\end{itemize}
 	
 	\begin{itemize}
 		\item therefore, it is crucial that our models are \alert{meaningful}
 	\end{itemize}
-
+	
 	\begin{tikzpicture}[remember picture,overlay]
 	\node[xshift=-2.2cm,yshift=-1.5cm] at (current page.north east) {\includegraphics[width=5cm]{images/elephant}};
-	\node[xshift=-2cm,yshift=-8.5cm] at (current page.north east) {\footnotesize{\textit{Image source: Pixabay}}};
+	\node[xshift=-2cm,yshift=-8.8cm] at (current page.north east) {\footnotesize{\textit{Image source: Pixabay}}};
 	\end{tikzpicture}
 \end{frame}
 
 \note{
 	\begin{itemize}
 		\item the elephant in the room
+		\item inherent problem with ML models: they are hard (or impossible) to interpret
 		\item machine learning algorithms tend to create nonlinear, 
 		\item non-monotonic, 
 		\item non-polynomial, 
@@ -463,7 +385,7 @@
 		\item that approximate the relationship between independent and dependent variables in a data set
 		\item most ML algorithms model high-degree interactions between variables (meaning the effect of combining many?i.e., more than two or three?variables together)
 	\end{itemize}
-
+	
 	\begin{itemize}
 		\item When working with data you should be asking yourselves some very hard questions: 
 		\item do I understand my data? 
@@ -475,6 +397,86 @@
 		\item difficulties in interpretation still present a barrier for the widespread, practical use of ML
 		\item trusting models and results is a general requirement for good (data) science
 		\item we want to understand them as well as possible
+	\end{itemize}
+}
+
+\begin{frame}
+	\frametitle{What makes a model meaningful?}
+	
+	\begin{itemize}
+		\item creating ML models is relatively easy
+		\item creating \alert{good or meaningful} models is hard
+	\end{itemize}
+	
+	\vspace{0.2cm}
+	\alert{\textsl{Meaningful} models}
+	\vspace{0.2cm}
+	
+	\begin{itemize}
+		\item are generalizable
+		\item answer the question(s) posed...
+		\item ... with sufficient accuracy to be trustworthy
+	\end{itemize}
+	
+	\vspace{0.2cm}
+	
+	\begin{center}
+		{\Large \alert{Accuracy depends on the problem!}}
+		
+		\vspace{0.5cm}
+		
+		\includegraphics[width=0.33\textwidth]{images/meaningful_1}
+		\includegraphics[width=0.33\textwidth]{images/meaningful_2}
+		\includegraphics[width=0.33\textwidth]{images/meaningful_3}
+	\end{center}
+	
+\end{frame}
+
+\note{
+	\begin{itemize}
+		\item With a little bit of practice, anybody can build machine learning models
+		\item what is hard though, is to build 'good' or 'meaningful' models
+		\item I want to begin with an introduction to the main question of my talk: 
+		\item what makes a model \textsl{good} or \textsl{meaningful}?
+	\end{itemize}
+	
+	\begin{enumerate}
+		\item it needs to be generalizable, i.e. it needs to perform well on unseen data
+		\item It answers a \textbf{specific} question or addresses a specific problem, \\
+		e.g. does a mammogram image show a healthy breast or is there a tumor? \\
+		Or does an ECG show a normal heart rhythm or arrhythmia?
+		\item And it produces a correct outcome (e.g. a diagnosis) often enough that we trust it!
+	\end{enumerate}
+	
+	\begin{itemize}
+		\item If we build models, we therefore need to evaluate its accuracy 
+		\item before we can decide whether it is trustworthy enough to implement in real-life, 
+		\item like in a hospital where it could e.g. assist doctors in making decisions on treatment
+	\end{itemize}
+	
+	\begin{itemize}
+		\item But what exactly is \textsl{high accuracy} can not be defined with a one-size-fits-all approach: 
+		\item it depends on the problem we want to model. 	
+		\item a model needs to perform well in the real world, not in the lab (i.e. on training data)
+		\item just because a model performs well in the lab, doesn't mean it will also perform well in deployment
+		\item the context might change: distribution, missing data, noise, class size, etc.
+	\end{itemize}
+}
+
+\note{
+	Let me illustrate what I mean with the following examples:
+	\begin{itemize}
+		\item \alert{Ideal case:} Of course, we all want to achieve ideal modeling results where overall prediction accuracy is very high. \\ 
+		With a model like that, we can be very confident that a healthy person is indeed healthy and a sick person is not. \\
+		\item But in reality, we often achieve prediction accuracies that are much less nice. \\
+		\item \alert{Scenarios 1 and 2:} Le's consider two possible scenarios: 
+		\item in scenario 1, we can be very confident that a person who got classified as "healthy" is indeed healthy, \\ 
+		while a person who has been diagnosed as diseased might as well be healthy based on these prediction accuracies
+		\item in case 2, it is the other way around.
+		\item We now need to make a decision which scenario is better and in which direction we want to optimize our model: \\ 
+		do we rather want to refer a few healthy people for further checking because the model predicted them as diseased? \\ 
+		Or do we rather want to be as certain as possible that a predicted disease is actually true \\ 
+		and accept that we might miss a few disease cases?
 	\end{itemize}
 }
 
@@ -493,7 +495,7 @@
 		\item data-driven
 		\item algorithms \alert{learn} by being trained on observed data...
 		\item ... and \alert{predict unknown data}
-		\item ML concepts are not new, but the increase in computational capacity has made them more accessible
+		\item the increase in computational capacity has made ML more accessible
 	\end{itemize}
 	
 	\begin{block} {}	
@@ -520,8 +522,18 @@
 	\end{block}
 \end{frame}
 
+\note{
+	ML concepts are not new, but the increase in computational capacity has made them more accessible
+	
+	Machine learning is the subfield of computer science that, according to Arthur Samuel in 1959, gives "computers the ability to learn without being explicitly programmed."[1] Evolved from the study of pattern recognition and computational learning theory in artificial intelligence,[2] machine learning explores the study and construction of algorithms that can learn from and make predictions on data[3] ? such algorithms overcome following strictly static program instructions by making data driven predictions or decisions,[4]:2 through building a model from sample inputs. Machine learning is employed in a range of computing tasks where designing and programming explicit algorithms with good performance is difficult or unfeasible; example applications include email filtering, detection of network intruders or malicious insiders working towards a data breach,[5] optical character recognition (OCR),[6] learning to rank and computer vision.
+	
+	Machine learning is closely related to (and often overlaps with) computational statistics, which also focuses on prediction-making through the use of computers. It has strong ties to mathematical optimization, which delivers methods, theory and application domains to the field. Machine learning is sometimes conflated with data mining,[7] where the latter subfield focuses more on exploratory data analysis and is known as unsupervised learning.[4]:vii[8] Machine learning can also be unsupervised[9] and be used to learn and establish baseline behavioral profiles for various entities[10] and then used to find meaningful anomalies.
+	
+	Within the field of data analytics, machine learning is a method used to devise complex models and algorithms that lend themselves to prediction; in commercial use, this is known as predictive analytics. These analytical models allow researchers, data scientists, engineers, and analysts to "produce reliable, repeatable decisions and results" and uncover "hidden insights" through learning from historical relationships and trends in the data.[11]
+}
+
 \begin{frame}
-	\frametitle{Supervised vs Unsupervised algorithms}
+	\frametitle{Supervised vs Unsupervised learning}
 
 	\begin{columns}
 		
@@ -539,11 +551,7 @@
 		
 		\node[ellipse,align=center,text width=4.5em,text centered,minimum height=3em, fill = SpringGreen] (training) at (1,-4.4) {Training set};
 		
-		\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = SpringGreen, very thick] (class1) at (1,-5.4) {\textbf{Classes}: given label, i.e. response variable in model};
-		
 		\node[ellipse,align=center,text width=4.5em,text centered,minimum height=3em, fill = Cerulean] (test) at (4,-4.4) {Test \\ set};
-		
-		\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = Cerulean, very thick] (class2) at (4,-5.4) {\textbf{Classes}: \\ unknown};
 		
 		\node[rectangle, align=center,text width=8em,text centered,minimum height=2em, fill = Lavender] (rf) at (1,-7.0) {Machine \\ Learning \\ model};
 		
@@ -552,8 +560,8 @@
 		\draw[->,thick,shorten >=5pt,shorten <=5pt] (select.south) -- (training.north);
 		\draw[->,thick,shorten >=5pt,shorten <=5pt] (select.south) -- (test.north);
 		
-		\draw[->,thick,shorten >=5pt,shorten <=5pt] (class1.south) -- (rf.north);
-		\draw[->,thick,shorten >=5pt,shorten <=5pt] (class2.south) -- (prediction.north);
+		\draw[->,thick,shorten >=5pt,shorten <=5pt] (training.south) -- (rf.north);
+		\draw[->,thick,shorten >=5pt,shorten <=5pt] (test.south) -- (prediction.north);
 		
 		\draw[->,thick,shorten >=5pt,shorten <=5pt] (rf.south) -- (prediction.north);
 		\end{tikzpicture}
@@ -623,11 +631,13 @@
 			
 			\node[ellipse,align=center,text width=4.5em,text centered,minimum height=3em, fill = SpringGreen] (training) at (1,-4.4) {Training set};
 			
-			\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = SpringGreen, very thick] (class1) at (1,-5.4) {\textbf{Numeric \\ variable}: response variable in model};
+			\node[rectangle, align=center,text width=26em,text centered,minimum height=5em, fill = Red] () at (2.5,-5.4) {};
+			
+			\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = SpringGreen, very thick, fill = White] (class1) at (1,-5.4) {\textbf{Numeric \\ variable}: response variable in model};
 			
 			\node[ellipse,align=center,text width=4.5em,text centered,minimum height=3em, fill = Cerulean] (test) at (4,-4.4) {Test \\ set};
 			
-			\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = Cerulean, very thick] (class2) at (4,-5.4) {\textbf{Numeric output}: \\ unknown};
+			\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = Cerulean, very thick, fill = White] (class2) at (4,-5.4) {\textbf{Numeric output}: \\ unknown};
 			
 			\node[rectangle, align=center,text width=8em,text centered,minimum height=2em, fill = Lavender] (rf) at (1,-7.0) {Machine \\ Learning \\ model};
 			
@@ -660,11 +670,13 @@
 			
 			\node[ellipse,align=center,text width=4.5em,text centered,minimum height=3em, fill = SpringGreen] (training) at (1,-4.4) {Training set};
 			
-			\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = SpringGreen, very thick] (class1) at (1,-5.4) {\textbf{Classes}: given label, i.e. response variable in model};
+			\node[rectangle, align=center,text width=26em,text centered,minimum height=5em, fill = Red] () at (2.5,-5.4) {};
+			
+			\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = SpringGreen, very thick, fill = White] (class1) at (1,-5.4) {\textbf{Classes}: given label, i.e. response variable in model};
 			
 			\node[ellipse,align=center,text width=4.5em,text centered,minimum height=3em, fill = Cerulean] (test) at (4,-4.4) {Test \\ set};
 			
-			\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = Cerulean, very thick] (class2) at (4,-5.4) {\textbf{Classes}: \\ unknown};
+			\node[rectangle, align=center,text width=10em,text centered,minimum height=3em, draw = Cerulean, very thick, fill = White] (class2) at (4,-5.4) {\textbf{Classes}: \\ unknown};
 			
 			\node[rectangle, align=center,text width=8em,text centered,minimum height=2em, fill = Lavender] (rf) at (1,-7.0) {Machine \\ Learning \\ model};
 			
@@ -715,8 +727,8 @@
 		\column{0.5\textwidth}
 	
 	\begin{itemize}
-	\item Features are the variables used for model training.
-	\item Using the right features is crucial.
+	\item variables used for model training.
+	\item using the right features is crucial.
 	\end{itemize}
 
 		\vspace{0.5cm}
@@ -735,7 +747,7 @@
 	\column{0.5\textwidth}
 	\begin{tikzpicture}[remember picture,overlay]
 	\node[xshift=-3cm,yshift=4.5cm] at (current page.south east) {\includegraphics[width=5cm]{images/Overfitting}};
-	\node[xshift=-1.5cm,yshift=1.5cm] at (current page.south east) {{\footnotesize \textit{Wikipedia}}};
+	\node[xshift=-2.5cm,yshift=1.5cm] at (current page.south east) {{\footnotesize \textit{Image Source: Wikipedia}}};
 	\end{tikzpicture}
 	
 	\end{columns}
@@ -754,6 +766,90 @@
 \begin{frame}
 	\frametitle{Training, (cross-) validation and test data}
 	
+	\begin{center}
+		\begin{tikzpicture}
+		\footnotesize
+		
+		\node[rectangle, rounded corners, align=center,text width=20em,text centered,minimum height=3em, fill = Dandelion] (data) at (4, 3.5) {\textbf{Complete dataset}};
+		
+		\node[ellipse,align=center,text width=4.5em,text centered,minimum height=3em, fill = SpringGreen] (train) at (0,2) {Training};
+		
+		\node[ellipse,align=center,text width=4.5em,text centered,minimum height=3em, fill = Cerulean] (test) at (8,2) {Test};
+		
+		\draw[->,shorten >=5pt,shorten <=5pt] (data.south) -- (train.north);
+		\draw[->,shorten >=5pt,shorten <=5pt] (data.south) -- (test.north);
+		
+		\node[rectangle, align=center,text width=10em,text centered,minimum height=1em, draw = Lavender, very thick] () at (0,1) {Cross-validation};
+		
+		\node[rectangle, align=center,text width=4em,text centered,minimum height=1em] () at (-1.5, 0) {Fold 1};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (0,0) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (0.7,0) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (1.4,0) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (2.1,0) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (2.8,0) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (3.5,0) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (4.2,0) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (4.9,0) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (5.6,0) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] (f1) at (6.3,0) {};
+		
+		\node[rectangle, align=center,text width=4em,text centered,minimum height=1em] () at (-1.5, -0.8) {Fold 2};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (0,-0.8) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (0.7,-0.8) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (1.4,-0.8) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (2.1,-0.8) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (2.8,-0.8) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (3.5,-0.8) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (4.2,-0.8) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (4.9,-0.8) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (5.6,-0.8) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] (f2) at (6.3,-0.8) {};
+		
+		\node[rectangle, align=center,text width=4em,text centered,minimum height=1em] () at (-1.5, -1.6) {Fold 3};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (0,-1.6) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (0.7,-1.6) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (1.4,-1.6) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (2.1,-1.6) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (2.8,-1.6) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (3.5,-1.6) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (4.2,-1.6) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (4.9,-1.6) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (5.6,-1.6) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] (f3) at (6.3,-1.6) {};
+		
+		\node[rectangle, align=center,text width=4em,text centered,minimum height=1em] () at (-1.5, -2.4) {Fold 4};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (0,-2.4) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (0.7,-2.4) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (1.4,-2.4) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (2.1,-2.4) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (2.8,-2.4) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (3.5,-2.4) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (4.2,-2.4) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (4.9,-2.4) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (5.6,-2.4) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] (f4) at (6.3,-2.4) {};
+		
+		\node[rectangle, align=center,text width=4em,text centered,minimum height=1em] () at (-1.5, -3.2) {Fold 5};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (0,-3.2) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (0.7,-3.2) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (1.4,-3.2) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (2.1,-3.2) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (2.8,-3.2) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (3.5,-3.2) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (4.2,-3.2) {};
+		\node[ellipse, fill = Lavender, minimum height=2em, minimum width=2em] () at (4.9,-3.2) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] () at (5.6,-3.2) {};
+		\node[ellipse, fill = SpringGreen, minimum height=2em, minimum width=2em] (f5) at (6.3,-3.2) {};
+		
+		\node[rectangle, align=center,text width=6em,text centered,minimum height=5em, draw = Lavender, very thick] (perf) at (8.6, -1.6) {Prediction performance};
+		
+		\draw[->,shorten >=5pt,shorten <=5pt] (f1.east) -- (perf.west);
+		\draw[->,shorten >=5pt,shorten <=5pt] (f2.east) -- (perf.west);
+		\draw[->,shorten >=5pt,shorten <=5pt] (f3.east) -- (perf.west);
+		\draw[->,shorten >=5pt,shorten <=5pt] (f4.east) -- (perf.west);
+		\draw[->,shorten >=5pt,shorten <=5pt] (f5.east) -- (perf.west);
+		\end{tikzpicture}
+	\end{center}
 \end{frame}
 
 \note{
@@ -775,20 +871,6 @@
 	Remember to use a SEED to be able to replicate these X splits
 	Other things to consider is Kfold and stratified KFold . Read here. For time sensitive data, make certain you always the rule of having past predicting future when testings.
 }
-\begin{frame}
-	\frametitle{Hyper Parameter Tuning}
-	
-\end{frame}
-
-\note{
-	Grid Search
-	
-	Start hyper parameter tuning - Once CV is at place, try improving model's accuracy using hyper parameter tuning. It further includes the following steps:
-	Data transformations: It involve steps like scaling, removing outliers, treating null values,  transform categorical variables, do feature selections, create interactions etc.
-	Choosing algorithms and tuning their hyper parameters: Try multiple algorithms to understand how model performance changes.
-	Saving results: From all the models trained above, make sure you save their predictions. They will be useful for ensembling.
-	Combining models: At last, ensemble the models, possibly on multiple levels. Make sure the models are correlated for best results.
-}
 
 \begin{frame}[plain, c]
 	
@@ -797,10 +879,32 @@
 	\end{center}
 
 	\vspace{0.5cm}
-
+	
 	\begin{itemize}
-		\item ...
+		\item ML models learn on observed data
+		\item and predict unknown data
 	\end{itemize}
+
+	\vspace{0.3cm}
+	
+	\begin{itemize}
+		\item creating ML models is easy
+		\item creating \alert{good} models is hard
+	\end{itemize}
+
+	\vspace{0.3cm}
+	
+	\alert{Meaningful} models
+	\begin{itemize}
+		\item answer specific questions
+		\item are able to generalize to unseen data
+		\item can be trusted
+	\end{itemize}
+
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[xshift=-2.5cm,yshift=5.8cm] at (current page.south east) {\includegraphics[width=0.4\textwidth]{images/meaningful_2}};
+	\node[xshift=-2.5cm,yshift=2.1cm] at (current page.south east) {\includegraphics[width=0.4\textwidth]{images/meaningful_3}};
+	\end{tikzpicture}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -821,7 +925,7 @@
 		\item h2o\footfullcite{h2o}
 	\end{itemize}
 	
-	\vspace{0.5cm}
+	\vspace{0.3cm}
 	
 	\centering
 	Code will be available on \href{https://shiring.github.io}{my website} and on \href{https://github.com/ShirinG/Webinar_ML_for_disease}{Github}
@@ -884,7 +988,7 @@
 	\alert{Missing data}
 	\begin{itemize}
 		\item Is there missing data?
-		\item Can we afford to loose data points with missing values?
+		\item Can we afford to loose data points?
 		\item Or do we use imputation (and introduce additional uncertainty)?
 	\end{itemize}
 
@@ -919,15 +1023,15 @@
 	\includegraphics[width=0.9\textwidth]{webinar_code_files/figure-latex/pca-1.pdf}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Get to know your data}
-	\alert{Principal Component Analysis (PCA)}
+%\begin{frame}
+%	\frametitle{Get to know your data}
+%	\alert{Principal Component Analysis (PCA)}
 	
-	\vspace{0.5cm}
+%	\vspace{0.5cm}
 
-	\centering
-	\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/pca_features-1.pdf}
-\end{frame}
+%	\centering
+%	\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/pca_features-1.pdf}
+%\end{frame}
 
 \note{
 	\begin{itemize}
@@ -1088,11 +1192,11 @@
 	\end{itemize}
 }
 
-\begin{frame}
-	\frametitle{Feature importance}
+%\begin{frame}
+%	\frametitle{Feature importance}
 	
-	\begin{center}\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/importance_rf-1.pdf} \end{center}
-\end{frame}
+%	\begin{center}\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/importance_rf-1.pdf} \end{center}
+%\end{frame}
 
 \note{
 	\begin{itemize}
@@ -1221,7 +1325,7 @@
 }
 
 \begin{frame}
-	\frametitle{Area Under the Curve (AUC}
+	\frametitle{Area Under the Curve (AUC)}
 	
 	\centering
 	\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/auc_curve-1.pdf} 
@@ -1238,6 +1342,42 @@
 }
 
 \begin{frame}
+	\frametitle{Hyper-parameter tuning with grid search}
+	
+	\begin{itemize}
+		\item h2o.grid()
+		\item Random Grid Search (RGS) or Cartesian Grid
+	\end{itemize}
+
+	\vspace{0.3cm}
+	Define a set of hyper-parameters:
+	\begin{itemize}
+		\item number of trees
+		\item maximum tree depth
+		\item fewest allowed (weighted) observations in a leaf
+		\item etc.
+	\end{itemize}
+
+	\vspace{0.3cm}
+	
+	Choose best model from grid:
+	\begin{itemize}
+		\item h2o.getGrid()
+		\item AUC, error, accuracy, etc.
+	\end{itemize}
+
+\end{frame}
+
+\note{
+	We could also test all possible combinations of parameters with Cartesian Grid or exhaustive search, but RGS is much faster when we have a large number of possible combinations and usually finds sufficiently accurate models.
+	
+	For RGS, we first define a set of hyper-parameters and search criteria to fine-tune our models. Because there are many hyper-parameters, each with a range of possible values, we want to find an (ideally) optimal combination to maximize our model's accuracy. 
+	We can also specify how long we want to run the grid search for. Based on the results of each model tested in the grid, we can choose the one with the highest accuracy or best performance for the question on hand.
+	
+	We now want to extract the best model from the grid model list. What makes a model *the best* depends on the question you want to address with it: in some cases, the model with highest AUC is the most suitable, or the one with the lowest mean squared error, etc. We first use the `h2o.getGrid()` function to sort all models by the quality metric we choose (depending on the metric, you want it ordered by descending or ascending values). We can then get the model that's the first in the list to work with further. This model's hyper-parameters can be found with `best model@allparameters`. You can now work with your best model as with any regular model in **h2o**.
+}
+
+\begin{frame}
 	\frametitle{AUC and mean squared error (MSE)}
 	
 	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/auc_mse-1.pdf} \end{center}
@@ -1251,6 +1391,14 @@
 	The MSE is the second moment (about the origin) of the error, and thus incorporates both the variance of the estimator and its bias. For an unbiased estimator, the MSE is the variance of the estimator. Like the variance, MSE has the same units of measurement as the square of the quantity being estimated. In an analogy to standard deviation, taking the square root of MSE yields the root-mean-square error or root-mean-square deviation (RMSE or RMSD), which has the same units as the quantity being estimated; for an unbiased estimator, the RMSE is the square root of the variance, known as the standard deviation.
 	
 	The MSE assesses the quality of an estimator (i.e., a mathematical function mapping a sample of data to a parameter of the population from which the data is sampled) or a predictor (i.e., a function mapping arbitrary inputs to a sample of values of some random variable). Definition of an MSE differs according to whether one is describing an estimator or a predictor.
+	
+	Grid Search
+	
+	Start hyper parameter tuning - Once CV is at place, try improving model's accuracy using hyper parameter tuning. It further includes the following steps:
+	Data transformations: It involve steps like scaling, removing outliers, treating null values,  transform categorical variables, do feature selections, create interactions etc.
+	Choosing algorithms and tuning their hyper parameters: Try multiple algorithms to understand how model performance changes.
+	Saving results: From all the models trained above, make sure you save their predictions. They will be useful for ensembling.
+	Combining models: At last, ensemble the models, possibly on multiple levels. Make sure the models are correlated for best results.
 }
 
 \begin{frame}
@@ -1261,9 +1409,16 @@
 	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/final_predictions_rf-2.pdf} 
 \end{frame}
 
+\begin{frame}
+	\frametitle{Predictions on test data}
+	
+	\alert{Choosing a prediction threshold}
+	
+	\vspace{0.5cm}
+	\centering
+	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/prop_table-1.pdf} 
+\end{frame}
 
-% accuracy
-% Kappa
 
 \begin{frame}[plain, c]
 	
@@ -1274,19 +1429,49 @@
 	\vspace{0.5cm}
 	
 	\begin{itemize}
-		\item ...
+		\item {\Large there is no 'one-size-fits-all' approach to ML}
 	\end{itemize}
+	
+	\begin{itemize}
+		\item We want to create \alert{meaningful models} that we can trust to answer our specific questions!
+	\end{itemize}
+
+	\begin{itemize}
+		\item know your data well \alert{before} modeling
+		\item \alert{take time to think} about pre-processing \& features
+	\end{itemize}
+
+	\begin{itemize}
+		\item \alert{test} different models \& hyper-parameters
+	\end{itemize}
+
+	\begin{itemize}
+		\item \alert{evaluate} model performance on independent data
+		\item choose performance measure based on your specific problem
+		\item choose prediction threshold based on your specific problem
+	\end{itemize}
+
 \end{frame}
 
 \begin{frame}
 	\frametitle{Outlook}
 	
 	\begin{itemize}
-		\item `big data' needs to be big!
+		\item `Big Data' needs to be big!
+		\item the more data, the more accurate the models will be
+	\end{itemize}
+	
+	\vspace{0.5cm}
+	
+	\begin{itemize}	
 		\item for really meaningful models, data needs to be shared
-		\item the more data, the more accurate and generalizable the models will be
-		\item issues: privacy, platform, quality standards
+	\end{itemize}
+	
+	\vspace{0.5cm}
+	
+	\begin{itemize}
 		\item ML could make health care more cost-effective by reducing the energy required for interpretation
+		\item issues: privacy, platform, quality standards
 	\end{itemize}
 \end{frame}
 
@@ -1303,19 +1488,26 @@
 	\begin{center}
 		\usebeamerfont*{frametitle} {\huge Questions?}
 	\end{center}
-
+	
+	\begin{center}
 	\vspace{0.5cm}
 	
-	Slides and code will be available on Github: \href{https://github.com/ShirinG/Webinar_ML_for_disease}{https://github.com/ShirinG/Webinar\_ML\_for\_disease} \\
-	
-	\vspace{0.5cm}
-	
-	Code will also be on my website: \href{https://shiring.github.io}{https://shiring.github.io} \\
+	Slides and code will be available on Github: \href{https://github.com/ShirinG/Webinar_ML_for_disease}{https://github.com/ShirinG/Webinar\_ML\_for\_disease/share} \\
 	
 	\vspace{0.5cm}
 	
+	Code will also be on my website: \\
+	\href{https://shiring.github.io}{https://shiring.github.io} \\
+	
+	\vspace{0.5cm}
+	
+	You can contact me via \\
 	\href{mailto:shirin.glander@wwu.de}{shirin.glander@wwu.de} \\
 	
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[xshift=-1.8cm,yshift=2cm] at (current page.south east) {\includegraphics[width=2.5cm]{images/bild.png}};
+	\end{tikzpicture}
+	\end{center}
 \end{frame}
 
 \end{document}

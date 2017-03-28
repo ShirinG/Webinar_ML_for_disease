@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.2.9)  27 MAR 2017 17:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.2.9)  28 MAR 2017 12:27
 entering extended mode
 **./document.tex
 (document.tex
@@ -108,8 +108,10 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
 
-Class beamer Warning: This option is obsolete. Use beamer option ``show notes''
- instead. on input line 348.
+Class beamer Warning: This option is obsolete. Use beamer option ``show only no
+tes'' instead. on input line 348.
+
+No auxiliary output files.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\size11.clo"
 File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
@@ -1400,8 +1402,6 @@ Package biblatex Warning: Conflicting options.
 (biblatex)                Setting 'uniquename=init' on input line 149.
 
 (document.aux)
-\openout1 = `document.aux'.
-
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
 LaTeX Font Info:    ... okay on input line 149.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 149.
@@ -1497,10 +1497,6 @@ LaTeX Info: Redefining \pageref on input line 149.
 LaTeX Info: Redefining \nameref on input line 149.
 
 (document.out) (document.out)
-\@outlinefile=\write8
-\openout8 = `document.out'.
-
-
 (C:\Users\s_glan02\AppData\Roaming\MiKTeX\2.9\tex\latex\beamer\base\translator\
 dicts\translator-basic-dictionary\translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
@@ -1533,26 +1529,18 @@ Package caption Info: End \AtBeginDocument code.
 Package biblatex Info: Input encoding 'latin1' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'latin1'.
-\openout7 = `document.bcf'.
-
-Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'document.bbl' found.
-(document.bbl)
 Package biblatex Info: Reference section=0 on input line 149.
 Package biblatex Info: Reference segment=0 on input line 149.
- (document.nav)
+(document.nav)
 LaTeX Font Info:    Try loading font information for U+msa on input line 149.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 149.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-{C:/Users/s_glan02/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+)
 LaTeX Font Info:    Try loading font information for OMS+phv on input line 164.
 
 
@@ -1561,324 +1549,384 @@ File: omsphv.fd
 )
 LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <6> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 164.
- [2
+ [1
 
-]
-<images/bild.png, id=85, 472.76625pt x 683.55376pt>
+
+
+
+
+
+
+
+
+{C:/Users/s_glan02/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<images/bild.png, id=76, 472.76625pt x 683.55376pt>
 File: images/bild.png Graphic file (type png)
  <use images/bild.png>
 Package pdftex.def Info: images/bild.png used on input line 195.
 (pdftex.def)             Requested size: 85.35826pt x 123.40985pt.
 
-[3
+[2
 
- <./images/bild.png>] [4
 
-] (document.toc) [5
 
-]
+
+ <./images/bild.png>] (document.toc)
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <6> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 252.
- [6
+ [3
 
-] [7
 
-]
-<images/meaningful_1.pdf, id=139, 289.08pt x 216.81pt>
-File: images/meaningful_1.pdf Graphic file (type pdf)
 
-<use images/meaningful_1.pdf>
-Package pdftex.def Info: images/meaningful_1.pdf used on input line 291.
-(pdftex.def)             Requested size: 113.00427pt x 84.75073pt.
-
-<images/meaningful_2.pdf, id=140, 289.08pt x 216.81pt>
-File: images/meaningful_2.pdf Graphic file (type pdf)
-
-<use images/meaningful_2.pdf>
-Package pdftex.def Info: images/meaningful_2.pdf used on input line 291.
-(pdftex.def)             Requested size: 113.00427pt x 84.75073pt.
-
-<images/meaningful_3.pdf, id=141, 289.08pt x 216.81pt>
-File: images/meaningful_3.pdf Graphic file (type pdf)
-
-<use images/meaningful_3.pdf>
-Package pdftex.def Info: images/meaningful_3.pdf used on input line 291.
-(pdftex.def)             Requested size: 113.00427pt x 84.75073pt.
-
-Overfull \vbox (6.47845pt too high) detected at line 291
- []
-
-[8
-
- <./images/meaningful_1.pdf> <./images/meaningful_2.pdf> <./images/meaningful_3
-.pdf>] [9
-
-] [10
-
-] [11
 
 ]
-<images/mammogram.png, id=189, 258.21469pt x 353.82187pt>
+
+LaTeX Warning: Citation 'Kunio' on page 4 undefined on input line 287.
+
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 287.
+
+LaTeX Warning: Citation 'Levenson' on page 4 undefined on input line 287.
+
+
+LaTeX Warning: Citation 'doi:10.1146/annurev.bioeng.8.061505.095802' on page 4 
+undefined on input line 287.
+
+<images/mammogram.png, id=107, 258.21469pt x 353.82187pt>
 File: images/mammogram.png Graphic file (type png)
 
 <use images/mammogram.png>
-Package pdftex.def Info: images/mammogram.png used on input line 374.
+Package pdftex.def Info: images/mammogram.png used on input line 287.
 (pdftex.def)             Requested size: 85.35826pt x 116.96133pt.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 374.
- [12
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 287.
+ [4
 
- <./images/mammogram.png>] [13
 
-] [14
+
+
+
+
+
+
+
+
+
+ <./images/mammogram.png>] [5
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 454.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 375.
 
-<images/elephant.png, id=223, 963.6pt x 630.355pt>
+<images/elephant.png, id=126, 963.6pt x 630.355pt>
 File: images/elephant.png Graphic file (type png)
  <use images/elephant.png>
-Package pdftex.def Info: images/elephant.png used on input line 454.
+Package pdftex.def Info: images/elephant.png used on input line 375.
 (pdftex.def)             Requested size: 142.26378pt x 93.0583pt.
 
-[15
+[6
 
- <./images/elephant.png>] [16
 
-] [17
 
-] [18
 
-]
-<images/clustering1.png, id=251, 2007.5pt x 2160.07pt>
+
+
+
+
+
+
+
+ <./images/elephant.png>]
+<images/meaningful_1.pdf, id=135, 289.08pt x 216.81pt>
+File: images/meaningful_1.pdf Graphic file (type pdf)
+
+<use images/meaningful_1.pdf>
+Package pdftex.def Info: images/meaningful_1.pdf used on input line 433.
+(pdftex.def)             Requested size: 113.00427pt x 84.75073pt.
+
+<images/meaningful_2.pdf, id=136, 289.08pt x 216.81pt>
+File: images/meaningful_2.pdf Graphic file (type pdf)
+
+<use images/meaningful_2.pdf>
+Package pdftex.def Info: images/meaningful_2.pdf used on input line 433.
+(pdftex.def)             Requested size: 113.00427pt x 84.75073pt.
+
+<images/meaningful_3.pdf, id=137, 289.08pt x 216.81pt>
+File: images/meaningful_3.pdf Graphic file (type pdf)
+
+<use images/meaningful_3.pdf>
+Package pdftex.def Info: images/meaningful_3.pdf used on input line 433.
+(pdftex.def)             Requested size: 113.00427pt x 84.75073pt.
+
+Overfull \vbox (6.47845pt too high) detected at line 433
+ []
+
+[7
+
+
+
+
+ <./images/meaningful_1.pdf> <./images/meaningful_2.pdf> <./images/meaningful_3
+.pdf>] [8
+
+] [9
+
+
+
+
+
+
+
+
+
+
+
+] <images/clustering1.png, id=178, 2007.5pt x 2160.07pt>
 File: images/clustering1.png Graphic file (type png)
 
 <use images/clustering1.png>
-Package pdftex.def Info: images/clustering1.png used on input line 579.
+Package pdftex.def Info: images/clustering1.png used on input line 587.
 (pdftex.def)             Requested size: 85.60883pt x 92.09015pt.
 
-<images/clustering2.png, id=252, 1045.9075pt x 1027.84pt>
+<images/clustering2.png, id=179, 1045.9075pt x 1027.84pt>
 File: images/clustering2.png Graphic file (type png)
 
 <use images/clustering2.png>
-Package pdftex.def Info: images/clustering2.png used on input line 579.
+Package pdftex.def Info: images/clustering2.png used on input line 587.
 (pdftex.def)             Requested size: 85.60883pt x 84.12659pt.
- [19
+ [10
 
- <./images/clustering1.png> <./images/clustering2.png>] [20
 
-] [21
 
-] [22
 
-] [23
+ <./images/clustering1.png> <./images/clustering2.png>] [11
 
-]
-<images/Overfitting.png, id=290, 1027.84pt x 1027.84pt>
+
+
+
+
+] <images/Overfitting.png, id=198, 1027.84pt x 1027.84pt>
 File: images/Overfitting.png Graphic file (type png)
 
 <use images/Overfitting.png>
-Package pdftex.def Info: images/Overfitting.png used on input line 742.
+Package pdftex.def Info: images/Overfitting.png used on input line 754.
 (pdftex.def)             Requested size: 142.26378pt x 142.24985pt.
- [24
+ [12
 
- <./images/Overfitting.png>] [25
 
-] [26
 
-] [27
+
+ <./images/Overfitting.png>] [13
+
+
+
 
 ]
-[28
+File: images/meaningful_2.pdf Graphic file (type pdf)
 
-] [29
+<use images/meaningful_2.pdf>
+Package pdftex.def Info: images/meaningful_2.pdf used on input line 908.
+(pdftex.def)             Requested size: 136.97203pt x 102.72777pt.
+File: images/meaningful_3.pdf Graphic file (type pdf)
+ <use images/meaningful_3.pdf>
+Package pdftex.def Info: images/meaningful_3.pdf used on input line 908.
+(pdftex.def)             Requested size: 136.97203pt x 102.72777pt.
 
-] [30
 
-] [31
+LaTeX Warning: Citation 'Wolberg01121990' on page 14 undefined on input line 93
+7.
 
-] <images/Needle_Biopsy.jpg, id=348, 192.72pt x 128.3997pt>
+<images/Needle_Biopsy.jpg, id=219, 192.72pt x 128.3997pt>
 File: images/Needle_Biopsy.jpg Graphic file (type jpg)
 
 <use images/Needle_Biopsy.jpg>
-Package pdftex.def Info: images/Needle_Biopsy.jpg used on input line 833.
+Package pdftex.def Info: images/Needle_Biopsy.jpg used on input line 937.
 (pdftex.def)             Requested size: 85.41165pt x 56.9055pt.
- <images/fna.jpg, id=349, 175.1343pt x 144.54pt>
+ <images/fna.jpg, id=220, 175.1343pt x 144.54pt>
 File: images/fna.jpg Graphic file (type jpg)
 
 <use images/fna.jpg>
-Package pdftex.def Info: images/fna.jpg used on input line 833.
+Package pdftex.def Info: images/fna.jpg used on input line 937.
 (pdftex.def)             Requested size: 68.94879pt x 56.9055pt.
- <images/R_logo.png, id=352, 2007.5pt x 1555.8125pt>
+
+
+LaTeX Warning: Citation 'caret' on page 14 undefined on input line 937.
+
+
+LaTeX Warning: Citation 'h2o' on page 14 undefined on input line 937.
+
+<images/R_logo.png, id=223, 2007.5pt x 1555.8125pt>
 File: images/R_logo.png Graphic file (type png)
-
-<use images/R_logo.png>
-Package pdftex.def Info: images/R_logo.png used on input line 833.
+ <use images/R_logo.png>
+Package pdftex.def Info: images/R_logo.png used on input line 937.
 (pdftex.def)             Requested size: 85.35826pt x 66.13896pt.
- [32
 
- <./images/Needle_Biopsy.jpg> <./images/fna.jpg> <./images/R_logo.png>] [33
+[14
 
-]
-<webinar_code_files/figure-latex/response_classification-1.pdf, id=371, 361.35p
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <./images/Needle_Biopsy.jpg> <./images/fna.jpg> <./images/R_logo.png>]
+<webinar_code_files/figure-latex/response_classification-1.pdf, id=233, 361.35p
 t x 216.81pt>
 File: webinar_code_files/figure-latex/response_classification-1.pdf Graphic fil
 e (type pdf)
 
 <use webinar_code_files/figure-latex/response_classification-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/response_classificatio
-n-1.pdf used on input line 891.
+n-1.pdf used on input line 995.
 (pdftex.def)             Requested size: 154.09483pt x 92.45566pt.
 
-<webinar_code_files/figure-latex/response_regression-1.pdf, id=372, 361.35pt x 
+<webinar_code_files/figure-latex/response_regression-1.pdf, id=234, 361.35pt x 
 216.81pt>
 File: webinar_code_files/figure-latex/response_regression-1.pdf Graphic file (t
 ype pdf)
  <use webinar_code_files/figure-latex/response_regression-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/response_regression-1.
-pdf used on input line 891.
+pdf used on input line 995.
 (pdftex.def)             Requested size: 154.09483pt x 92.45566pt.
 
-[34
+[15
+
+
+
 
  <./webinar_code_files/figure-latex/response_classification-1.pdf> <./webinar_c
-ode_files/figure-latex/response_regression-1.pdf>] [35
-
-]
-<webinar_code_files/figure-latex/pca-1.pdf, id=397, 361.35pt x 216.81pt>
+ode_files/figure-latex/response_regression-1.pdf>]
+<webinar_code_files/figure-latex/pca-1.pdf, id=253, 361.35pt x 216.81pt>
 File: webinar_code_files/figure-latex/pca-1.pdf Graphic file (type pdf)
 
 <use webinar_code_files/figure-latex/pca-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/pca-1.pdf used on inpu
-t line 920.
+t line 1024.
 (pdftex.def)             Requested size: 308.18968pt x 184.91461pt.
- [36
+ [16
+
+
+
 
  <./webinar_code_files/figure-latex/pca-1.pdf>]
-<webinar_code_files/figure-latex/pca_features-1.pdf, id=414, 469.755pt x 325.21
-5pt>
-File: webinar_code_files/figure-latex/pca_features-1.pdf Graphic file (type pdf
-)
- <use webinar_code_files/figure-latex/pca_features-1.pdf>
-Package pdftex.def Info: webinar_code_files/figure-latex/pca_features-1.pdf use
-d on input line 930.
-(pdftex.def)             Requested size: 273.9493pt x 189.657pt.
- [37
-
- <./webinar_code_files/figure-latex/pca_features-1.pdf>] [38
-
-]
-<webinar_code_files/figure-latex/features-1.pdf, id=439, 578.16pt x 433.62pt>
+<webinar_code_files/figure-latex/features-1.pdf, id=272, 578.16pt x 433.62pt>
 File: webinar_code_files/figure-latex/features-1.pdf Graphic file (type pdf)
 
 <use webinar_code_files/figure-latex/features-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/features-1.pdf used on
- input line 963.
+ input line 1067.
 (pdftex.def)             Requested size: 239.70367pt x 179.77692pt.
- [39
 
- <./webinar_code_files/figure-latex/features-1.pdf>]
-<webinar_code_files/figure-latex/corr_plot-1.pdf, id=454, 469.755pt x 325.215pt
+<webinar_code_files/figure-latex/corr_plot-1.pdf, id=273, 469.755pt x 325.215pt
 >
 File: webinar_code_files/figure-latex/corr_plot-1.pdf Graphic file (type pdf)
  <use webinar_code_files/figure-latex/corr_plot-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/corr_plot-1.pdf used o
-n input line 971.
+n input line 1075.
 (pdftex.def)             Requested size: 308.18968pt x 213.36226pt.
- [40
 
- <./webinar_code_files/figure-latex/corr_plot-1.pdf>]
-<webinar_code_files/figure-latex/cor_graph-1.pdf, id=467, 867.24pt x 505.89pt>
+<webinar_code_files/figure-latex/cor_graph-1.pdf, id=274, 867.24pt x 505.89pt>
 File: webinar_code_files/figure-latex/cor_graph-1.pdf Graphic file (type pdf)
 
 <use webinar_code_files/figure-latex/cor_graph-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/cor_graph-1.pdf used o
-n input line 978.
+n input line 1082.
 (pdftex.def)             Requested size: 342.43532pt x 199.75102pt.
- [41
+ [17
 
- <./webinar_code_files/figure-latex/cor_graph-1.pdf>] [42
 
-]
-<webinar_code_files/figure-latex/distribution-1.pdf, id=491, 578.16pt x 289.08p
+
+
+
+
+
+
+
+
+ <./webinar_code_files/figure-latex/cor_graph-1.pdf>]
+<webinar_code_files/figure-latex/distribution-1.pdf, id=291, 578.16pt x 289.08p
 t>
 File: webinar_code_files/figure-latex/distribution-1.pdf Graphic file (type pdf
 )
  <use webinar_code_files/figure-latex/distribution-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/distribution-1.pdf use
-d on input line 1000.
+d on input line 1104.
 (pdftex.def)             Requested size: 342.43532pt x 171.21736pt.
 
-Overfull \vbox (6.74748pt too high) detected at line 1000
+Overfull \vbox (6.74748pt too high) detected at line 1104
  []
 
-[43
+[18
 
- <./webinar_code_files/figure-latex/distribution-1.pdf>] [44
 
-]
-<webinar_code_files/figure-latex/regression_result-1.pdf, id=515, 361.35pt x 21
+
+
+ <./webinar_code_files/figure-latex/distribution-1.pdf>]
+<webinar_code_files/figure-latex/regression_result-1.pdf, id=308, 361.35pt x 21
 6.81pt>
 File: webinar_code_files/figure-latex/regression_result-1.pdf Graphic file (typ
 e pdf)
  <use webinar_code_files/figure-latex/regression_result-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/regression_result-1.pd
-f used on input line 1045.
+f used on input line 1149.
 (pdftex.def)             Requested size: 123.27399pt x 73.96254pt.
 
-<webinar_code_files/figure-latex/decision_tree-1.pdf, id=516, 722.7pt x 361.35p
+<webinar_code_files/figure-latex/decision_tree-1.pdf, id=309, 722.7pt x 361.35p
 t>
 File: webinar_code_files/figure-latex/decision_tree-1.pdf Graphic file (type pd
 f)
  <use webinar_code_files/figure-latex/decision_tree-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/decision_tree-1.pdf us
-ed on input line 1045.
+ed on input line 1149.
 (pdftex.def)             Requested size: 136.97203pt x 68.48628pt.
 
-<webinar_code_files/figure-latex/auc_mse-1.pdf, id=517, 578.16pt x 361.35pt>
+<webinar_code_files/figure-latex/auc_mse-1.pdf, id=310, 578.16pt x 361.35pt>
 File: webinar_code_files/figure-latex/auc_mse-1.pdf Graphic file (type pdf)
 
 <use webinar_code_files/figure-latex/auc_mse-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/auc_mse-1.pdf used on 
-input line 1045.
+input line 1149.
 (pdftex.def)             Requested size: 123.27399pt x 77.04362pt.
- [45
+ [19
+
+
+
 
  <./webinar_code_files/figure-latex/regression_result-1.pdf> <./webinar_code_fi
 les/figure-latex/decision_tree-1.pdf> <./webinar_code_files/figure-latex/auc_ms
-e-1.pdf>] [46
-
-]
+e-1.pdf>]
 File: webinar_code_files/figure-latex/decision_tree-1.pdf Graphic file (type pd
 f)
 
 <use webinar_code_files/figure-latex/decision_tree-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/decision_tree-1.pdf us
-ed on input line 1070.
+ed on input line 1174.
 (pdftex.def)             Requested size: 342.43532pt x 171.21848pt.
- [47
+ [20
 
-] [48
 
-]
-<webinar_code_files/figure-latex/importance_rf-1.pdf, id=569, 361.35pt x 216.81
-pt>
-File: webinar_code_files/figure-latex/importance_rf-1.pdf Graphic file (type pd
-f)
- <use webinar_code_files/figure-latex/importance_rf-1.pdf>
-Package pdftex.def Info: webinar_code_files/figure-latex/importance_rf-1.pdf us
-ed on input line 1095.
-(pdftex.def)             Requested size: 273.9493pt x 164.37039pt.
- [49
 
- <./webinar_code_files/figure-latex/importance_rf-1.pdf>] [50
 
-] [51
+] [21
 
-] [52
+] [22
 
-] [53
+
+
+
+
+
+
+
+
+
 
 ]
 File: webinar_code_files/figure-latex/regression_result-1.pdf Graphic file (typ
@@ -1886,150 +1934,152 @@ e pdf)
 
 <use webinar_code_files/figure-latex/regression_result-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/regression_result-1.pd
-f used on input line 1155.
+f used on input line 1259.
 (pdftex.def)             Requested size: 171.21765pt x 102.73108pt.
 
-<webinar_code_files/figure-latex/residuals-1.pdf, id=609, 361.35pt x 216.81pt>
+<webinar_code_files/figure-latex/residuals-1.pdf, id=368, 361.35pt x 216.81pt>
 File: webinar_code_files/figure-latex/residuals-1.pdf Graphic file (type pdf)
 
 <use webinar_code_files/figure-latex/residuals-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/residuals-1.pdf used o
-n input line 1155.
+n input line 1259.
 (pdftex.def)             Requested size: 171.21765pt x 102.73108pt.
- [54
+ [23
 
- <./webinar_code_files/figure-latex/residuals-1.pdf>] [55
 
-]
-<images/results_matrix.pdf, id=633, 256.35239pt x 357.22748pt>
+
+
+ <./webinar_code_files/figure-latex/residuals-1.pdf>]
+<images/results_matrix.pdf, id=385, 256.35239pt x 357.22748pt>
 File: images/results_matrix.pdf Graphic file (type pdf)
 
 <use images/results_matrix.pdf>
-Package pdftex.def Info: images/results_matrix.pdf used on input line 1193.
+Package pdftex.def Info: images/results_matrix.pdf used on input line 1297.
 (pdftex.def)             Requested size: 154.09483pt x 214.73605pt.
 
-<webinar_code_files/figure-latex/results_bar_rf-1.pdf, id=634, 361.35pt x 216.8
+<webinar_code_files/figure-latex/results_bar_rf-1.pdf, id=386, 361.35pt x 216.8
 1pt>
 File: webinar_code_files/figure-latex/results_bar_rf-1.pdf Graphic file (type p
 df)
  <use webinar_code_files/figure-latex/results_bar_rf-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/results_bar_rf-1.pdf u
-sed on input line 1193.
+sed on input line 1297.
 (pdftex.def)             Requested size: 171.21765pt x 102.73108pt.
 
-<webinar_code_files/figure-latex/results_jitter_rf-1.pdf, id=635, 361.35pt x 21
+<webinar_code_files/figure-latex/results_jitter_rf-1.pdf, id=387, 361.35pt x 21
 6.81pt>
 File: webinar_code_files/figure-latex/results_jitter_rf-1.pdf Graphic file (typ
 e pdf)
  <use webinar_code_files/figure-latex/results_jitter_rf-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/results_jitter_rf-1.pd
-f used on input line 1193.
+f used on input line 1297.
 (pdftex.def)             Requested size: 171.21765pt x 102.73108pt.
- [56
+ [24
+
+
+
 
  <./images/results_matrix.pdf> <./webinar_code_files/figure-latex/results_bar_r
-f-1.pdf> <./webinar_code_files/figure-latex/results_jitter_rf-1.pdf>] [57
-
-]
-<webinar_code_files/figure-latex/auc_curve-1.pdf, id=689, 433.62pt x 361.35pt>
+f-1.pdf> <./webinar_code_files/figure-latex/results_jitter_rf-1.pdf>]
+<webinar_code_files/figure-latex/auc_curve-1.pdf, id=435, 433.62pt x 361.35pt>
 File: webinar_code_files/figure-latex/auc_curve-1.pdf Graphic file (type pdf)
 
 <use webinar_code_files/figure-latex/auc_curve-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/auc_curve-1.pdf used o
-n input line 1228.
+n input line 1332.
 (pdftex.def)             Requested size: 273.9493pt x 228.30232pt.
- [58
+ [25
 
- <./webinar_code_files/figure-latex/auc_curve-1.pdf>] [59
+
+
+
+ <./webinar_code_files/figure-latex/auc_curve-1.pdf>] [26
+
+
+
 
 ]
 File: webinar_code_files/figure-latex/auc_mse-1.pdf Graphic file (type pdf)
 
 <use webinar_code_files/figure-latex/auc_mse-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/auc_mse-1.pdf used on 
-input line 1244.
+input line 1384.
 (pdftex.def)             Requested size: 342.43532pt x 214.02171pt.
- [60
 
-] [61
+Overfull \vbox (6.90903pt too high) detected at line 1402
+ []
+
+[27
+
+
+
 
 ]
-<webinar_code_files/figure-latex/final_predictions_rf-1.pdf, id=725, 650.43pt x
+<webinar_code_files/figure-latex/final_predictions_rf-1.pdf, id=466, 650.43pt x
  216.81pt>
 File: webinar_code_files/figure-latex/final_predictions_rf-1.pdf Graphic file (
 type pdf)
  <use webinar_code_files/figure-latex/final_predictions_rf-1.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/final_predictions_rf-1
-.pdf used on input line 1262.
+.pdf used on input line 1410.
 (pdftex.def)             Requested size: 342.43532pt x 114.14784pt.
 
-<webinar_code_files/figure-latex/final_predictions_rf-2.pdf, id=726, 650.43pt x
+<webinar_code_files/figure-latex/final_predictions_rf-2.pdf, id=467, 650.43pt x
  216.81pt>
 File: webinar_code_files/figure-latex/final_predictions_rf-2.pdf Graphic file (
 type pdf)
  <use webinar_code_files/figure-latex/final_predictions_rf-2.pdf>
 Package pdftex.def Info: webinar_code_files/figure-latex/final_predictions_rf-2
-.pdf used on input line 1262.
+.pdf used on input line 1410.
 (pdftex.def)             Requested size: 342.43532pt x 114.14784pt.
 
-[62
+<webinar_code_files/figure-latex/prop_table-1.pdf, id=468, 433.62pt x 216.81pt>
+File: webinar_code_files/figure-latex/prop_table-1.pdf Graphic file (type pdf)
+<use webinar_code_files/figure-latex/prop_table-1.pdf>
+Package pdftex.def Info: webinar_code_files/figure-latex/prop_table-1.pdf used 
+on input line 1420.
+(pdftex.def)             Requested size: 342.43532pt x 171.22508pt.
+File: images/bild.png Graphic file (type png)
+ <use images/bild.png>
+Package pdftex.def Info: images/bild.png used on input line 1511.
+(pdftex.def)             Requested size: 71.13188pt x 102.84154pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1513.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1513.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1513.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1513.
 
- <./webinar_code_files/figure-latex/final_predictions_rf-1.pdf> <./webinar_code
-_files/figure-latex/final_predictions_rf-2.pdf>] [63
 
-] [64
+LaTeX Warning: There were undefined references.
 
-] [65
 
-]
-\tf@nav=\write9
-\openout9 = `document.nav'.
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                document
+(biblatex)                and rerun LaTeX afterwards.
 
-\tf@toc=\write10
-\openout10 = `document.toc'.
-
-\tf@snm=\write11
-\openout11 = `document.snm'.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1321.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1321.
-
-(document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1321.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1321.
-
-Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: BEF7D6A88FC5BD12102CE59A2ED1A656;334.
 Package logreq Info: Writing requests to 'document.run.xml'.
 \openout1 = `document.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1321.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1513.
  ) 
 Here is how much of TeX's memory you used:
- 32632 strings out of 493333
- 665897 string characters out of 3139186
- 1129676 words of memory out of 3000000
- 35305 multiletter control sequences out of 15000+200000
- 49766 words of font info for 69 fonts, out of 3000000 for 9000
+ 32546 strings out of 493333
+ 664243 string characters out of 3139186
+ 977827 words of memory out of 3000000
+ 35307 multiletter control sequences out of 15000+200000
+ 48452 words of font info for 68 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,19n,82p,1321b,2041s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{cite.0@doi:10.1146/annurev.bioeng.8.061505.095802
-} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{cite.0@Levenson} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{cite.0@Kunio} has been referenced but does not exis
-t, replaced by a fixed one
+ 56i,13n,82p,1135b,2041s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{Navigation38} has been referenced but does not ex
+ist, replaced by a fixed one
 
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fo
 nts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/
 helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro
 8a.pfb>
-Output written on document.pdf (65 pages, 2807776 bytes).
+Output written on document.pdf (27 pages, 2650247 bytes).
 PDF statistics:
- 809 PDF objects out of 1000 (max. 8388607)
- 139 named destinations out of 1000 (max. 500000)
- 364 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 503 PDF objects out of 1000 (max. 8388607)
+ 61 named destinations out of 1000 (max. 500000)
+ 359 words of extra memory for PDF output out of 10000 (max. 10000000)
 

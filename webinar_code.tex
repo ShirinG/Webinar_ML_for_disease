@@ -586,6 +586,11 @@ R}\label{machine-learning-packages-for-r}
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# configure multicore}
+\KeywordTok{library}\NormalTok{(doParallel)}
+\NormalTok{cl <-}\StringTok{ }\KeywordTok{makeCluster}\NormalTok{(}\KeywordTok{detectCores}\NormalTok{())}
+\KeywordTok{registerDoParallel}\NormalTok{(cl)}
+
 \KeywordTok{library}\NormalTok{(caret)}
 \end{Highlighting}
 \end{Shaded}
@@ -1131,6 +1136,174 @@ as well, like feature selection processes in machine learning.
 \end{Highlighting}
 \end{Shaded}
 
+\subsubsection{Grid search with caret}\label{grid-search-with-caret}
+
+\begin{itemize}
+\tightlist
+\item
+  Automatic Grid
+\end{itemize}
+
+There are two ways to tune an algorithm in the Caret R package, the
+first is by allowing the system to do it automatically. This can be done
+by setting the tuneLength to indicate the number of different values to
+try for each algorithm parameter.
+
+This only supports integer and categorical algorithm parameters, and it
+makes a crude guess as to what values to try, but it can get you up and
+running very quickly.
+
+One search strategy that we can use is to try random values within a
+range.
+
+This can be good if we are unsure of what the value might be and we want
+to overcome any biases we may have for setting the parameter (like the
+suggested equation above).
+
+Let's try a random search for mtry using caret:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{42}\NormalTok{)}
+\NormalTok{model_rf_tune_auto <-}\StringTok{ }\NormalTok{caret::}\KeywordTok{train}\NormalTok{(classes ~}\StringTok{ }\NormalTok{.,}
+                         \DataTypeTok{data =} \NormalTok{train_data,}
+                         \DataTypeTok{method =} \StringTok{"rf"}\NormalTok{,}
+                         \DataTypeTok{preProcess =} \KeywordTok{c}\NormalTok{(}\StringTok{"scale"}\NormalTok{, }\StringTok{"center"}\NormalTok{),}
+                         \DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\DataTypeTok{method =} \StringTok{"repeatedcv"}\NormalTok{, }
+                                                  \DataTypeTok{number =} \DecValTok{10}\NormalTok{, }
+                                                  \DataTypeTok{repeats =} \DecValTok{10}\NormalTok{, }
+                                                  \DataTypeTok{savePredictions =} \OtherTok{TRUE}\NormalTok{, }
+                                                  \DataTypeTok{verboseIter =} \OtherTok{FALSE}\NormalTok{,}
+                                                  \DataTypeTok{search =} \StringTok{"random"}\NormalTok{),}
+                         \DataTypeTok{tuneLength =} \DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+When you specify \texttt{savePredictions\ =\ TRUE}, you can access the
+cross-validation resuls with \texttt{model\_rf\$pred}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_rf_tune_auto}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Random Forest 
+## 
+## 490 samples
+##   9 predictor
+##   2 classes: 'benign', 'malignant' 
+## 
+## Pre-processing: scaled (9), centered (9) 
+## Resampling: Cross-Validated (10 fold, repeated 10 times) 
+## Summary of sample sizes: 442, 441, 441, 441, 441, 441, ... 
+## Resampling results across tuning parameters:
+## 
+##   mtry  Accuracy   Kappa    
+##   1     0.9692153  0.9323624
+##   2     0.9704277  0.9350498
+##   5     0.9645085  0.9216721
+##   6     0.9639087  0.9201998
+##   7     0.9632842  0.9186919
+##   8     0.9626719  0.9172257
+##   9     0.9636801  0.9195036
+## 
+## Accuracy was used to select the optimal model using  the largest value.
+## The final value used for the model was mtry = 2.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(model_rf_tune_auto)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-37-1.pdf}
+
+\begin{itemize}
+\tightlist
+\item
+  Manual Grid
+\end{itemize}
+
+The second way to search algorithm parameters is to specify a tune grid
+manually. In the grid, each algorithm parameter can be specified as a
+vector of possible values. These vectors combine to define all the
+possible combinations to try.
+
+\begin{itemize}
+\tightlist
+\item
+  mtry: Number of variables randomly sampled as candidates at each
+  split.
+\end{itemize}
+
+By default the only parameter you can tune for a random forest is mtry.
+However you can still pass the others parameters to train. But those
+will have a fix value an so won't be tuned by train.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{42}\NormalTok{)}
+\NormalTok{grid <-}\StringTok{ }\KeywordTok{expand.grid}\NormalTok{(}\DataTypeTok{mtry =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{10}\NormalTok{))}
+
+\NormalTok{model_rf_tune_man <-}\StringTok{ }\NormalTok{caret::}\KeywordTok{train}\NormalTok{(classes ~}\StringTok{ }\NormalTok{.,}
+                         \DataTypeTok{data =} \NormalTok{train_data,}
+                         \DataTypeTok{method =} \StringTok{"rf"}\NormalTok{,}
+                         \DataTypeTok{preProcess =} \KeywordTok{c}\NormalTok{(}\StringTok{"scale"}\NormalTok{, }\StringTok{"center"}\NormalTok{),}
+                         \DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\DataTypeTok{method =} \StringTok{"repeatedcv"}\NormalTok{, }
+                                                  \DataTypeTok{number =} \DecValTok{10}\NormalTok{, }
+                                                  \DataTypeTok{repeats =} \DecValTok{10}\NormalTok{, }
+                                                  \DataTypeTok{savePredictions =} \OtherTok{TRUE}\NormalTok{, }
+                                                  \DataTypeTok{verboseIter =} \OtherTok{FALSE}\NormalTok{,}
+                                                  \DataTypeTok{search =} \StringTok{"random"}\NormalTok{),}
+                         \DataTypeTok{tuneGrid =} \NormalTok{grid)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_rf_tune_man}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Random Forest 
+## 
+## 490 samples
+##   9 predictor
+##   2 classes: 'benign', 'malignant' 
+## 
+## Pre-processing: scaled (9), centered (9) 
+## Resampling: Cross-Validated (10 fold, repeated 10 times) 
+## Summary of sample sizes: 442, 441, 441, 441, 441, 441, ... 
+## Resampling results across tuning parameters:
+## 
+##   mtry  Accuracy   Kappa    
+##    1    0.9696153  0.9332392
+##    2    0.9706440  0.9354737
+##    3    0.9696194  0.9330647
+##    4    0.9661495  0.9253163
+##    5    0.9649252  0.9225586
+##    6    0.9653209  0.9233806
+##    7    0.9634881  0.9192265
+##    8    0.9624718  0.9169227
+##    9    0.9641005  0.9203072
+##   10    0.9628760  0.9176675
+## 
+## Accuracy was used to select the optimal model using  the largest value.
+## The final value used for the model was mtry = 2.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(model_rf_tune_man)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-41-1.pdf}
+
 \subsubsection{Grid search with h2o}\label{grid-search-with-h2o}
 
 The R package h2o provides a convenient interface to
@@ -1147,23 +1320,15 @@ deep learning.
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## H2O is not running yet, starting it now...
-## 
-## Note:  In case of errors look at the following log files:
-##     C:\Users\s_glan02\AppData\Local\Temp\RtmpMnhd0g/h2o_s_glan02_started_from_r.out
-##     C:\Users\s_glan02\AppData\Local\Temp\RtmpMnhd0g/h2o_s_glan02_started_from_r.err
-## 
-## 
-## Starting H2O JVM and connecting: . Connection successful!
+##  Connection successful!
 ## 
 ## R is connected to the H2O cluster: 
-##     H2O cluster uptime:         1 seconds 832 milliseconds 
+##     H2O cluster uptime:         37 minutes 47 seconds 
 ##     H2O cluster version:        3.10.3.6 
-##     H2O cluster version age:    1 month and 5 days  
-##     H2O cluster name:           H2O_started_from_R_s_glan02_tvy462 
+##     H2O cluster version age:    1 month and 6 days  
+##     H2O cluster name:           H2O_started_from_R_s_glan02_ogq244 
 ##     H2O cluster total nodes:    1 
-##     H2O cluster total memory:   3.54 GB 
+##     H2O cluster total memory:   3.30 GB 
 ##     H2O cluster total cores:    8 
 ##     H2O cluster allowed cores:  8 
 ##     H2O cluster healthy:        TRUE 
@@ -1590,7 +1755,7 @@ your model.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-42-1.pdf}
+\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-50-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1640,7 +1805,7 @@ We can also plot the classification error.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-45-1} \end{center}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-53-1} \end{center}
 
 Next to the classification error, we are usually interested in the
 logistic loss (negative log-likelihood or log loss). It describes the
@@ -1657,7 +1822,7 @@ we ignore potential overfitting).
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-46-1} \end{center}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-54-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1667,7 +1832,7 @@ we ignore potential overfitting).
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-47-1} \end{center}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-55-1} \end{center}
 
 We can also plot the mean squared error (MSE). The MSE tells us the
 average of the prediction errors squared, i.e.~the estimator's variance
@@ -1681,7 +1846,7 @@ and bias. The closer to zero, the better a model.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-48-1} \end{center}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-56-1} \end{center}
 
 Next, we want to know the area under the curve (AUC). AUC is an
 important metric for measuring binary classification model performances.
@@ -1927,7 +2092,7 @@ column that tells me whether they were accurate.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-53-1.pdf}
+\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-62-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1941,7 +2106,47 @@ column that tells me whether they were accurate.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-53-2.pdf}
+\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-62-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df <-}\StringTok{ }\NormalTok{finalRf_predictions[, }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)]}
+
+\NormalTok{thresholds <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{0}\NormalTok{, }\DataTypeTok{to =} \DecValTok{1}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.1}\NormalTok{)}
+
+\NormalTok{prop_table <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{threshold =} \NormalTok{thresholds, }\DataTypeTok{prop_true_b =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{prop_true_m =} \OtherTok{NA}\NormalTok{)}
+
+\NormalTok{for (threshold in thresholds) \{}
+  \NormalTok{pred <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(df$benign >}\StringTok{ }\NormalTok{threshold, }\StringTok{"benign"}\NormalTok{, }\StringTok{"malignant"}\NormalTok{)}
+  \NormalTok{pred_t <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(pred ==}\StringTok{ }\NormalTok{df$actual, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{)}
+  
+  \NormalTok{group <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(df, }\StringTok{"pred"} \NormalTok{=}\StringTok{ }\NormalTok{pred_t) %>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(actual, pred) %>%}
+\StringTok{  }\NormalTok{dplyr::}\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n =} \KeywordTok{n}\NormalTok{())}
+  
+  \NormalTok{group_b <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(group, actual ==}\StringTok{ "benign"}\NormalTok{)}
+  
+  \NormalTok{prop_b <-}\StringTok{ }\KeywordTok{sum}\NormalTok{(}\KeywordTok{filter}\NormalTok{(group_b, pred ==}\StringTok{ }\OtherTok{TRUE}\NormalTok{)$n) /}\StringTok{ }\KeywordTok{sum}\NormalTok{(group_b$n)}
+  \NormalTok{prop_table[prop_table$threshold ==}\StringTok{ }\NormalTok{threshold, }\StringTok{"prop_true_b"}\NormalTok{] <-}\StringTok{ }\NormalTok{prop_b}
+  
+  \NormalTok{group_m <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(group, actual ==}\StringTok{ "malignant"}\NormalTok{)}
+  
+  \NormalTok{prop_m <-}\StringTok{ }\KeywordTok{sum}\NormalTok{(}\KeywordTok{filter}\NormalTok{(group_m, pred ==}\StringTok{ }\OtherTok{TRUE}\NormalTok{)$n) /}\StringTok{ }\KeywordTok{sum}\NormalTok{(group_m$n)}
+  \NormalTok{prop_table[prop_table$threshold ==}\StringTok{ }\NormalTok{threshold, }\StringTok{"prop_true_m"}\NormalTok{] <-}\StringTok{ }\NormalTok{prop_m}
+\NormalTok{\}}
+
+\NormalTok{prop_table %>%}
+\StringTok{  }\KeywordTok{gather}\NormalTok{(x, y, prop_true_b:prop_true_m) %>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{threshold, }\DataTypeTok{y =} \NormalTok{y, }\DataTypeTok{color =} \NormalTok{x)) +}
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{() +}
+\StringTok{    }\KeywordTok{geom_line}\NormalTok{() +}
+\StringTok{    }\KeywordTok{scale_color_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set1"}\NormalTok{) +}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{y =} \StringTok{"proportion of true predictions"}\NormalTok{,}
+         \DataTypeTok{color =} \StringTok{"b: benign cases}\CharTok{\textbackslash{}n}\StringTok{m: malignant cases"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{webinar_code_files/figure-latex/prop_table-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1983,30 +2188,31 @@ category listing for \textbf{machine\_learning} on my blog}.
 ##  [1] ggrepel_0.6.5        reshape2_1.4.2       h2o_3.10.3.6        
 ##  [4] corrplot_0.77        plyr_1.8.4           xgboost_0.6-4       
 ##  [7] randomForest_4.6-12  caret_6.0-73         lattice_0.20-34     
-## [10] igraph_1.0.1         tidyr_0.6.1          dplyr_0.5.0         
-## [13] pcaGoPromoter_1.18.0 Biostrings_2.42.1    XVector_0.14.0      
-## [16] IRanges_2.8.1        S4Vectors_0.12.1     BiocGenerics_0.20.0 
-## [19] ellipse_0.3-8        ggplot2_2.2.1.9000  
+## [10] doParallel_1.0.10    iterators_1.0.8      foreach_1.4.3       
+## [13] igraph_1.0.1         tidyr_0.6.1          dplyr_0.5.0         
+## [16] pcaGoPromoter_1.18.0 Biostrings_2.42.1    XVector_0.14.0      
+## [19] IRanges_2.8.1        S4Vectors_0.12.1     BiocGenerics_0.20.0 
+## [22] ellipse_0.3-8        ggplot2_2.2.1.9000  
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_0.12.9          class_7.3-14         assertthat_0.1      
-##  [4] rprojroot_1.2        digest_0.6.12        foreach_1.4.3       
-##  [7] R6_2.2.0             backports_1.0.5      MatrixModels_0.4-1  
-## [10] RSQLite_1.1-2        evaluate_0.10        e1071_1.6-8         
-## [13] zlibbioc_1.20.0      lazyeval_0.2.0       minqa_1.2.4         
-## [16] data.table_1.10.4    SparseM_1.76         car_2.1-4           
-## [19] nloptr_1.0.4         Matrix_1.2-8         rmarkdown_1.3       
-## [22] labeling_0.3         splines_3.3.3        lme4_1.1-12         
-## [25] stringr_1.2.0        RCurl_1.95-4.8       munsell_0.4.3       
-## [28] mgcv_1.8-17          htmltools_0.3.5      nnet_7.3-12         
-## [31] tibble_1.2           codetools_0.2-15     MASS_7.3-45         
-## [34] bitops_1.0-6         ModelMetrics_1.1.0   grid_3.3.3          
-## [37] nlme_3.1-131         jsonlite_1.3         gtable_0.2.0        
-## [40] DBI_0.6              magrittr_1.5         scales_0.4.1        
-## [43] stringi_1.1.2        RColorBrewer_1.1-2   iterators_1.0.8     
-## [46] tools_3.3.3          Biobase_2.34.0       pbkrtest_0.4-6      
-## [49] yaml_2.1.14          AnnotationDbi_1.36.2 colorspace_1.3-2    
-## [52] memoise_1.0.0        knitr_1.15.1         quantreg_5.29
+##  [4] rprojroot_1.2        digest_0.6.12        R6_2.2.0            
+##  [7] backports_1.0.5      MatrixModels_0.4-1   RSQLite_1.1-2       
+## [10] evaluate_0.10        e1071_1.6-8          zlibbioc_1.20.0     
+## [13] lazyeval_0.2.0       minqa_1.2.4          data.table_1.10.4   
+## [16] SparseM_1.76         car_2.1-4            nloptr_1.0.4        
+## [19] Matrix_1.2-8         rmarkdown_1.3        labeling_0.3        
+## [22] splines_3.3.3        lme4_1.1-12          stringr_1.2.0       
+## [25] RCurl_1.95-4.8       munsell_0.4.3        mgcv_1.8-17         
+## [28] htmltools_0.3.5      nnet_7.3-12          tibble_1.2          
+## [31] codetools_0.2-15     MASS_7.3-45          bitops_1.0-6        
+## [34] ModelMetrics_1.1.0   grid_3.3.3           jsonlite_1.3        
+## [37] nlme_3.1-131         gtable_0.2.0         DBI_0.6             
+## [40] magrittr_1.5         scales_0.4.1         stringi_1.1.2       
+## [43] RColorBrewer_1.1-2   tools_3.3.3          Biobase_2.34.0      
+## [46] pbkrtest_0.4-6       yaml_2.1.14          AnnotationDbi_1.36.2
+## [49] colorspace_1.3-2     memoise_1.0.0        knitr_1.15.1        
+## [52] quantreg_5.29
 \end{verbatim}
 
 
