@@ -1,7 +1,7 @@
-%\documentclass[notes, c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
+\documentclass[notes, c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
 
 % print notes only:
-\documentclass[notes=only, c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
+%\documentclass[notes=only, c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
 
 %print only frames:
 %\documentclass[c, 11pt, xcolor=dvipsnames, hyperref={colorlinks,citecolor=Maroon,linkcolor=Maroon,urlcolor=RoyalBlue}]{beamer}
@@ -147,7 +147,7 @@
 %%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-	
+
 	\begin{frame}
 		\titlepage
 	\end{frame}
@@ -161,6 +161,14 @@
 		\item I will demonstrate how to evaluate model performance and
 		\item how to optimize models to address different disease-related questions
 	\end{itemize}
+}
+
+\note{
+	A final word on decision trees. They are proclaimed to be interpretable. Well - maybe some trees are. But once you have enough data, the best performing trees (even pruned) tend to get so large that you cannot even visualize them easily, let alone interpret what is going on. And even in a smaller tree: You can certainly write down the prediction as a rule: you must like the movie because you are older than 23, likes some drama, are female, etc. But as with the logistic - you have not really explained anything - you have no idea why the tree looks the way it does. In fact, trees have that pesky habit of changing under minor sample changes not to mention that due to the heuristic nature of the algorithm, there are many different trees creating the exact same partition in space.
+	
+	Where does this leave us? First of, we should ask what exactly we want interpretability for. For some it is a trust issue - but here I prefer to go with solid evaluation. Our evolved brain can easily be tricked into ?understanding? a model which in fact is completely wrong. For others it is a matter of transparency - my sense is that for that it might be more useful to simple poke the model as a black box by varying the inputs to get a sense of the sensitivity. Say I ask the model what it would have predicted if I was 10 years older than I actually am. This is not exactly consistent with proper IID sampling theories, but in my opinion a fair test.
+	
+	On the final holy grail of using a model to understand a domain, if not even the causal relationships between different variables, many specific approaches have been developed but most of them involve much more stringent rules on the data generation, variability and observability of all relevant information than is usually the case anyway. In fact - the field of observational methods (i.e. TMLE and other double robust estimators) for estimating causal impact really do not care much about the interpretability of a model - because the causal interpretation are derived from the model predictions, not its structure.
 }
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -581,7 +589,7 @@
 	
 	\includegraphics[width=0.5\textwidth]{images/clustering2}
 	
-	\footnotesize{\textit{Wikipedia}}
+	\footnotesize{\textit{Image Source: Wikipedia}}
 	
 	\end{columns}
 \end{frame}
