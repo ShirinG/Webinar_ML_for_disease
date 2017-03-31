@@ -356,145 +356,6 @@ Missing values are imputed with the \emph{mice} package.
 \begin{itemize}
 \tightlist
 \item
-  Multidimensional Scaling
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(dplyr)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-## Attaching package: 'dplyr'
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:Biostrings':
-## 
-##     collapse, intersect, setdiff, setequal, union
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:XVector':
-## 
-##     slice
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:IRanges':
-## 
-##     collapse, desc, intersect, regroup, setdiff, slice, union
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:S4Vectors':
-## 
-##     first, intersect, rename, setdiff, setequal, union
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:BiocGenerics':
-## 
-##     combine, intersect, setdiff, union
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{select}\NormalTok{(bc_data, -}\DecValTok{1}\NormalTok{) %>%}
-\StringTok{  }\KeywordTok{dist}\NormalTok{() %>%}
-\StringTok{  }\NormalTok{cmdscale %>%}
-\StringTok{  }\KeywordTok{as.data.frame}\NormalTok{() %>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{group =} \NormalTok{bc_data$classes) %>%}
-\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{V1, }\DataTypeTok{y =} \NormalTok{V2, }\DataTypeTok{color =} \NormalTok{group)) +}
-\StringTok{    }\KeywordTok{geom_point}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{webinar_code_files/figure-latex/mds_plot-1.pdf}
-
-\begin{itemize}
-\tightlist
-\item
-  t-SNE dimensionality reduction
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(tsne)}
-
-\KeywordTok{select}\NormalTok{(bc_data, -}\DecValTok{1}\NormalTok{) %>%}
-\StringTok{  }\KeywordTok{dist}\NormalTok{() %>%}
-\StringTok{  }\KeywordTok{tsne}\NormalTok{() %>%}
-\StringTok{  }\KeywordTok{as.data.frame}\NormalTok{() %>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{group =} \NormalTok{bc_data$classes) %>%}
-\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{V1, }\DataTypeTok{y =} \NormalTok{V2, }\DataTypeTok{color =} \NormalTok{group)) +}
-\StringTok{    }\KeywordTok{geom_point}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## sigma summary: Min. : 0.2945 |1st Qu. : 0.5325 |Median : 0.5978 |Mean : 0.7045 |3rd Qu. : 0.9128 |Max. : 1.417 |
-\end{verbatim}
-
-\begin{verbatim}
-## Epoch: Iteration #100 error is: 12.9051118607517
-\end{verbatim}
-
-\begin{verbatim}
-## Epoch: Iteration #200 error is: 0.55100578564023
-\end{verbatim}
-
-\begin{verbatim}
-## Epoch: Iteration #300 error is: 0.507964548605455
-\end{verbatim}
-
-\begin{verbatim}
-## Epoch: Iteration #400 error is: 0.497858645047617
-\end{verbatim}
-
-\begin{verbatim}
-## Epoch: Iteration #500 error is: 0.494929061688897
-\end{verbatim}
-
-\begin{verbatim}
-## Epoch: Iteration #600 error is: 0.493629390821366
-\end{verbatim}
-
-\begin{verbatim}
-## Epoch: Iteration #700 error is: 0.492881739116146
-\end{verbatim}
-
-\begin{verbatim}
-## Epoch: Iteration #800 error is: 0.492432292261577
-\end{verbatim}
-
-\begin{verbatim}
-## Epoch: Iteration #900 error is: 0.492109439434399
-\end{verbatim}
-
-\begin{verbatim}
-## Epoch: Iteration #1000 error is: 0.491872988560014
-\end{verbatim}
-
-\includegraphics{webinar_code_files/figure-latex/tsne_plot-1.pdf}
-
-\begin{itemize}
-\tightlist
-\item
   Features
 \end{itemize}
 
@@ -510,74 +371,6 @@ Missing values are imputed with the \emph{mice} package.
 \end{Shaded}
 
 \includegraphics{webinar_code_files/figure-latex/features-1.pdf}
-
-\begin{itemize}
-\tightlist
-\item
-  Correlation graphs
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(dplyr)}
-\NormalTok{co_mat_benign <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(bc_data, classes ==}\StringTok{ "benign"}\NormalTok{) %>%}
-\StringTok{  }\KeywordTok{select}\NormalTok{(-}\DecValTok{1}\NormalTok{) %>%}
-\StringTok{  }\KeywordTok{cor}\NormalTok{()}
-
-\NormalTok{co_mat_malignant <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(bc_data, classes ==}\StringTok{ "malignant"}\NormalTok{) %>%}
-\StringTok{  }\KeywordTok{select}\NormalTok{(-}\DecValTok{1}\NormalTok{) %>%}
-\StringTok{  }\KeywordTok{cor}\NormalTok{()}
-
-\KeywordTok{library}\NormalTok{(igraph)}
-\NormalTok{g_benign <-}\StringTok{ }\KeywordTok{graph.adjacency}\NormalTok{(co_mat_benign,}
-                         \DataTypeTok{weighted =} \OtherTok{TRUE}\NormalTok{,}
-                         \DataTypeTok{diag =} \OtherTok{FALSE}\NormalTok{,}
-                         \DataTypeTok{mode =} \StringTok{"upper"}\NormalTok{)}
-
-\NormalTok{g_malignant <-}\StringTok{ }\KeywordTok{graph.adjacency}\NormalTok{(co_mat_malignant,}
-                         \DataTypeTok{weighted =} \OtherTok{TRUE}\NormalTok{,}
-                         \DataTypeTok{diag =} \OtherTok{FALSE}\NormalTok{,}
-                         \DataTypeTok{mode =} \StringTok{"upper"}\NormalTok{)}
-
-
-\CommentTok{# http://kateto.net/networks-r-igraph}
-
-\NormalTok{cut.off_b <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(}\KeywordTok{E}\NormalTok{(g_benign)$weight)}
-\NormalTok{cut.off_m <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(}\KeywordTok{E}\NormalTok{(g_malignant)$weight)}
-
-\NormalTok{g_benign_2 <-}\StringTok{ }\KeywordTok{delete_edges}\NormalTok{(g_benign, }\KeywordTok{E}\NormalTok{(g_benign)[weight <}\StringTok{ }\NormalTok{cut.off_b])}
-\NormalTok{g_malignant_2 <-}\StringTok{ }\KeywordTok{delete_edges}\NormalTok{(g_malignant, }\KeywordTok{E}\NormalTok{(g_malignant)[weight <}\StringTok{ }\NormalTok{cut.off_m])}
-
-\NormalTok{c_g_benign_2 <-}\StringTok{ }\KeywordTok{cluster_fast_greedy}\NormalTok{(g_benign_2) }
-\NormalTok{c_g_malignant_2 <-}\StringTok{ }\KeywordTok{cluster_fast_greedy}\NormalTok{(g_malignant_2) }
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-
-\KeywordTok{plot}\NormalTok{(c_g_benign_2, g_benign_2,}
-     \DataTypeTok{vertex.size =} \KeywordTok{colSums}\NormalTok{(co_mat_benign) *}\StringTok{ }\DecValTok{10}\NormalTok{,}
-     \DataTypeTok{vertex.frame.color =} \OtherTok{NA}\NormalTok{, }
-     \DataTypeTok{vertex.label.color =} \StringTok{"black"}\NormalTok{, }
-     \DataTypeTok{vertex.label.cex =} \FloatTok{0.8}\NormalTok{,}
-     \DataTypeTok{edge.width =} \KeywordTok{E}\NormalTok{(g_benign_2)$weight *}\StringTok{ }\DecValTok{15}\NormalTok{,}
-     \DataTypeTok{layout =} \KeywordTok{layout_with_fr}\NormalTok{(g_benign_2),}
-     \DataTypeTok{main =} \StringTok{"Benign tumors"}\NormalTok{)}
-
-\KeywordTok{plot}\NormalTok{(c_g_malignant_2, g_malignant_2,}
-     \DataTypeTok{vertex.size =} \KeywordTok{colSums}\NormalTok{(co_mat_malignant) *}\StringTok{ }\DecValTok{10}\NormalTok{,}
-     \DataTypeTok{vertex.frame.color =} \OtherTok{NA}\NormalTok{, }
-     \DataTypeTok{vertex.label.color =} \StringTok{"black"}\NormalTok{, }
-     \DataTypeTok{vertex.label.cex =} \FloatTok{0.8}\NormalTok{,}
-     \DataTypeTok{edge.width =} \KeywordTok{E}\NormalTok{(g_malignant_2)$weight *}\StringTok{ }\DecValTok{15}\NormalTok{,}
-     \DataTypeTok{layout =} \KeywordTok{layout_with_fr}\NormalTok{(g_malignant_2),}
-     \DataTypeTok{main =} \StringTok{"Malignant tumors"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{webinar_code_files/figure-latex/cor_graph-1.pdf}
 
 \subsection{Machine Learning packages for
 R}\label{machine-learning-packages-for-r}
@@ -991,16 +784,6 @@ Here, I show a classification task.
 
 \subsubsection{Feature Selection}\label{feature-selection}
 
-Machine learning uses so called features (i.e.~variables or attributes)
-to generate predictive models. Using a suitable combination of features
-is essential for obtaining high precision and accuracy. Because too many
-(unspecific) features pose the problem of overfitting the model, we
-generally want to restrict the features in our models to those, that are
-most relevant for the response variable we want to predict. Using as few
-features as possible will also reduce the complexity of our models,
-which means it needs less time and computer power to run and is easier
-to understand.
-
 Performing feature selection on the whole dataset would lead to
 prediction bias, we therefore need to run the whole modeling process on
 the training data alone!
@@ -1010,15 +793,6 @@ the training data alone!
 \item
   Correlation
 \end{itemize}
-
-Often we have features that are highly correlated and thus provide
-redundant information. By eliminating highly correlated features we can
-avoid a predictive bias for the information contained in these features.
-This also shows us, that when we want to make statements about the
-biological/ medical importance of specific features, we need to keep in
-mind that just because they are suitable to predicting an outcome they
-are not necessarily causal - they could simply be correlated with causal
-factors.
 
 Correlations between all features are calculated and visualised with the
 \emph{corrplot} package. I am then removing all features with a
@@ -1144,24 +918,6 @@ as well, like feature selection processes in machine learning.
   Automatic Grid
 \end{itemize}
 
-There are two ways to tune an algorithm in the Caret R package, the
-first is by allowing the system to do it automatically. This can be done
-by setting the tuneLength to indicate the number of different values to
-try for each algorithm parameter.
-
-This only supports integer and categorical algorithm parameters, and it
-makes a crude guess as to what values to try, but it can get you up and
-running very quickly.
-
-One search strategy that we can use is to try random values within a
-range.
-
-This can be good if we are unsure of what the value might be and we want
-to overcome any biases we may have for setting the parameter (like the
-suggested equation above).
-
-Let's try a random search for mtry using caret:
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{set.seed}\NormalTok{(}\DecValTok{42}\NormalTok{)}
@@ -1178,9 +934,6 @@ Let's try a random search for mtry using caret:
                          \DataTypeTok{tuneLength =} \DecValTok{15}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-When you specify \texttt{savePredictions\ =\ TRUE}, you can access the
-cross-validation resuls with \texttt{model\_rf\$pred}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1222,26 +975,12 @@ cross-validation resuls with \texttt{model\_rf\$pred}.
 \includegraphics{webinar_code_files/figure-latex/unnamed-chunk-37-1.pdf}
 
 \begin{itemize}
-\tightlist
 \item
   Manual Grid
-\end{itemize}
-
-The second way to search algorithm parameters is to specify a tune grid
-manually. In the grid, each algorithm parameter can be specified as a
-vector of possible values. These vectors combine to define all the
-possible combinations to try.
-
-\begin{itemize}
-\tightlist
 \item
   mtry: Number of variables randomly sampled as candidates at each
   split.
 \end{itemize}
-
-By default the only parameter you can tune for a random forest is mtry.
-However you can still pass the others parameters to train. But those
-will have a fix value an so won't be tuned by train.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1320,17 +1059,25 @@ deep learning.
 \end{Shaded}
 
 \begin{verbatim}
-##  Connection successful!
+## 
+## H2O is not running yet, starting it now...
+## 
+## Note:  In case of errors look at the following log files:
+##     /var/folders/k5/yb4lljg51hg2vt_pt6nk9rcr0000gp/T//RtmppNiN8H/h2o_Shirin_started_from_r.out
+##     /var/folders/k5/yb4lljg51hg2vt_pt6nk9rcr0000gp/T//RtmppNiN8H/h2o_Shirin_started_from_r.err
+## 
+## 
+## Starting H2O JVM and connecting: ........ Connection successful!
 ## 
 ## R is connected to the H2O cluster: 
-##     H2O cluster uptime:         37 minutes 47 seconds 
+##     H2O cluster uptime:         11 seconds 447 milliseconds 
 ##     H2O cluster version:        3.10.3.6 
-##     H2O cluster version age:    1 month and 6 days  
-##     H2O cluster name:           H2O_started_from_R_s_glan02_ogq244 
+##     H2O cluster version age:    1 month and 9 days  
+##     H2O cluster name:           H2O_started_from_R_Shirin_tvy462 
 ##     H2O cluster total nodes:    1 
-##     H2O cluster total memory:   3.30 GB 
-##     H2O cluster total cores:    8 
-##     H2O cluster allowed cores:  8 
+##     H2O cluster total memory:   1.78 GB 
+##     H2O cluster total cores:    2 
+##     H2O cluster allowed cores:  2 
 ##     H2O cluster healthy:        TRUE 
 ##     H2O Connection ip:          localhost 
 ##     H2O Connection port:        54321 
@@ -1352,12 +1099,6 @@ deep learning.
   |=================================================================| 100%
 \end{verbatim}
 
-We can now access all functions from the \textbf{h2o} package that are
-built to work on H2O Frames. A useful such function is
-\emph{h2o.describe()}. It is similar to base R's \emph{summary()}
-function but outputs many more descriptive measures for our data. To get
-a good overview about these measures, I am going to plot them.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{h2o.describe}\NormalTok{(bc_data_hf) %>%}
@@ -1376,11 +1117,6 @@ a good overview about these measures, I am going to plot them.
 \end{Shaded}
 
 \begin{center}\includegraphics{webinar_code_files/figure-latex/h2o_describe-1} \end{center}
-
-I am also interested in the correlation between features and the output.
-We can use the \emph{h2o.cor()} function to calculate the correlation
-matrix. It is again much easier to understand the data when we visualize
-it, so I am going to create another plot.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1408,18 +1144,6 @@ it, so I am going to create another plot.
 
 \paragraph{Training, validation and test
 data}\label{training-validation-and-test-data-1}
-
-Now we can use the \emph{h2o.splitFrame()} function to split the data
-into training, validation and test data. Here, I am using 70\% for
-training and 15\% each for validation and testing. We could also just
-split the data into two sections, a training and test set but when we
-have sufficient samples, it is a good idea to evaluate model performance
-on an independent test set on top of training with a validation set.
-Because we can easily overfit a model, we want to get an idea about how
-generalizable it is - this we can only assess by looking at how well it
-works on previously unknown data.
-
-I am also defining response and feature column names now.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1472,10 +1196,6 @@ I am also defining response and feature column names now.
 ##  malignant:32
 \end{verbatim}
 
-We can also run a PCA on the training data, using the
-\emph{h2o.prcomp()} function to calculate the singular value
-decomposition of the Gram matrix with the power method.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{pca <-}\StringTok{ }\KeywordTok{h2o.prcomp}\NormalTok{(}\DataTypeTok{training_frame =} \NormalTok{train,}
@@ -1492,6 +1212,8 @@ decomposition of the Gram matrix with the power method.
 ## 
   |                                                                       
   |                                                                 |   0%
+  |                                                                       
+  |====================================================             |  80%
   |                                                                       
   |=================================================================| 100%
 \end{verbatim}
@@ -1511,20 +1233,6 @@ decomposition of the Gram matrix with the power method.
 \includegraphics{webinar_code_files/figure-latex/pca_features-1.pdf}
 
 \paragraph{Classification}\label{classification-1}
-
-We can use the \texttt{h2o.grid()} function to perform a Random Grid
-Search (RGS). We could also test all possible combinations of parameters
-with Cartesian Grid or exhaustive search, but RGS is much faster when we
-have a large number of possible combinations and usually finds
-sufficiently accurate models.
-
-For RGS, we first define a set of hyper-parameters and search criteria
-to fine-tune our models. Because there are many hyper-parameters, each
-with a range of possible values, we want to find an (ideally) optimal
-combination to maximize our model's accuracy. We can also specify how
-long we want to run the grid search for. Based on the results of each
-model tested in the grid, we can choose the one with the highest
-accuracy or best performance for the question on hand.
 
 \subparagraph{Random Forest}\label{random-forest}
 
@@ -1566,17 +1274,6 @@ accuracy or best performance for the question on hand.
 \end{Highlighting}
 \end{Shaded}
 
-We now want to extract the best model from the grid model list. What
-makes a model \emph{the best} depends on the question you want to
-address with it: in some cases, the model with highest AUC is the most
-suitable, or the one with the lowest mean squared error, etc. We first
-use the \texttt{h2o.getGrid()} function to sort all models by the
-quality metric we choose (depending on the metric, you want it ordered
-by descending or ascending values). We can then get the model that's the
-first in the list to work with further. This model's hyper-parameters
-can be found with \texttt{best\_model@allparameters}. You can now work
-with your best model as with any regular model in \textbf{h2o}.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# performance metrics where smaller is better -> order with decreasing = FALSE}
@@ -1610,12 +1307,6 @@ with your best model as with any regular model in \textbf{h2o}.
 \end{Highlighting}
 \end{Shaded}
 
-The ultimate performance test for our model will be it's prediction
-accuracy on the test set it hasn't seen before. Here, I will compare the
-AUC and mean squared error for each best model from before. You could of
-course look at any other quality metric that is most appropriate for
-your model.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{files <-}\StringTok{ }\KeywordTok{list.files}\NormalTok{(}\DataTypeTok{path =} \StringTok{"models"}\NormalTok{)}
@@ -1623,8 +1314,8 @@ your model.
 
 \NormalTok{for (model_id in rf_models) \{}
   
-  \NormalTok{path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"U:}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Github_blog}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Webinar}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Webinar_ML_for_disease}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{models}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{"}\NormalTok{, model_id)}
-  \CommentTok{#path <- paste0("/Users/Shirin/Documents/Github/Webinar_ML_for_disease/models/", model_id)}
+  \CommentTok{#path <- paste0("U:\textbackslash{}\textbackslash{}Github_blog\textbackslash{}\textbackslash{}Webinar\textbackslash{}\textbackslash{}Webinar_ML_for_disease\textbackslash{}\textbackslash{}models\textbackslash{}\textbackslash{}", model_id)}
+  \NormalTok{path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"/Users/Shirin/Documents/Github/Webinar_ML_for_disease/models/"}\NormalTok{, model_id)}
   \NormalTok{best_model <-}\StringTok{ }\KeywordTok{h2o.loadModel}\NormalTok{(path)}
   \NormalTok{mse_auc_test <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{model_id =} \NormalTok{model_id, }
                              \DataTypeTok{mse =} \KeywordTok{h2o.mse}\NormalTok{(}\KeywordTok{h2o.performance}\NormalTok{(best_model, test)),}
@@ -1742,8 +1433,8 @@ your model.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{rf_model <-}\StringTok{ }\KeywordTok{h2o.loadModel}\NormalTok{(}\StringTok{"U:}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Github_blog}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Webinar}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Webinar_ML_for_disease}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{models}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{rf_grid_model_6"}\NormalTok{)}
-\CommentTok{#rf_model <- h2o.loadModel("models/rf_grid_model_6")}
+\CommentTok{#rf_model <- h2o.loadModel("U:\textbackslash{}\textbackslash{}Github_blog\textbackslash{}\textbackslash{}Webinar\textbackslash{}\textbackslash{}Webinar_ML_for_disease\textbackslash{}\textbackslash{}models\textbackslash{}\textbackslash{}rf_grid_model_6")}
+\NormalTok{rf_model <-}\StringTok{ }\KeywordTok{h2o.loadModel}\NormalTok{(}\StringTok{"models/rf_grid_model_6"}\NormalTok{)}
 \CommentTok{#summary(rf_model)}
 \CommentTok{#str(rf_model)}
 \end{Highlighting}
@@ -1763,9 +1454,6 @@ your model.
 \end{Highlighting}
 \end{Shaded}
 
-One performance metric we are interested in is the mean per class error
-for training and validation data.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{h2o.mean_per_class_error}\NormalTok{(rf_model, }\DataTypeTok{train =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{valid =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{xval =} \OtherTok{TRUE}\NormalTok{)}
@@ -1776,10 +1464,6 @@ for training and validation data.
 ##       train       valid        xval 
 ## 0.024674571 0.007042254 0.023097284
 \end{verbatim}
-
-The confusion matrix tells us, how many classes have been predicted
-correctly and how many predictions were accurate. Here, we see the
-errors in predictions on validation data
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1795,8 +1479,6 @@ errors in predictions on validation data
 ## Totals        70        36 0.009434  =1/106
 \end{verbatim}
 
-We can also plot the classification error.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{plot}\NormalTok{(rf_model,}
@@ -1806,13 +1488,6 @@ We can also plot the classification error.
 \end{Shaded}
 
 \begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-53-1} \end{center}
-
-Next to the classification error, we are usually interested in the
-logistic loss (negative log-likelihood or log loss). It describes the
-sum of errors for each sample in the training or validation data or the
-negative logarithm of the likelihood of error for a given prediction/
-classification. Simply put, the lower the loss, the better the model (if
-we ignore potential overfitting).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1834,10 +1509,6 @@ we ignore potential overfitting).
 
 \begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-55-1} \end{center}
 
-We can also plot the mean squared error (MSE). The MSE tells us the
-average of the prediction errors squared, i.e.~the estimator's variance
-and bias. The closer to zero, the better a model.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{plot}\NormalTok{(rf_model,}
@@ -1847,14 +1518,6 @@ and bias. The closer to zero, the better a model.
 \end{Shaded}
 
 \begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-56-1} \end{center}
-
-Next, we want to know the area under the curve (AUC). AUC is an
-important metric for measuring binary classification model performances.
-It gives the area under the curve, i.e.~the integral, of true positive
-vs false positive rates. The closer to 1, the better a model. AUC is
-especially useful, when we have unbalanced datasets (meaning datasets
-where one class is much more common than the other), because it is
-independent of class labels.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1885,11 +1548,6 @@ independent of class labels.
 \begin{verbatim}
 ## [1] 0.9890496
 \end{verbatim}
-
-A good model should find an optimal balance between accuracy on training
-and test data. A model that has 0\% error on the training data but 40\%
-error on the test data is in effect useless. It overfit on the training
-data and is thus not able to generalize to unknown data.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1930,9 +1588,6 @@ data and is thus not able to generalize to unknown data.
 ## Gains/Lift Table: Extract with `h2o.gainsLift(<model>, <data>)` or `h2o.gainsLift(<model>, valid=<T/F>, xval=<T/F>)`
 \end{verbatim}
 
-Plotting the test performance's AUC plot shows us approximately how good
-the predictions are.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{plot}\NormalTok{(perf)}
@@ -1940,9 +1595,6 @@ the predictions are.
 \end{Shaded}
 
 \begin{center}\includegraphics{webinar_code_files/figure-latex/auc_curve-1} \end{center}
-
-We also want to know the log loss, MSE and AUC values, as well as other
-model metrics for the test data:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2004,21 +1656,6 @@ model metrics for the test data:
 ## 5  70  25   0   7 1.000000 0.781250 0.000000 0.218750   4
 ## 6  70  24   0   8 1.000000 0.750000 0.000000 0.250000   5
 \end{verbatim}
-
-The final predictions with probabilities can be extracted with the
-\emph{h2o.predict()} function. Beware though, that the number of correct
-and wrong classifications can be slightly different from the confusion
-matrix above. Here, I combine the predictions with the actual test
-diagnoses and classes into a data frame. For plotting I also want to
-have a column, that tells me whether the predictions were correct. By
-default, a prediction probability above 0.5 will get scored as a
-prediction for the respective category. I find it often makes sense to
-be more stringent with this, though and set a higher threshold.
-Therefore, I am creating another column with stringent predictions,
-where I only count predictions that were made with more than 80\%
-probability. Everything that does not fall within this range gets scored
-as ``uncertain''. For these stringent predictions, I am also creating a
-column that tells me whether they were accurate.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2170,15 +1807,11 @@ category listing for \textbf{machine\_learning} on my blog}.
 
 \begin{verbatim}
 ## R version 3.3.3 (2017-03-06)
-## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 7 x64 (build 7601) Service Pack 1
+## Platform: x86_64-apple-darwin13.4.0 (64-bit)
+## Running under: macOS Sierra 10.12.3
 ## 
 ## locale:
-## [1] LC_COLLATE=English_United States.1252 
-## [2] LC_CTYPE=English_United States.1252   
-## [3] LC_MONETARY=English_United States.1252
-## [4] LC_NUMERIC=C                          
-## [5] LC_TIME=English_United States.1252    
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 ## 
 ## attached base packages:
 ## [1] stats4    parallel  stats     graphics  grDevices utils     datasets 
@@ -2187,12 +1820,12 @@ category listing for \textbf{machine\_learning} on my blog}.
 ## other attached packages:
 ##  [1] ggrepel_0.6.5        reshape2_1.4.2       h2o_3.10.3.6        
 ##  [4] corrplot_0.77        plyr_1.8.4           xgboost_0.6-4       
-##  [7] randomForest_4.6-12  caret_6.0-73         lattice_0.20-34     
-## [10] doParallel_1.0.10    iterators_1.0.8      foreach_1.4.3       
-## [13] igraph_1.0.1         tidyr_0.6.1          dplyr_0.5.0         
-## [16] pcaGoPromoter_1.18.0 Biostrings_2.42.1    XVector_0.14.0      
-## [19] IRanges_2.8.1        S4Vectors_0.12.1     BiocGenerics_0.20.0 
-## [22] ellipse_0.3-8        ggplot2_2.2.1.9000  
+##  [7] randomForest_4.6-12  dplyr_0.5.0          caret_6.0-73        
+## [10] lattice_0.20-34      doParallel_1.0.10    iterators_1.0.8     
+## [13] foreach_1.4.3        tidyr_0.6.1          pcaGoPromoter_1.18.0
+## [16] Biostrings_2.42.1    XVector_0.14.0       IRanges_2.8.1       
+## [19] S4Vectors_0.12.1     BiocGenerics_0.20.0  ellipse_0.3-8       
+## [22] ggplot2_2.2.1       
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_0.12.9          class_7.3-14         assertthat_0.1      
@@ -2200,17 +1833,17 @@ category listing for \textbf{machine\_learning} on my blog}.
 ##  [7] backports_1.0.5      MatrixModels_0.4-1   RSQLite_1.1-2       
 ## [10] evaluate_0.10        e1071_1.6-8          zlibbioc_1.20.0     
 ## [13] lazyeval_0.2.0       minqa_1.2.4          data.table_1.10.4   
-## [16] SparseM_1.76         car_2.1-4            nloptr_1.0.4        
+## [16] SparseM_1.74         car_2.1-4            nloptr_1.0.4        
 ## [19] Matrix_1.2-8         rmarkdown_1.3        labeling_0.3        
 ## [22] splines_3.3.3        lme4_1.1-12          stringr_1.2.0       
 ## [25] RCurl_1.95-4.8       munsell_0.4.3        mgcv_1.8-17         
 ## [28] htmltools_0.3.5      nnet_7.3-12          tibble_1.2          
 ## [31] codetools_0.2-15     MASS_7.3-45          bitops_1.0-6        
-## [34] ModelMetrics_1.1.0   grid_3.3.3           jsonlite_1.3        
-## [37] nlme_3.1-131         gtable_0.2.0         DBI_0.6             
+## [34] ModelMetrics_1.1.0   grid_3.3.3           nlme_3.1-131        
+## [37] jsonlite_1.2         gtable_0.2.0         DBI_0.5-1           
 ## [40] magrittr_1.5         scales_0.4.1         stringi_1.1.2       
 ## [43] RColorBrewer_1.1-2   tools_3.3.3          Biobase_2.34.0      
-## [46] pbkrtest_0.4-6       yaml_2.1.14          AnnotationDbi_1.36.2
+## [46] pbkrtest_0.4-6       yaml_2.1.14          AnnotationDbi_1.36.0
 ## [49] colorspace_1.3-2     memoise_1.0.0        knitr_1.15.1        
 ## [52] quantreg_5.29
 \end{verbatim}

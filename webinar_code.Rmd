@@ -3,9 +3,9 @@ title: "Building meaningful machine learning models for disease prediction"
 author: "Dr. Shirin Glander"
 date: "March 31, 2017"
 output:
+  html_document: default
   pdf_document:
     keep_tex: yes
-  html_document: default
 ---
 
 ## Webinar for the [ISDS R Group](http://www.syndromic.org/cop/r)
@@ -215,11 +215,8 @@ ggplot(data = pcaOutput2, aes(x = PC1, y = PC2, group = groups, color = groups))
          y = paste0("PC2: ", round(pcaOutput$pov[2], digits = 2) * 100, "% variance")) 
 ```
 
-<br>
-
-- Multidimensional Scaling 
-
-```{r mds_plot}
+```{r mds_plot, echo=FALSE, eval=FALSE}
+# Multidimensional Scaling 
 library(dplyr)
 select(bc_data, -1) %>%
   dist() %>%
@@ -230,11 +227,8 @@ select(bc_data, -1) %>%
     geom_point()
 ```
 
-<br>
-
-- t-SNE dimensionality reduction 
-
-```{r tsne_plot, cache=TRUE}
+```{r tsne_plot, echo=FALSE, eval=FALSE}
+# t-SNE dimensionality reduction 
 library(tsne)
 
 select(bc_data, -1) %>%
@@ -257,11 +251,8 @@ gather(bc_data, x, y, clump_thickness:mitosis) %>%
     facet_wrap( ~ x, scales = "free", ncol = 3)
 ```
 
-<br>
-
-- Correlation graphs
-
-```{r warning=FALSE, message=FALSE, fig.width=10, fig.height=5}
+```{r warning=FALSE, message=FALSE, fig.width=10, fig.height=5, echo=FALSE, eval=FALSE}
+# - Correlation graphs
 library(dplyr)
 co_mat_benign <- filter(bc_data, classes == "benign") %>%
   select(-1) %>%
@@ -295,8 +286,8 @@ c_g_benign_2 <- cluster_fast_greedy(g_benign_2)
 c_g_malignant_2 <- cluster_fast_greedy(g_malignant_2) 
 ```
 
-```{r cor_graph, warning=FALSE, message=FALSE, fig.width=12, fig.height=7}
-par(mfrow=c(1,2))
+```{r cor_graph, warning=FALSE, message=FALSE, fig.width=12, fig.height=7, echo=FALSE, eval=FALSE}
+par(mfrow = c(1,2))
 
 plot(c_g_benign_2, g_benign_2,
      vertex.size = colSums(co_mat_benign) * 10,
@@ -623,13 +614,9 @@ ggplot(results, aes(x = prediction, y = benign, color = correct, shape = correct
 
 ### Feature Selection
 
-Machine learning uses so called features (i.e. variables or attributes) to generate predictive models. Using a suitable combination of features is essential for obtaining high precision and accuracy. Because too many (unspecific) features pose the problem of overfitting the model, we generally want to restrict the features in our models to those, that are most relevant for the response variable we want to predict. Using as few features as possible will also reduce the complexity of our models, which means it needs less time and computer power to run and is easier to understand.
-
 Performing feature selection on the whole dataset would lead to prediction bias, we therefore need to run the whole modeling process on the training data alone!
 
 - Correlation
-
-Often we have features that are highly correlated and thus provide redundant information. By eliminating highly correlated features we can avoid a predictive bias for the information contained in these features. This also shows us, that when we want to make statements about the biological/ medical importance of specific features, we need to keep in mind that just because they are suitable to predicting an outcome they are not necessarily causal - they could simply be correlated with causal factors.
 
 Correlations between all features are calculated and visualised with the *corrplot* package. I am then removing all features with a correlation higher than 0.7, keeping the feature with the lower mean.
 
@@ -720,16 +707,6 @@ train_data_ga <- train_data[, c(1, which(colnames(train_data) %in% model_ga$ga$f
 
 - Automatic Grid
 
-There are two ways to tune an algorithm in the Caret R package, the first is by allowing the system to do it automatically. This can be done by setting the tuneLength to indicate the number of different values to try for each algorithm parameter.
-
-This only supports integer and categorical algorithm parameters, and it makes a crude guess as to what values to try, but it can get you up and running very quickly.
-
-One search strategy that we can use is to try random values within a range.
-
-This can be good if we are unsure of what the value might be and we want to overcome any biases we may have for setting the parameter (like the suggested equation above).
-
-Let’s try a random search for mtry using caret:
-
 ```{r eval=FALSE}
 set.seed(42)
 model_rf_tune_auto <- caret::train(classes ~ .,
@@ -744,8 +721,6 @@ model_rf_tune_auto <- caret::train(classes ~ .,
                                                   search = "random"),
                          tuneLength = 15)
 ```
-
-When you specify `savePredictions = TRUE`, you can access the cross-validation resuls with `model_rf$pred`.
 
 ```{r echo=FALSE, eval=FALSE}
 save(model_rf_tune_auto, file = "models/model_rf_tune_auto.RData")
@@ -764,11 +739,7 @@ plot(model_rf_tune_auto)
 
 - Manual Grid
 
-The second way to search algorithm parameters is to specify a tune grid manually. In the grid, each algorithm parameter can be specified as a vector of possible values. These vectors combine to define all the possible combinations to try.
-
 - mtry: Number of variables randomly sampled as candidates at each split.
-
-By default the only parameter you can tune for a random forest is mtry. However you can still pass the others parameters to train. But those will have a fix value an so won't be tuned by train.
 
 ```{r eval=FALSE}
 set.seed(42)
@@ -813,8 +784,6 @@ h2o.init(nthreads = -1)
 bc_data_hf <- as.h2o(bc_data)
 ```
 
-We can now access all functions from the **h2o** package that are built to work on H2O Frames. A useful such function is *h2o.describe()*. It is similar to base R's *summary()* function but outputs many more descriptive measures for our data. To get a good overview about these measures, I am going to plot them.
-
 ```{r h2o_describe, warning=FALSE, message=FALSE, fig.width=6, fig.height=6, fig.align='center', tidy=FALSE}
 h2o.describe(bc_data_hf) %>%
   gather(x, y, Zeros:Sigma) %>%
@@ -829,8 +798,6 @@ h2o.describe(bc_data_hf) %>%
          y = "Value",
          color = "")
 ```
-
-I am also interested in the correlation between features and the output. We can use the *h2o.cor()* function to calculate the correlation matrix. It is again much easier to understand the data when we visualize it, so I am going to create another plot.
 
 ```{r corr_plot, warning=FALSE, message=FALSE}
 library(reshape2) # for melting
@@ -856,10 +823,6 @@ melt(cor) %>%
 
 #### Training, validation and test data
 
-Now we can use the *h2o.splitFrame()* function to split the data into training, validation and test data. Here, I am using 70% for training and 15% each for validation and testing. We could also just split the data into two sections, a training and test set but when we have sufficient samples, it is a good idea to evaluate model performance on an independent test set on top of training with a validation set. Because we can easily overfit a model, we want to get an idea about how generalizable it is - this we can only assess by looking at how well it works on previously unknown data.
-
-I am also defining response and feature column names now.
-
 ```{r tidy=FALSE}
 splits <- h2o.splitFrame(bc_data_hf, 
                          ratios = c(0.7, 0.15), 
@@ -878,8 +841,6 @@ summary(train$classes, exact_quantiles = TRUE)
 summary(valid$classes, exact_quantiles = TRUE)
 summary(test$classes, exact_quantiles = TRUE)
 ```
-
-We can also run a PCA on the training data, using the *h2o.prcomp()* function to calculate the singular value decomposition of the Gram matrix with the power method.
 
 ```{r pca_features}
 pca <- h2o.prcomp(training_frame = train,
@@ -902,11 +863,6 @@ ggplot(eigenvec, aes(x = pc1, y = pc2, label = label)) +
 <br>
 
 #### Classification
-
-We can use the `h2o.grid()` function to perform a Random Grid Search (RGS). We could also test all possible combinations of parameters with Cartesian Grid or exhaustive search, but RGS is much faster when we have a large number of possible combinations and usually finds sufficiently accurate models.
-
-For RGS, we first define a set of hyper-parameters and search criteria to fine-tune our models. Because there are many hyper-parameters, each with a range of possible values, we want to find an (ideally) optimal combination to maximize our model's accuracy. 
-We can also specify how long we want to run the grid search for. Based on the results of each model tested in the grid, we can choose the one with the highest accuracy or best performance for the question on hand.
 
 ##### Random Forest
 
@@ -944,8 +900,6 @@ rf_grid <- h2o.grid(algorithm = "randomForest", # h2o.randomForest,
                     )
 ```
 
-We now want to extract the best model from the grid model list. What makes a model *the best* depends on the question you want to address with it: in some cases, the model with highest AUC is the most suitable, or the one with the lowest mean squared error, etc. We first use the `h2o.getGrid()` function to sort all models by the quality metric we choose (depending on the metric, you want it ordered by descending or ascending values). We can then get the model that's the first in the list to work with further. This model's hyper-parameters can be found with `best_model@allparameters`. You can now work with your best model as with any regular model in **h2o**.
-
 ```{r eval=FALSE}
 # performance metrics where smaller is better -> order with decreasing = FALSE
 sort_options_1 <- c("mean_per_class_error", "mse", "err", "logloss")
@@ -977,16 +931,14 @@ for (sort_by_2 in sort_options_2) {
 }
 ```
 
-The ultimate performance test for our model will be it's prediction accuracy on the test set it hasn't seen before. Here, I will compare the AUC and mean squared error for each best model from before. You could of course look at any other quality metric that is most appropriate for your model.
-
 ```{r auc_mse, fig.height=5, fig.width=8}
 files <- list.files(path = "models")
 rf_models <- files[grep("rf_grid_model", files)]
 
 for (model_id in rf_models) {
   
-  path <- paste0("U:\\Github_blog\\Webinar\\Webinar_ML_for_disease\\models\\", model_id)
-  #path <- paste0("/Users/Shirin/Documents/Github/Webinar_ML_for_disease/models/", model_id)
+  #path <- paste0("U:\\Github_blog\\Webinar\\Webinar_ML_for_disease\\models\\", model_id)
+  path <- paste0("/Users/Shirin/Documents/Github/Webinar_ML_for_disease/models/", model_id)
   best_model <- h2o.loadModel(path)
   mse_auc_test <- data.frame(model_id = model_id, 
                              mse = h2o.mse(h2o.performance(best_model, test)),
@@ -1070,8 +1022,8 @@ finalRf_predictions_comb %>%
 ```
 
 ```{r }
-rf_model <- h2o.loadModel("U:\\Github_blog\\Webinar\\Webinar_ML_for_disease\\models\\rf_grid_model_6")
-#rf_model <- h2o.loadModel("models/rf_grid_model_6")
+#rf_model <- h2o.loadModel("U:\\Github_blog\\Webinar\\Webinar_ML_for_disease\\models\\rf_grid_model_6")
+rf_model <- h2o.loadModel("models/rf_grid_model_6")
 #summary(rf_model)
 #str(rf_model)
 ```
@@ -1081,27 +1033,19 @@ h2o.varimp_plot(rf_model)
 #h2o.varimp(rf_model)
 ```
 
-One performance metric we are interested in is the mean per class error for training and validation data.
-
 ```{r }
 h2o.mean_per_class_error(rf_model, train = TRUE, valid = TRUE, xval = TRUE)
 ```
 
-The confusion matrix tells us, how many classes have been predicted correctly and how many predictions were accurate. Here, we see the errors in predictions on validation data
-
 ```{r }
 h2o.confusionMatrix(rf_model, valid = TRUE)
 ```
-
-We can also plot the classification error.
 
 ```{r fig.width=8, fig.height=4, fig.align='center'}
 plot(rf_model,
      timestep = "number_of_trees",
      metric = "classification_error")
 ```
-
-Next to the classification error, we are usually interested in the logistic loss (negative log-likelihood or log loss). It describes the sum of errors for each sample in the training or validation data or the negative logarithm of the likelihood of error for a given prediction/ classification. Simply put, the lower the loss, the better the model (if we ignore potential overfitting).
 
 ```{r fig.width=8, fig.height=4, fig.align='center'}
 plot(rf_model,
@@ -1115,15 +1059,11 @@ plot(rf_model,
      metric = "AUC")
 ```
 
-We can also plot the mean squared error (MSE). The MSE tells us the average of the prediction errors squared, i.e. the estimator's variance and bias. The closer to zero, the better a model.
-
 ```{r fig.width=8, fig.height=4, fig.align='center'}
 plot(rf_model,
      timestep = "number_of_trees",
      metric = "rmse")
 ```
-
-Next, we want to know the area under the curve (AUC). AUC is an important metric for measuring binary classification model performances. It gives the area under the curve, i.e. the integral, of true positive vs false positive rates. The closer to 1, the better a model. AUC is especially useful, when we have unbalanced datasets (meaning datasets where one class is much more common than the other), because it is independent of class labels.
 
 ```{r }
 h2o.auc(rf_model, train = TRUE)
@@ -1131,14 +1071,10 @@ h2o.auc(rf_model, valid = TRUE)
 h2o.auc(rf_model, xval = TRUE)
 ```
 
-A good model should find an optimal balance between accuracy on training and test data. A model that has 0% error on the training data but 40% error on the test data is in effect useless. It overfit on the training data and is thus not able to generalize to unknown data.
-
 ```{r fig.width=6, fig.height=5, fig.align='center'}
 perf <- h2o.performance(rf_model, test)
 perf
 ```
-
-Plotting the test performance's AUC plot shows us approximately how good the predictions are.
 
 ```{r auc_curve, fig.width=6, fig.height=5, fig.align='center'}
 plot(perf)
@@ -1154,9 +1090,6 @@ perf@metrics$thresholds_and_metric_scores %>%
          y = "True Positive Rate")
 ```
 
-
-We also want to know the log loss, MSE and AUC values, as well as other model metrics for the test data:
-
 ```{r }
 h2o.logloss(perf)
 h2o.mse(perf)
@@ -1164,8 +1097,6 @@ h2o.auc(perf)
 
 head(h2o.metric(perf))
 ```
-
-The final predictions with probabilities can be extracted with the *h2o.predict()* function. Beware though, that the number of correct and wrong classifications can be slightly different from the confusion matrix above. Here, I combine the predictions with the actual test diagnoses and classes into a data frame. For plotting I also want to have a column, that tells me whether the predictions were correct. By default, a prediction probability above 0.5 will get scored as a prediction for the respective category. I find it often makes sense to be more stringent with this, though and set a higher threshold. Therefore, I am creating another column with stringent predictions, where I only count predictions that were made with more than 80% probability. Everything that does not fall within this range gets scored as "uncertain". For these stringent predictions, I am also creating a column that tells me whether they were accurate.
 
 ```{r}
 finalRf_predictions <- data.frame(actual = as.vector(test$classes), 

@@ -8,11 +8,11 @@ XVector
 Biostrings
 pcaGoPromoter
 tidyr
+foreach
+iterators
+doParallel
 lattice
 caret
 dplyr
 rpart
 rpart.plot
-randomForest
-xgboost
-plyr

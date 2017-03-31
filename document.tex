@@ -155,20 +155,13 @@
 \note{
 	\begin{itemize}
 		\item Welcome everybody!
-		\item Thank you very much for the invitation and the opportunity to present this talk
-		\item I will go over my work on using machine learning models in disease prediction
-		\item I want to specifically give a hands-on demonstration of how you can build meaningful models yourselves using R
+		\item Thank you very much for the invitation!
+		\item In this presentation, I will go over my work on using machine learning models in disease prediction
+		\item I want to specifically give a hands-on demonstration of how you can build meaningful models using R
 		\item I will demonstrate how to evaluate model performance and
-		\item how to optimize models to address different disease-related questions
+		\item how to optimize models to address different disease-related questions using a case study
+		\item all slides and the complete code behind the figures produced in this presentation will be available to you after this talk
 	\end{itemize}
-}
-
-\note{
-	A final word on decision trees. They are proclaimed to be interpretable. Well - maybe some trees are. But once you have enough data, the best performing trees (even pruned) tend to get so large that you cannot even visualize them easily, let alone interpret what is going on. And even in a smaller tree: You can certainly write down the prediction as a rule: you must like the movie because you are older than 23, likes some drama, are female, etc. But as with the logistic - you have not really explained anything - you have no idea why the tree looks the way it does. In fact, trees have that pesky habit of changing under minor sample changes not to mention that due to the heuristic nature of the algorithm, there are many different trees creating the exact same partition in space.
-	
-	Where does this leave us? First of, we should ask what exactly we want interpretability for. For some it is a trust issue - but here I prefer to go with solid evaluation. Our evolved brain can easily be tricked into ?understanding? a model which in fact is completely wrong. For others it is a matter of transparency - my sense is that for that it might be more useful to simple poke the model as a black box by varying the inputs to get a sense of the sensitivity. Say I ask the model what it would have predicted if I was 10 years older than I actually am. This is not exactly consistent with proper IID sampling theories, but in my opinion a fair test.
-	
-	On the final holy grail of using a model to understand a domain, if not even the causal relationships between different variables, many specific approaches have been developed but most of them involve much more stringent rules on the data generation, variability and observability of all relevant information than is usually the case anyway. In fact - the field of observational methods (i.e. TMLE and other double robust estimators) for estimating causal impact really do not care much about the interpretability of a model - because the causal interpretation are derived from the model predictions, not its structure.
 }
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -220,8 +213,12 @@
 	\end{itemize}
 	
 	\begin{itemize}
-		\item Before that, during my BSc and MSc I worked on questions about evolutionary genetics and immune memory in Drosophila
-		\end{itemize}
+		\item Before that, during my BSc and MSc I worked on evolutionary genetics and immune memory in Drosophila
+	\end{itemize}
+	
+	\begin{itemize}
+		\item I am also an R-blogger and dance teacher in my spare time
+	\end{itemize}
 }
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -236,26 +233,16 @@
 
 	\end{frame}
 
-\note{
+\note{	
 	\begin{itemize}
-		\item Now, let's start with the topic about which you're here:
-		\item Machine learning is a powerful approach for developing sophisticated, \\
-			automatic, and objective models for the analysis of complex biomedical data
-		\item Machine learning promises to help physicians make near-perfect diagnoses, ...
-		\item ... choose the best medications for their patients, ...
-		\item ... predict readmissions, ...
-		\item ... identify patients at high-risk for poor outcomes, ...
-		\item ... and in general improve patients' health while minimizing costs. 
-	\end{itemize}
-	
-	\begin{itemize}
+		\item Before I begin, let me give you a short overview over the structure of this talk:
 		\item I titled my talk: "Building meaningful machine learning models for disease prediction"
 		\item with the emphasis on \textbf{meaningful}
-		\item So, first, I want to introduce to you what it is I mean exactly with \textbf{meaningful models}
-		\item Then, I will give you a few examples of how machine learning is currently being used in disease modeling and clinical data science
-		\item Before I delve into the nitty-gritty of modeling, I will quickly recap the most important concepts of ML
+		\item So, after an introduction to how machine learning is currently applied to disease modeling and clinical data science
+		\item I want to introduce to you what I mean exactly when I talk about \textbf{meaningful models}
+		\item Before I delve into the nitty-gritty of hands-on modeling, I will quickly recap the most important concepts of ML
 		\item And finally, I will show how to build ML models in R
-		\item and how to evaluate the performance of such models
+		\item and - most importantly - how to evaluate the performance of such models
 	\end{itemize}
 }
 
@@ -270,8 +257,8 @@
 	\frametitle{ML in disease modeling}
 	
 	\begin{itemize}
-		\item tools that can interpret "big medical data" 
-		\item and provide fast, accurate and actionable information
+		\item tools that can interpret \alert{big medical data}
+		\item and provide \alert{fast, accurate and actionable} information
 		\item for precision or personalized medicine
 	\end{itemize}
 
@@ -280,8 +267,8 @@
 	\alert{Examples:} 
 	\begin{itemize}
 		\item computer-aided diagnosis of breast cancer \\ from mammograms\footcite{Kunio}
-		\item identifying gene defects with facial recognition \\ software\footcite{Levenson}
 		\item identifying signatures of Brain Cancer \\ from MRSI \footcite{doi:10.1146/annurev.bioeng.8.061505.095802}
+		\item identifying gene defects with facial recognition \\ software\footcite{Levenson}
 		\item ... and many more ...
 	\end{itemize}
 
@@ -296,22 +283,13 @@
 
 \note{
 	\begin{itemize}
-		\item there is not a place in medicine where AI doesn't have potential applications:
-		\item more data is being collected that needs to be interpretated
-		\item increasingly data driven diagnosis, e.g. in radiology
-		\item image recognition of e.g. tumors or pneumonia in medical images
-		\item similar to training ML models to recognize images of cats (classification in images)
-		\item ML allows incorporation of data from heterogenous inputs: 
-		\item clinical, genomics, drugs, electronic health records, etc.
-		\item = personalised medicine
-	\end{itemize}
-
-	\begin{itemize}
-		\item A key aspect of precision medicine is the development of informatics tools 
-		\item that can analyze and interpret 'big data' sets 
-		\item in an automated and adaptive fashion 
-		\item while providing accurate and actionable clinical information
-		\item ML based models can improve detection, diagnosis, and therapeutic monitoring of disease
+		\item Machine learning is a powerful approach for developing sophisticated, \\
+			automatic, and objective models for the analysis of data
+		\item Machine learning specifically promises to help physicians make better or faster diagnoses, ...
+		\item ... choose the best medications for their patients, ...
+		\item ... predict readmissions, ...
+		\item ... identify patients at high-risk for poor outcomes, ...
+		\item ... and in general improve patients' health while minimizing costs. 
 	\end{itemize}
 
 	\begin{itemize}
@@ -320,33 +298,42 @@
 		\item a patient with a rare difficult condition can be matched to similar cases from the past
 		\item faster diagnosis, better treatment
 	\end{itemize}
+
+	\begin{itemize}
+		\item there is not really a place in medicine where AI doesn't have potential applications:
+		\item more and more data is being collected that needs to be interpreted,
+		\item meaning that diagnosis is increasingly data driven, e.g. in radiology.
+		\item Moreover, ML allows the incorporation of data from heterogenous inputs: 
+		\item clinical, genomics, drugs, electronic health records, etc.
+		\item to predict e.g. drug responses, relapses, etc. for individual patients
+		\item This way, ML will be a step towards personalized or precision medicine
+	\end{itemize}
 }
 
 \note{	
 	\begin{itemize}
-		\item identifying breast cancer, lung cancer, osteoporosis, brain tumors, etc. from medical images
-		\item predicting response of different cancer types to different treatments
-		\item Computer-Aided Diagnosis (CAD) has become one of the major research subjects in medical imaging and diagnostic radiology
-		\item With CAD, radiologists use the computer output as a 'second opinion' and make the final decisions
-		\item In vivo magnetic resonance spectroscopy imaging (MRSI) allows noninvasive characterization 
-		\item and quantification of molecular markers of potentially high clinical utility 
-		\item for improving detection, identification, and treatment for a variety of diseases, most notably brain cancers
+		\item Examples for how ML is already being used in the medical field today come mainly from
+		\item image recognition
+		\item this is similar to training ML models to recognize images of cats (classification in images)
+		\item This way, ML models can be trained to identify breast cancer, lung cancer, osteoporosis, brain tumors, etc. \\ from medical images
+		\item With Computer-Aided Diagnosis (CAD), radiologists use the computer output as a 'second opinion' and make the final decisions
 	\end{itemize}
 
 	\begin{itemize}
-		\item facial analysis technology aids diagnoses of genetic disorders
-		\item researchers at the University of Oxford in the United Kingdom
-		\item Face2Gene uses machine learning
-		\item helps geneticists narrow down possible disorders that often involve dysmorphic facial features
+		\item Another example is that facial analysis technology can help diagnose genetic disorders that often involve dysmorphic facial features, like trisomies
+		\item Researchers at the University of Oxford in the United Kingdom have the developed
+		\item Face2Gene, an app that uses machine learning.
+		\item Doctors can upload a photo of patient's face to get a prediction for the type of genetic disorder he or she might have
 	\end{itemize}
 
 	\begin{itemize}
-		\item doctors are still important!
-		\item computer does the tasks that we humans are not good at, like interpreting complex images
-		\item we have more data than humans can manage to make sense of (e.g. genomics data)
-		\item the clinicians will be freed up to think about best treatment options and talk more with the patients
-		\item good models are built on strong knowledge of the question and the biology behind it
-		\item features need to be evaluated in context
+		\item What I want to mention at the end is that ML is not meant to replace medical professionals!
+		\item Doctors are still important!
+		\item But the computer will do the tasks that we humans are not good at, like interpreting complex images.
+		\item Today, we already collect more data than humans can manage to make sense of (e.g. genomics data),
+		\item so the clinicians will be freed up to think about best treatment options and talk more with the patients
+		\item Moreover, good models are built on strong knowledge of the question and the biology behind it
+		\item and features need to be evaluated in context
 	\end{itemize}
 }
 
@@ -361,7 +348,7 @@
 \begin{frame}
 	
 	\begin{center}
-		\usebeamerfont*{frametitle} \usebeamercolor[fg]{frametitle} {\Huge{\textbf{Can we trust \\ \vspace{0.3cm} a model?}}}
+		\usebeamerfont*{frametitle} \usebeamercolor[fg]{frametitle} {\Huge{\textbf{Can we trust \\ \vspace{0.3cm} ML  models?}}}
 	\end{center}
 	
 	\vspace{0.5cm}
@@ -384,27 +371,33 @@
 
 \note{
 	\begin{itemize}
-		\item the elephant in the room
-		\item inherent problem with ML models: they are hard (or impossible) to interpret
-		\item machine learning algorithms tend to create nonlinear, 
+		\item I want to begin with the arguably central question concerning ML:
+		\item Can we trust them?
+		\item I consider this kind of the elephant in the room when we hear all the amazing things that ML models can do, like how they beat doctors in diagnosing cancers, etc.
+		\item And when we test models on known data, it is easy to be wowed by high prediction accuracy. 
+		\item But what we really want, is to be able to deploy our models to truly unknown data and still be confident that we can trust them
+		\item Trust is not an easy thing to achieve, because the inherent problem with ML models is that they are hard (or impossible) to interpret
+		\item This is because ML algorithms model high-degree interactions between variables 
+		\item meaning the effect of combining many variables together
+		\item This way, they tend to create nonlinear, 
 		\item non-monotonic, 
 		\item non-polynomial, 
 		\item and even non-continuous functions 
 		\item that approximate the relationship between independent and dependent variables in a data set
-		\item most ML algorithms model high-degree interactions between variables (meaning the effect of combining many?i.e., more than two or three?variables together)
+		\item This complexity, which bestows the extraordinary predictive abilities on machine learning algorithms also makes the answers these algorithms produce difficult (or even impossible) to understand.
+		\item and we humans, especially non-experts in modeling, will have a hard time trusting a model that they don't understand
+		\item difficulties in interpretation still present maybe the biggest barrier for the widespread, practical use of ML in clinical settings
 	\end{itemize}
-	
+}
+
+\note{	
 	\begin{itemize}
-		\item When working with data you should be asking yourselves some very hard questions: 
+		\item So, when working with data we should be asking ourselves some very hard questions: 
 		\item do I understand my data? 
-		\item Do I understand the model and answers my machine learning algorithm is giving me? 
+		\item Do I understand the model and the answers my machine learning algorithm is giving me? 
 		\item And do I trust these answers? 
-		\item Unfortunately, the complexity that bestows the extraordinary predictive abilities on machine learning algorithms also makes the answers the algorithms produce hard to understand, 
-		\item and maybe even hard to trust.
-		\item almost by definition one cannot really understand a good model
-		\item difficulties in interpretation still present a barrier for the widespread, practical use of ML
 		\item trusting models and results is a general requirement for good (data) science
-		\item we want to understand them as well as possible
+		\item so we need to make sure, that we are modeling is actually meaningful
 	\end{itemize}
 }
 
@@ -442,32 +435,29 @@
 
 \note{
 	\begin{itemize}
-		\item With a little bit of practice, anybody can build machine learning models
-		\item what is hard though, is to build 'good' or 'meaningful' models
-		\item I want to begin with an introduction to the main question of my talk: 
-		\item what makes a model \textsl{good} or \textsl{meaningful}?
+		\item So, what makes a model 'meaningful'?
+		\item With a little bit of practice, most anybody can build machine learning models.
+		\item What is hard though, is to build 'good' or 'meaningful' models
 	\end{itemize}
 	
 	\begin{enumerate}
-		\item it needs to be generalizable, i.e. it needs to perform well on unseen data
-		\item It answers a \textbf{specific} question or addresses a specific problem, \\
+		\item This means that the model needs to be generalizable, i.e. it needs to perform well on unseen data
+		\item It needs to answer a \textbf{specific} question or address a specific problem, \\
 		e.g. does a mammogram image show a healthy breast or is there a tumor? \\
 		Or does an ECG show a normal heart rhythm or arrhythmia?
-		\item And it produces a correct outcome (e.g. a diagnosis) often enough that we trust it!
+		\item And it needs to produce a correct prediction (such as a diagnosis) with high enough accuracy that we trust it!
 	\end{enumerate}
 	
 	\begin{itemize}
-		\item If we build models, we therefore need to evaluate its accuracy 
+		\item We therefore need to evaluate model accuracy when we want to establish ML for a specific task
 		\item before we can decide whether it is trustworthy enough to implement in real-life, 
-		\item like in a hospital where it could e.g. assist doctors in making decisions on treatment
+		\item like in a hospital where it could e.g. assist doctors in making decisions about treatment
 	\end{itemize}
 	
 	\begin{itemize}
-		\item But what exactly is \textsl{high accuracy} can not be defined with a one-size-fits-all approach: 
-		\item it depends on the problem we want to model. 	
-		\item a model needs to perform well in the real world, not in the lab (i.e. on training data)
-		\item just because a model performs well in the lab, doesn't mean it will also perform well in deployment
-		\item the context might change: distribution, missing data, noise, class size, etc.
+		\item But what exactly denotes a \textsl{high enough accuracy} can not be defined with a one-size-fits-all approach: 
+		\item accuracy depends on the problem we want to model because	
+		\item a model needs to perform well in the real world, not in the lab on training data
 	\end{itemize}
 }
 
@@ -531,13 +521,13 @@
 \end{frame}
 
 \note{
-	ML concepts are not new, but the increase in computational capacity has made them more accessible
-	
-	Machine learning is the subfield of computer science that, according to Arthur Samuel in 1959, gives "computers the ability to learn without being explicitly programmed."[1] Evolved from the study of pattern recognition and computational learning theory in artificial intelligence,[2] machine learning explores the study and construction of algorithms that can learn from and make predictions on data[3] ? such algorithms overcome following strictly static program instructions by making data driven predictions or decisions,[4]:2 through building a model from sample inputs. Machine learning is employed in a range of computing tasks where designing and programming explicit algorithms with good performance is difficult or unfeasible; example applications include email filtering, detection of network intruders or malicious insiders working towards a data breach,[5] optical character recognition (OCR),[6] learning to rank and computer vision.
-	
-	Machine learning is closely related to (and often overlaps with) computational statistics, which also focuses on prediction-making through the use of computers. It has strong ties to mathematical optimization, which delivers methods, theory and application domains to the field. Machine learning is sometimes conflated with data mining,[7] where the latter subfield focuses more on exploratory data analysis and is known as unsupervised learning.[4]:vii[8] Machine learning can also be unsupervised[9] and be used to learn and establish baseline behavioral profiles for various entities[10] and then used to find meaningful anomalies.
-	
-	Within the field of data analytics, machine learning is a method used to devise complex models and algorithms that lend themselves to prediction; in commercial use, this is known as predictive analytics. These analytical models allow researchers, data scientists, engineers, and analysts to "produce reliable, repeatable decisions and results" and uncover "hidden insights" through learning from historical relationships and trends in the data.[11]
+	\begin{itemize}
+		\item ML is a subfield of computer science
+		\item that falls in the general category of AI
+		\item In ML, algorithms learn models from known data
+		\item and are then able to use this inferred knowledge for predicting unknown data 
+		\item ML concepts are not new, but the increase in computational capacity and the bigger amounts of data that we are able to collect in shorter periods of time, has made them more accessible and applicable
+	\end{itemize}
 }
 
 \begin{frame}
@@ -596,23 +586,26 @@
 
 \note{
 	\begin{itemize}
-		\item Unsupervised:
-		\item no input!
-		\item matrix decomposition methods, e.g. nonnegative matrix factorization
-		\item pattern recognition
-		\item clusters data into different groups
-		\item able to recover biomarkers of disease and toxicity
+		\item ML is generally divided into two categories: Supervised and unsupervised
+		\item even though there are also hybrid methods, called semi-supervised
 	\end{itemize}
 
 	\begin{itemize}
-		\item Supervised
-		\item classification labels are given
-		\item e.g. support vector machine
+		\item In supervised learning,
+		\item classification labels are assigned to each training sample
+		\item these labels are then used as output variables for the model
+		\item Examples are SVM or decision trees
+	\end{itemize}
+	
+	\begin{itemize}
+		\item Unsupervised learning on the other hand does not require an input, like class lables
+		\item Methods, like matrix decomposition, e.g. nonnegative matrix factorization
+		\item basically perform pattern recognition and 
+		\item cluster similar data points into groups
 	\end{itemize}
 
 	\begin{itemize}
-	\item Semi-supervised:
-	\item a little bit of input, like how many classes to find
+	\item Semi-supervised methods require a little bit of input, like how many clusters or classes to find in the data
 	\end{itemize}
 
 	Here, I will focus on supervised learning!
@@ -705,24 +698,23 @@
 
 \note{
 	\begin{itemize}
-		\item Supervised learning!
-		\item Your learning algorithm seeks a function from inputs to the respective targets. 
-		\item If the targets are expressed in some classes, it is called classification problem. 
-		\item Alternatively, if the target space is continuous, it is called regression problem.
+		\item Within supervised learning, the two main task are classification and regression.
+		\item Let's say your learning algorithm seeks a function that predicts a response variable from input variables. 
+		\item If the response variable is expressed as classes, it is a classification problem. 
+		\item Alternatively, if the response variable space is continuous, it is a regression problem.
 	\end{itemize}
 
 	\begin{itemize}
 		\item Functions created by linear regression algorithms are probably the most interpretable class of models.
 		\item For this reason, linear models were the go-to applied predictive modeling tool for decades, 
-		\item even though it usually meant giving up a couple points on the accuracy scale. 
-		\item These models will be referred to here as 'linear and monotonic',
-		\item meaning that for a change in any given independent variable, the response function changes at a defined rate, 
+		\item even though this usually meant obtaining a somewhat lower accuracy could have been achieved with more complex models.
+		\item In linear models, for every change in any given independent variable, the response function changes at a defined rate, 
 		\item in only one direction, and at a magnitude represented by a readily available coefficient
 	\end{itemize}
 
 	\begin{itemize}
-		\item Most machine learning algorithms create nonlinear, non-monotonic response functions. 
-		\item This class of functions is the most difficult to interpret, as they can change in a positive and negative direction and at a varying rate for any change in an independent variable. 
+		\item Most machine learning algorithms however, create nonlinear response functions. 
+		\item These more complex models are the most difficult to interpret, because they can change in a positive and negative direction and at a varying rate for any change in an independent variable. 
 		\item Typically, the only standard interpretability measure these functions provide are relative variable importance measures
 	\end{itemize}
 }
@@ -763,16 +755,16 @@
 
 \note{
 	\begin{itemize}
-		\item Machine learning uses so called features (i.e. variables or attributes) to generate predictive models
-		\item Using a suitable combination of features is essential for obtaining high precision and accuracy. 
+		\item Machine learning uses so called features (sometimes also called variables or attributes) to generate predictive models
+		\item Using a suitable combination of features is essential for obtaining high accuracy. 
 		\item Because too many (unspecific) features pose the problem of overfitting the model, we generally want to restrict the features in our models to those, that are most relevant for the response variable we want to predict. 
 		\item Using as few features as possible will also reduce the complexity of our models, which means it needs less time and computer power to run and is easier to understand. 
-		\item Sometimes extraction of salient structure in the data that is more informative than the raw data itself (the feature extraction problem)
+		\item Sometimes extraction of salient structure in the data that is more informative than the raw data itself 		\item this describes the feature extraction or feature engineering problem
 	\end{itemize}
 }
 
 \begin{frame}
-	\frametitle{Training, (cross-) validation and test data}
+	\frametitle{Training, cross-validation and test data}
 	
 	\begin{center}
 		\begin{tikzpicture}
@@ -861,23 +853,16 @@
 \end{frame}
 
 \note{
-	Decide cross validation strategy - To avoid overfitting, make sure you've set up a cross validation strategy in early stages. A nice CV strategy will help you get reliable score on leaderboard.
-	
-	preventing overfitting, we want our models to be generalizable
-	
-	Cross validation means that from my main set, I create RANDOMLY 2 sets. I built (train) my algorithm with the first one (let?s call it training set) and score the other (let?s call it validation set). I repeat this process multiple times and always check how my model performs on the test set in respect to the metric I want to optimize.
-	
-	The process may look like:
-	
-	For 10 (you choose how many X) times
-	Split the set in training (50%-90% of the original data)
-	And validation (50%-10%  of the original data)
-	Then fit the algorithm on the training set
-	Score the validation set.
-	Save the result of that scoring in respect to the chosen metric.
-	Calculate the average of these 10 (X) times. That how much you expect this score in real life and is generally a good estimate.
-	Remember to use a SEED to be able to replicate these X splits
-	Other things to consider is Kfold and stratified KFold . Read here. For time sensitive data, make certain you always the rule of having past predicting future when testings.
+	\begin{itemize}
+		\item A central aspect of modeling is to make them generalizable and avoid overfitting
+		\item to achieve this, we can want to train our model on a dataset that separate from a test set
+		\item in addition, we can add cross-validation strategies to the modeling process itself
+		\item CV means that the main training set is randomly subdivided into 2 sets:
+		\item one for actual training and one for validation
+		\item the model is then trained on the training subset and predictions on the validation-hold-out-set are used to calculate and accuracy score
+		\item this process is repeated several times (e.g. 5-fold)
+		\item the prediction performance of the cross-validation can be used to optimize modeling
+	\end{itemize}
 }
 
 \begin{frame}[plain, c]
@@ -915,6 +900,15 @@
 	\end{tikzpicture}
 \end{frame}
 
+\note{
+	\begin{itemize}
+		\item Here, I want to briefly summarize the most important aspects from my talk so far
+		\item We will now look at a hands-on example of ML modeling in R
+		\item When doing the actual work, I know from experience that it is easy to get caught up in the nitty gritty of writing code and trying out different things
+		\item but I want to encourage you to try and not loose sight of the bigger picture
+	\end{itemize}
+}
+
 %%%%%%%%%%%%%%%%%%%%%
 %	SECTION
 %	How to build ML models in R
@@ -928,7 +922,8 @@
 	\begin{itemize}
 		\item \href{http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/}{Breast Cancer Wisconsin Dataset}\footfullcite{Wolberg01121990} \\ \vspace{0.1cm}
 		\includegraphics[height=2cm]{images/Needle_Biopsy.jpg}
-		\includegraphics[height=2cm]{images/fna.jpg} \vspace{0.1cm}
+		\includegraphics[height=2cm]{images/fna.jpg} \\
+		\hspace{1.7cm} \footnotesize{\textit{Image Source: Wikipedia}} \vspace{0.1cm}
 		\item caret\footfullcite{caret}
 		\item h2o\footfullcite{h2o}
 	\end{itemize}
@@ -946,8 +941,9 @@
 
 \note{
 	\begin{itemize}
-		\item This breast cancer databases was obtained from the University of Wisconsin Hospitals, Madison
-		\item from Dr. William H. Wolberg
+		\item First, a few words about the logistics:
+		\item All analyses have been done in R 3.3.3 using RStudio 1.0.136
+		\item As case study example, I am using the breast cancer dataset from Dr. William H. Wolberg of the University of Wisconsin Hospitals, Madison
 	\end{itemize}
 	
 	\begin{itemize}
@@ -1004,20 +1000,20 @@
 
 \note{
 	\begin{itemize}
-		\item Understand the data
-		\item Look at data types. 
-		\item Check variable classes. 
-		\item Create some univariate - bivariate plots to understand the nature of variables.
-		\item Most important to know is the distribution: are the classes balanced?
+		\item Before begin thinking about machine learning, we should get to know our data
+		\item This is crucial to understanding the data and later on the model and it's interpretations
+		\item A few basic things you can do are: Look at data types (categorical vs continuous, etc.) 
+		\item Check variable classes (what is good outcome to train on). 
+		\item Two specific things that are important to know for ML are:
+		\item 1) the distribution: are the classes balanced?
 		\item If we have unbalanced data, this will effect our model later on \\
 		We would have to consider over- or undersampling.
-	\end{itemize}
-
-	\begin{itemize}
-		\item Missing data
+		\item the two plots show on the left: the data used to demonstrate classification, where we want to predict the classes 'benign' or 'malignant'
+		\item the right plot show the example variable used to demonstrate regression: clump thickness
+		\item 2) Missing data is another important aspect for modeling
 		\item If we have lots of data and few missing values, we can afford to loose these data points.
 		\item If we don't have that much data though, our model will probably loose significant power if we remove the samples.
-		\item In that case, we would rather introduce a certain uncertainty by imputing missing values. 
+		\item In that case, we would rather introduce some uncertainty by imputing missing values. 
 	\end{itemize}	
 }
 
@@ -1045,7 +1041,7 @@
 	\begin{itemize}
 		\item Most real data sets are hard to see because they have many variables and many rows
 		\item visualization can help when we reduce the complexity
-		\item There are many techniques for projecting the rows of a data set from a usually high-dimensional original space into a more visually understandable lower-dimensional space:
+		\item There are many techniques for projecting the rows of a data set from a high-dimensional original space to a more visually understandable lower-dimensional space:
 		\item Principal Component Analysis (PCA)
 		\item Multidimensional Scaling (MDS)
 		\item t-distributed Stochastic Neighbor Embedding (t-SNE)
@@ -1054,10 +1050,11 @@
 
 	\begin{itemize}
 		\item To get an idea about the dimensionality and variance of the datasets, I am first looking at PCA plots
-		\item for samples and features
 		\item Principal component analysis (PCA) is a statistical procedure that uses an orthogonal transformation ...
 		\item ... to convert a set of observations into a set of values of linearly uncorrelated variables called principal components
-		\item The first two principal components (PCs) show the two components that explain the majority of variation in the data
+		\item The first two principal components (PCs) show the two major trends in the data that explain the majority of variation in the data
+		\item PCA can be done on any data matrix. Here I color the points by class label.
+		\item From this plot, you can already see that there is a general trend in the total dataset that samples from the two classes are distinguishable: the majority of variation comes from whether a sample came from a benign or malignant mass
 	\end{itemize}
 }
 
@@ -1074,6 +1071,17 @@
 	\includegraphics[width=0.7\textwidth]{webinar_code_files/figure-latex/features-1.pdf}
 \end{frame}
 
+\note{
+	\begin{itemize}
+		\item Next, we want to get an idea about the features.
+		\item By simply plotting the distribution, we can already get a feeling of how good they are for telling apart \\ our two class labels.
+		\item Here, we only have a small dataset with 9 features
+		\item If you have bigger dataset, this might of course not be practical to look at individually any more.
+		\item But here, we can nicely see that malignant samples seem to have a much broader range of values in all features than \\ the benign samples
+		\item Based on this, we could already assume that a sample with a generally higher value in \\ most features is likely malignant
+	\end{itemize}
+}
+
 \begin{frame}
 	\frametitle{Get to know your data}
 	\alert{Correlation}
@@ -1082,27 +1090,39 @@
 	\includegraphics[width=0.9\textwidth]{webinar_code_files/figure-latex/corr_plot-1.pdf}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Get to know your data}
-	\alert{Correlation graphs}
-
-	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/cor_graph-1} \end{center}
-\end{frame}
-
 \note{
 	\begin{itemize}
-		\item A correlation graph is a two-dimensional representation of the relationships (correlation) in a data set
-		\item Pearson correlation coefficient between features
-		\item node size: sum of correlation coefficients
-		\item edge width: correlation coefficient
+		\item Correlation between features is also of interest.
+		\item features with a high correlation might be regulated by common factors
+		\item on the other hand, highly correlated features will also give redundant information and we might want to consider \\ either leaving only one of these features or combining them into a new engineered feature.
+		\item features that are highly correlated with the classes are also probably features of high importance for the \\ prediction model later on
+		\item here, I show a correlation heatmap of Pearson correlation coefficients 
+		\item we can directly see that uniformity of cell shape and cell size are very highly correlated
+		\item and mitosis is the one feature with comparably low correlation - also with the classes, so it likely \\ will not contribute much in terms of predictive power
 	\end{itemize}
 }
+
+%\begin{frame}
+%	\frametitle{Get to know your data}
+%	\alert{Correlation graphs}
+%
+%	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/cor_graph-1} \end{center}
+%\end{frame}
+
+%\note{
+%	\begin{itemize}
+%		\item A correlation graph is a two-dimensional representation of the relationships (correlation) in a data set
+%		\item Pearson correlation coefficient between features
+%		\item node size: sum of correlation coefficients
+%		\item edge width: correlation coefficient
+%	\end{itemize}
+%}
 
 
 \begin{frame}
 	\frametitle{Training, validation and test data}
 	
-	We need to split the data into training and test sets - \\
+	Splitting the data into training and test sets - \\
 	ideally \alert{stratified} by response class.
 	
 	\vspace{0.5cm}
@@ -1112,7 +1132,10 @@
 \end{frame}
 
 \note{
-	For accurate predictions, density distribution should be similar in training and test data!
+	\begin{itemize}
+		\item We now want to split the data randomly into training and test sets
+		\item the density distribution should be similar in training and test data!
+	\end{itemize}
 }
 
 \begin{frame}
@@ -1157,25 +1180,28 @@
 \end{frame}
 
 \note{
-	There are over 250 ML algorithms implemented with caret alone. I am going to focus on two of the most widely used.
+	\begin{itemize}
+		\item Now we can go ahead with actual modeling:
+		\item There are over 250 ML algorithms implemented in caret alone. 
+		\item But I am going to focus on two of the most widely used: GLM and RF
+	\end{itemize}
 	
 	\begin{itemize}
 		\item traditional linear models tend to create linear, monotonic, and continuous functions 
-		\item Even though they?re not always the most accurate predictors, the elegant simplicity of linear models makes the results they generate easy to interpret.
+		\item Even though they're not always the most accurate predictors, the simplicity of linear models makes the results they generate easy to interpret.
+		\item Random Forests are decision tree based algorithms and I will explain them in more detail in a minute
 	\end{itemize}
 
 	\begin{itemize}
-		\item Of course, you need quite a bit of experience and intuition to hit on a good combination of parameters.
+		\item Of course, you need quite a bit of experience and intuition to hit on a good combination of parameters for modeling.
 		\item That's why it usually makes sense to do a grid search for hyper-parameter tuning. 
-		\item Hyper-parameter tuning with grid search allows us to test different combinations of hyper-parameters and find one with improved accuracy.
-		\item We can use the h2o.grid() function to perform a Random Grid Search (RGS). We could also test all possible combinations of parameters with Cartesian Grid or exhaustive search, but RGS is much faster when we have a large number of possible combinations and usually finds sufficiently accurate models.
-		\item Based on the results of each model tested in the grid, we can choose the one with the highest accuracy or best performance for the question on hand
+		\item It allows us to test different combinations of hyper-parameters and find one with improved accuracy.
 	\end{itemize}
 }
 
 \begin{frame}
 	\frametitle{Classification with tree-based models}
-	\alert{Decision trees} \\ e.g. Random Forest and gradient boosting trees
+	\alert{Decision trees} 
 		
 	\begin{center}\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/decision_tree-1} \end{center}
 
@@ -1183,40 +1209,46 @@
 
 \note{
 	\begin{itemize}
+		\item Decision trees are the basis for Random forest and boosting trees
+		\item One decision tree is built the following way:
 		\item We start with a group of samples
-		\item for each sample, we assign a class: e.g. it comes from a benign or malignant tumor
+		\item for each sample, we assign a class: e.g. it being from benign or malignant
 		\item for each sample, we also have a number of features
-		\item a decision trees separates the data at several nodes to end up with classifications at the final leaves
-		\item the model learns a conditional structure of discriminative features
+		\item a decision trees then separates the data at several nodes to end up with classifications at the final leaves
+		\item this way, the model learns a conditional structure of discriminative features
 	\end{itemize}
 
 	\begin{itemize}
 		\item Random Forests produces multiple decision trees
 		\item with some level of randomness
 		\item Every node in the decision trees is a condition on a single feature, designed to split the dataset into two so that similar response values end up in the same set
-		\item each tree is evaluated regarding how well it classified the samples (cross-validation)
-		\item ensemble of all trees is used for prediction
-		\item better generalization than individual trees
+		\item each tree is evaluated regarding how well it classified the samples (using e.g. cross-validation)
+		\item an ensemble of all trees is then used for prediction
+		\item this affords RF better generalization abilities than individual trees
+		\item Individual trees are interpretable
+		\item but with more trees and more features the final models become vastly more complex
+		\item So, while theoretically we would be able to understand models based on decision trees, in reality, we usually can not
 	\end{itemize}
 }
 
-%\begin{frame}
-%	\frametitle{Feature importance}
+\begin{frame}
+	\frametitle{Feature importance}
 	
-%	\begin{center}\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/importance_rf-1.pdf} \end{center}
-%\end{frame}
+	\begin{center}\includegraphics[width=0.8\textwidth]{webinar_code_files/figure-latex/importance_rf-1.pdf} \end{center}
+\end{frame}
 
 \note{
 	\begin{itemize}
-		\item Not all of the features I created will be equally important to the model. 
+		\item Not all of the features will be equally important to the model. 
 		\item A benefit of using ensembles of decision tree methods is that they can automatically provide estimates of feature importance from a trained predictive model.
-		\item Generally, importance provides a score that indicates how useful or valuable each feature was in the construction of the decision trees within the model. 
+		\item Generally, importance provides a score that indicates how useful or valuable each feature was \\ in the construction of the decision trees within the model. 
 		\item The more an attribute is used to make key decisions with decision trees, the higher its relative importance.
-		\item Importance is calculated for a single decision tree by the amount that each attribute split point improves the performance measure, weighted by the number of observations the node is responsible for.
+		\item Importance is calculated for a single decision tree by how much each attribute split improves the performance \\ measure, weighted by the number of observations the node is responsible for.
 		\item The feature importances are then averaged across all of the the decision trees within the model.
-		\item when training a tree, it can be computed how much each feature decreases the weighted impurity in a tree. For a forest, the impurity decrease from each feature can be averaged and the features are ranked according to this measure.
+		%\item when training a tree, it can be computed how much each feature decreases the weighted impurity in a tree. For a forest, the impurity decrease from each feature can be averaged and the features are ranked according to this measure.
 		\item 'information gain' is the measure that tells us how good a tree model is
-		\item the measure based on which the (locally) optimal condition is chosen is called impurity. For classification, it is typically either Gini impurity or information gain/entropy and for regression trees it is variance
+		\item the measure based on which the (locally) optimal condition is chosen is called impurity. For classification, \\ it is typically either Gini impurity or information gain/entropy and for regression trees it is variance
+		\item If you think back to the correlation heatmap we generated earlier, we can see that the features with the highest correlation with the output classes also have the highest importance weights!
 	\end{itemize}
 }
 
@@ -1226,6 +1258,12 @@
 %%%%%%%%%%%%%%%%%%%%%
 
 \section{Evaluating model performance}
+
+\note{
+	\begin{itemize}
+		\item Because we usually build models that are too complex to really understand, we need other ways of assessing the trustworthiness of our models
+	\end{itemize}
+}
 
 \begin{frame}[plain, c]
 	\begin{center}
@@ -1243,16 +1281,15 @@
 
 \note{
 	\begin{itemize}
-		\item Golden Rule of ML: always test model performance on indepenent data
+		\item This is the Golden Rule of ML: always test model performance on independent data
 		\item otherwise you will get overly optimistic performance measures
-		\item The ultimate performance test for our model will be it's prediction accuracy on the test set it hasn't seen before.
+		\item The ultimate performance test for our model will always be it's prediction accuracy on a test set it hasn't seen before.
 	\end{itemize}
 }
 
-
 \begin{frame}
 	\frametitle{Predictions on test data}
-	\alert{Regression}
+	\alert{Generalized Linear Regression (GLM)} \\ response variable: clump thickness
 	
 	\begin{itemize}
 		\item RMSE: 1.97
@@ -1268,68 +1305,96 @@
 
 \note{
 	\begin{itemize}
-		\item Residuals refer to the difference between the recorded value the predicted value
-		\item Generally, the residuals of a well-fit model should be randomly distributed because good models will account for most phenomena in a data set, except for random error.
-	\end{itemize}
-
-	\begin{itemize}
+		\item Here, you can see the results from predicting clump thickness with a GLM model
+		\item To assess the accuracy, the model gives us the following output values: RMSE = root of the mean squared error and R-squared
 		\item In regression analysis, the term mean squared error refers to the unbiased estimate of error variance:
 		\item the residual sum of squares divided by the number of degrees of freedom
-		\item RMSE is a commonly used error metric to measure the performance of regression models.
-		\item in regression the predictor variable is a real number, therefore to measure the quality of the predicted value from some X algorithm you need to find some sort of difference between them. You do this by calculating the square of the error, take the mean across all test objects and take square root
-		\item A small RMSE means good prediction and large means bad model.
+		\item in regression the predictor variable is a real number, therefore to measure the quality of the predicted value from some algorithm you need to find some sort of difference between them. You do this by calculating the square of the error, take the mean across all test objects and take square root
+		\item A small RMSE means good prediction accuracy.
 		\item RMSE is strongly influenced by outliers!
 	\end{itemize}
 	
 	\begin{itemize}
 		\item R-squared is the ratio of explained variance to the total variance.
-		\item it is a measure of how much of the variance in y is explained by the model. If R2 is close to one, then the model?s predictions mirror true outcome
+		\item it is a measure of how much of the variance in y is explained by the model. If R2 is close to one, then the model's predictions are close to the true outcome
+	\end{itemize}
+	
+	\begin{itemize}
+		\item The plot on the left shows actual clump thickness (x-axis) vs predicted clump thickness from our model (y-axis)
+		\item the differences between actual and predicted values are the residulas
+		\item the plot on the right shows predicted values (x-axis) vs residuals (y-axis)
+		\item Generally, the residuals of a well-fit model should be randomly distributed because good models will account for most phenomena in a data set, except for random error.
+		\item We can conclude here, that our model was not very good at predicting clump thickness!
 	\end{itemize}
 }
 
 \begin{frame}
 	\frametitle{Predictions on test data}
-	\alert{Classification}
+	\alert{Classification with Random Forests}
 	
 	\begin{columns}
 	\column{0.5\textwidth}
 	
 	\centering
-	\includegraphics[width=0.9\textwidth]{images/results_matrix.pdf}
+	%\includegraphics[width=0.9\textwidth]{images/results_matrix.pdf}
+
+\begin{table}[]
+	\centering
+	\small
+	\begin{tabular}{@{}rrr@{}}
+		 & \textit{Reference} & \\
+		 \textit{Prediction} & benign & malignant \\
+		 benign & 133 & 2 \\
+		 malignant & 4 & 70 \\
+	\end{tabular}
+\end{table}
+
+\begin{itemize}
+	\item Recall/ Sensitivity: 0.97
+	\item Specificity: 0.97
+	\item Accuracy: 0.97
+	\item Balanced Accuracy: 0.97
+\end {itemize}
+
 	
 	\column{0.5\textwidth}
 	\centering	
 	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/results_bar_rf-1.pdf}
 	
 	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/results_jitter_rf-1.pdf} 
-\end{columns}\end{frame}
+\end{columns}
+\end{frame}
 
 \note{
 	\begin{itemize}
-		\item precision == positive predictive value: fraction of predictions that are correct
-		\item positive and negative predictive values: proportions of true positive and true negative results, depend on prevalence
-		\item prevalence: how often each category occurs in the population
+		\item Now we come to the classification models, here a example for predicting the class labels benign and malignant with Random Forests
+		\item When comparing true vs predicted class labels, we can generate a confusion matrix
+		\item We can also ask for a number of different measures about model performance:
 		\item recall == sensitivity == True Positive Rate: proportion of positives that are correctly identified (e.g., the percentage of sick people who are correctly identified as having the condition).
 		\item Specificity == True Negative Rate: proportion of negatives that are correctly identified (e.g., the percentage of healthy people who are correctly identified as not having the condition)
-		\item Inverse Precision and Recall: Precision and Recall where positive and negative labels are exchanged
-		\item detection rate == sensitivity
+		\item Accuracy: is the weighted arithmetic mean of Precision and Recall
+		%\item the p-value is calculated with a one-sided test to see if the accuracy is better than the "no information rate"
+		%\item No Information Rate: the proportion of classes that you would guess right if you randomly allocated them
+		%\item Kappa: can have values between -1 and 1. 1 or -1 show complete agreement, zero shows complete disagreement
+		%\item McNemar's test: statistical test applied to 2 x 2 contingency tables to determine whether the row and column marginal frequencies are equal
+		%\item positive and negative predictive values: proportions of true positive and true negative results, depend on prevalence (how often each class label occurred)
+		%\item Inverse Precision and Recall: Precision and Recall where positive and negative labels are exchanged
+		%\item detection rate == sensitivity
 	\end{itemize}
 
 	\begin{itemize}
-		\item Accuracy:  weighted arithmetic mean of Precision and Recall
-		\item Given a confusion matrix of classification results, the accuracy can be a misleading performance measure. Specifically,
-		it may falsely suggest above-chance generalizability:
-		\item in binary classification, a training set consisting of different numbers of representatives from either class may result in a classifier that is biased towards the more frequent class
-		\item  this classifier may yield an optimistic accuracy estimate
+		\item accuracy can be a misleading performance measure. Specifically, it may falsely suggest above-chance generalizability:
+		\item in binary classification, an unbalanced dataset may result in a classifier that is biased towards the more frequent class
 		\item Balanced accuracy:  average accuracy obtained on either class. Based on a confusion matrix
 	\end{itemize}
 
 	\begin{itemize}
-		\item p-value: one-sided test to see if the accuracy is better than the "no information rate"
-		\item No Information Rate: the proportion of classes that you would guess right if you randomly allocated them
-		\item Kappa: can have values between -1 and 1. 1 or -1 show complete agreement, zero shows complete disagreement
-		\item McNemar's test: statistical test applied to 2 x 2 contingency tables to determine whether the row and column marginal frequencies are equal
-	\end{itemize}
+		\item On the right, you can see the corresponding plots
+		\item above: how many predictions were correct
+		\item below: what prediction probabilities did our samples have if they were correctly or wrongly classified
+		\item Sometimes we can already see from this whether the default threshold of 0.5 makes sense
+		\item but more on prediction thresholds later
+	\end{itemize}	
 }
 
 \begin{frame}
@@ -1358,7 +1423,7 @@
 	\end{itemize}
 
 	\vspace{0.3cm}
-	Define a set of hyper-parameters:
+	\alert{Define a set of hyper-parameters:}
 	\begin{itemize}
 		\item number of trees
 		\item maximum tree depth
@@ -1368,7 +1433,7 @@
 
 	\vspace{0.3cm}
 	
-	Choose best model from grid:
+	\alert{Choose best model from grid:}
 	\begin{itemize}
 		\item h2o.getGrid()
 		\item AUC, error, accuracy, etc.
@@ -1377,12 +1442,17 @@
 \end{frame}
 
 \note{
-	We could also test all possible combinations of parameters with Cartesian Grid or exhaustive search, but RGS is much faster when we have a large number of possible combinations and usually finds sufficiently accurate models.
-	
-	For RGS, we first define a set of hyper-parameters and search criteria to fine-tune our models. Because there are many hyper-parameters, each with a range of possible values, we want to find an (ideally) optimal combination to maximize our model's accuracy. 
-	We can also specify how long we want to run the grid search for. Based on the results of each model tested in the grid, we can choose the one with the highest accuracy or best performance for the question on hand.
-	
-	We now want to extract the best model from the grid model list. What makes a model *the best* depends on the question you want to address with it: in some cases, the model with highest AUC is the most suitable, or the one with the lowest mean squared error, etc. We first use the `h2o.getGrid()` function to sort all models by the quality metric we choose (depending on the metric, you want it ordered by descending or ascending values). We can then get the model that's the first in the list to work with further. This model's hyper-parameters can be found with `best model@allparameters`. You can now work with your best model as with any regular model in **h2o**.
+	\begin{itemize}
+		\item When we build a models, we can define a number of parameters
+		\item to get the best possible model, we should test different parameter combinations
+		\item this, we can do with a grid search
+		\item We could test all possible combinations of parameters with Cartesian Grid or exhaustive search, but Random GS \\ is much faster when we have a large number of possible combinations and usually finds sufficiently accurate models.
+		\item We can use the h2o.grid() function to perform a Random Grid Search (RGS). 
+		\item For RGS, we first define a set of hyper-parameters and search criteria to fine-tune our models. \\ Because there are many hyper-parameters, each with a range of possible values, we want to find an (ideally) optimal combination to maximize our model's accuracy. 
+		\item We can also specify how long we want to run the grid search for.
+		\item We now want to extract the best model from the grid model list. What makes a model *the best* depends \\ on the question you want to address with it: in some cases, the model with highest AUC is the most suitable, \\ or the one with the lowest mean squared error, etc. 
+		\item We first use the `h2o.getGrid()` function to sort all models by the quality metric we choose \\ (depending on the metric, you want it ordered by descending or ascending values). \\ We can then get the model that's the first in the list to work with further.
+	\end{itemize}
 }
 
 \begin{frame}
@@ -1392,30 +1462,17 @@
 \end{frame}
 
 \note{
-	In statistics, the mean squared error (MSE) or mean squared deviation (MSD) of an estimator (of a procedure for estimating an unobserved quantity) measures the average of the squares of the errors or deviations?that is, the difference between the estimator and what is estimated. MSE is a risk function, corresponding to the expected value of the squared error loss or quadratic loss. The difference occurs because of randomness or because the estimator doesn't account for information that could produce a more accurate estimate.[1]
+	\begin{itemize}
+		\item The MSE as described for regression is a measure of the quality of an estimator. it is always non-negative, and values closer to zero are better.
 	
-	The MSE is a measure of the quality of an estimator?it is always non-negative, and values closer to zero are better.
+
+	\end{itemize}
+	%In statistics, the mean squared error (MSE) or mean squared deviation (MSD) of an estimator (of a procedure for estimating an unobserved quantity) measures the average of the squares of the errors or deviations?that is, the difference between the estimator and what is estimated. MSE is a risk function, corresponding to the expected value of the squared error loss or quadratic loss. The difference occurs because of randomness or because the estimator doesn't account for information that could produce a more accurate estimate.[1]
 	
-	The MSE is the second moment (about the origin) of the error, and thus incorporates both the variance of the estimator and its bias. For an unbiased estimator, the MSE is the variance of the estimator. Like the variance, MSE has the same units of measurement as the square of the quantity being estimated. In an analogy to standard deviation, taking the square root of MSE yields the root-mean-square error or root-mean-square deviation (RMSE or RMSD), which has the same units as the quantity being estimated; for an unbiased estimator, the RMSE is the square root of the variance, known as the standard deviation.
+		%The MSE is the second moment (about the origin) of the error, and thus incorporates both the variance of the estimator and its bias. For an unbiased estimator, the MSE is the variance of the estimator. Like the variance, MSE has the same units of measurement as the square of the quantity being estimated. In an analogy to standard deviation, taking the square root of MSE yields the root-mean-square error or root-mean-square deviation (RMSE or RMSD), which has the same units as the quantity being estimated; for an unbiased estimator, the RMSE is the square root of the variance, known as the standard deviation.
 	
-	The MSE assesses the quality of an estimator (i.e., a mathematical function mapping a sample of data to a parameter of the population from which the data is sampled) or a predictor (i.e., a function mapping arbitrary inputs to a sample of values of some random variable). Definition of an MSE differs according to whether one is describing an estimator or a predictor.
-	
-	Grid Search
-	
-	Start hyper parameter tuning - Once CV is at place, try improving model's accuracy using hyper parameter tuning. It further includes the following steps:
-	Data transformations: It involve steps like scaling, removing outliers, treating null values,  transform categorical variables, do feature selections, create interactions etc.
-	Choosing algorithms and tuning their hyper parameters: Try multiple algorithms to understand how model performance changes.
-	Saving results: From all the models trained above, make sure you save their predictions. They will be useful for ensembling.
-	Combining models: At last, ensemble the models, possibly on multiple levels. Make sure the models are correlated for best results.
+	%The MSE assesses the quality of an estimator (i.e., a mathematical function mapping a sample of data to a parameter of the population from which the data is sampled) or a predictor (i.e., a function mapping arbitrary inputs to a sample of values of some random variable). Definition of an MSE differs according to whether one is describing an estimator or a predictor.
 }
-
-\begin{frame}
-	\frametitle{Predictions on test data}
-	
-	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/final_predictions_rf-1.pdf} 
-
-	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/final_predictions_rf-2.pdf} 
-\end{frame}
 
 \begin{frame}
 	\frametitle{Predictions on test data}
@@ -1427,6 +1484,33 @@
 	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/prop_table-1.pdf} 
 \end{frame}
 
+\note{
+	\begin{itemize}
+		\item The default prediction threshold is 0.5
+		\item meaning that every sample where the model give a higher prediction probability than 0.5 for benign, \\ will get predicted as benign and vice versa for malignant
+		\item this threshold isn't always the best, though and we should look at the proportions of true predictions \\ for varying thresholds
+		\item here, we can also choose what we want to optimize for: a balanced accuracy for the two classes \\ or do we want to maximize accuracy for one class?
+	\end{itemize}
+}
+
+\begin{frame}
+	\frametitle{Predictions on test data}
+	
+	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/final_predictions_rf-1.pdf} 
+
+	\includegraphics[width=1\textwidth]{webinar_code_files/figure-latex/final_predictions_rf-2.pdf} 
+\end{frame}
+
+\note{
+	\begin{itemize}
+		\item And lastly, we can compare different models' prediction accuracies
+		\item and choose which one we want
+		\item here you see above the default predictions with a threshold of 0.5 for three models \\
+		chosen from grid search
+		\item below I set a more stringent threshold of 0.8 for both classes, meaning that I loose samples between 0.2 and 0.8 and consider them uncertain
+		\item now we have only correct classifications left for model 6 and could choose this for further validation we entirely new samples
+	\end{itemize}
+}
 
 \begin{frame}[plain, c]
 	
@@ -1455,15 +1539,29 @@
 
 	\begin{itemize}
 		\item \alert{evaluate} model performance on independent data
-		\item choose performance measure based on your specific problem
-		\item choose prediction threshold based on your specific problem
+		\item choose performance measure based on your \alert{specific} problem
+		\item choose prediction threshold based on your \alert{specific} problem
 	\end{itemize}
 
 \end{frame}
 
+\note{
+	\begin{itemize}
+		\item Just because a model performs well in the lab, doesn't mean it will also perform well in deployment
+		\item the context might change: distribution, missing data, noise, class size, etc.
+	\end{itemize}
+}
+
+
 \begin{frame}
 	\frametitle{Outlook}
 	
+	\begin{itemize}
+		\item ML could make health care more cost-effective by reducing the energy required for interpretation
+	\end{itemize}
+
+	\vspace{0.5cm}
+
 	\begin{itemize}
 		\item `Big Data' needs to be big!
 		\item the more data, the more accurate the models will be
@@ -1478,7 +1576,6 @@
 	\vspace{0.5cm}
 	
 	\begin{itemize}
-		\item ML could make health care more cost-effective by reducing the energy required for interpretation
 		\item issues: privacy, platform, quality standards
 	\end{itemize}
 \end{frame}
