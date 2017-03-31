@@ -3,16 +3,20 @@ title: "Building meaningful machine learning models for disease prediction"
 author: "Dr. Shirin Glander"
 date: "March 31, 2017"
 output:
-  html_document: default
+  md_document:
+    variant: markdown_github
   pdf_document:
     keep_tex: yes
+  html_document: default
 ---
 
 ## Webinar for the [ISDS R Group](http://www.syndromic.org/cop/r)
 
-This document presents the code used to produce the example analysis and figures shown in my webinar on building meaningful machine learning models for disease prediction.
+This document presents the code I used to produce the example analysis and figures shown in my webinar on building meaningful machine learning models for disease prediction.
 
-[My webinar slides are available on Github](https://github.com/ShirinG/Webinar\_ML\_for\_disease)
+[My webinar slides are available on Github](https://github.com/ShirinG/Webinar_ISDS/blob/master/Webinar_slides.pdf)
+
+<br>
 
 > **Description:** Dr Shirin Glander will go over her work on building machine-learning models to predict the course of different diseases. She will go over building a model, evaluating its performance, and answering or addressing different disease related questions using machine learning. Her talk will cover the theory of machine learning as it is applied using R.
 
@@ -101,7 +105,9 @@ The features characterise cell nucleus properties and were generated from image 
 - Classes, i.e. diagnosis
 
 ```{r eval=TRUE}
-bc_data <- read.table("datasets/breast-cancer-wisconsin.data.txt", header = FALSE, sep = ",")
+bc_data <- read.table("datasets/breast-cancer-wisconsin.data.txt", 
+                      header = FALSE, 
+                      sep = ",")
 colnames(bc_data) <- c("sample_code_number", 
                        "clump_thickness", 
                        "uniformity_of_cell_size", 
@@ -165,7 +171,7 @@ load("datasets/bc_data.RData")
 
 - Response variable for classification
 
-```{r response_classification, fig.width=5, fig.height=3}
+```{r response_classification, fig.width=5, fig.height=3, fig.align='center'}
 library(ggplot2)
 
 ggplot(bc_data, aes(x = classes, fill = classes)) +
@@ -176,7 +182,7 @@ ggplot(bc_data, aes(x = classes, fill = classes)) +
 
 - Response variable for regression
 
-```{r response_regression, fig.width=5, fig.height=3}
+```{r response_regression, fig.width=5, fig.height=3, fig.align='center'}
 ggplot(bc_data, aes(x = clump_thickness)) +
   geom_histogram(bins = 10)
 ```
@@ -185,7 +191,7 @@ ggplot(bc_data, aes(x = clump_thickness)) +
 
 - Principal Component Analysis
 
-```{r pca, fig.width=5, fig.height=3, warning=FALSE, message=FALSE}
+```{r pca, fig.width=5, fig.height=3, warning=FALSE, message=FALSE, fig.align='center'}
 library(pcaGoPromoter)
 library(ellipse)
 
@@ -215,7 +221,7 @@ ggplot(data = pcaOutput2, aes(x = PC1, y = PC2, group = groups, color = groups))
          y = paste0("PC2: ", round(pcaOutput$pov[2], digits = 2) * 100, "% variance")) 
 ```
 
-```{r mds_plot, echo=FALSE, eval=FALSE}
+```{r mds_plot, echo=FALSE, eval=FALSE, fig.align='center'}
 # Multidimensional Scaling 
 library(dplyr)
 select(bc_data, -1) %>%
@@ -227,7 +233,7 @@ select(bc_data, -1) %>%
     geom_point()
 ```
 
-```{r tsne_plot, echo=FALSE, eval=FALSE}
+```{r tsne_plot, echo=FALSE, eval=FALSE, fig.align='center'}
 # t-SNE dimensionality reduction 
 library(tsne)
 
@@ -242,7 +248,7 @@ select(bc_data, -1) %>%
 
 - Features
 
-```{r features, fig.width=8, fig.height=6, message=FALSE, warning=FALSE}
+```{r features, fig.width=8, fig.height=6, message=FALSE, warning=FALSE, fig.align='center'}
 library(tidyr)
 
 gather(bc_data, x, y, clump_thickness:mitosis) %>%
@@ -334,7 +340,7 @@ train_data <- bc_data[index, ]
 test_data  <- bc_data[-index, ]
 ```
 
-```{r distribution, fig.height=4, fig.width=8, fig.align="center", warning=FALSE, message=FALSE}
+```{r distribution, fig.height=4, fig.width=8, fig.align="center", warning=FALSE, message=FALSE, fig.align='center'}
 library(dplyr)
 
 rbind(data.frame(group = "train", train_data),
@@ -375,7 +381,7 @@ model_glm
 predictions <- predict(model_glm, test_data)
 ```
 
-```{r residuals, fig.width=5, fig.height=3}
+```{r residuals, fig.width=5, fig.height=3, fig.align='center'}
 # model_glm$finalModel$linear.predictors == model_glm$finalModel$fitted.values
 data.frame(residuals = resid(model_glm),
            predictors = model_glm$finalModel$linear.predictors) %>%
@@ -391,7 +397,7 @@ data.frame(residuals = resid(model_glm),
     geom_smooth(method = "lm")
 ```
 
-```{r regression_result, fig.width=5, fig.height=3}
+```{r regression_result, fig.width=5, fig.height=3, fig.align='center'}
 data.frame(actual = test_data$clump_thickness,
            predicted = predictions) %>%
   ggplot(aes(x = actual, y = predicted)) +
@@ -508,7 +514,7 @@ model_rf$finalModel$forest$xbestsplit
 
 - Feature Importance
 
-```{r importance_rf, warning=FALSE, message=FALSE, fig.width=5, fig.height=3}
+```{r importance_rf, warning=FALSE, message=FALSE, fig.width=5, fig.height=3, fig.align='center'}
 imp <- model_rf$finalModel$importance
 imp[order(imp, decreasing = TRUE), ]
 
@@ -525,7 +531,7 @@ plot(importance)
 confusionMatrix(predict(model_rf, test_data), test_data$classes)
 ```
 
-```{r results_bar_rf, fig.width=5, fig.height=3}
+```{r results_bar_rf, fig.width=5, fig.height=3, fig.align='center'}
 results <- data.frame(actual = test_data$classes,
                       predict(model_rf, test_data, type = "prob"))
 
@@ -538,7 +544,7 @@ ggplot(results, aes(x = prediction, fill = correct)) +
   geom_bar(position = "dodge")
 ```
 
-```{r results_jitter_rf, fig.width=5, fig.height=3}
+```{r results_jitter_rf, fig.width=5, fig.height=3, fig.align='center'}
 ggplot(results, aes(x = prediction, y = benign, color = correct, shape = correct)) +
   geom_jitter(size = 3, alpha = 0.6)
 ```
@@ -579,7 +585,7 @@ load("models/model_xgb.RData")
 
 - Feature Importance
 
-```{r importance_xgb, warning=FALSE, message=FALSE, fig.width=5, fig.height=3}
+```{r importance_xgb, warning=FALSE, message=FALSE, fig.width=5, fig.height=3, fig.align='center'}
 importance <- varImp(model_xgb, scale = TRUE)
 plot(importance)
 ```
@@ -592,7 +598,7 @@ plot(importance)
 confusionMatrix(predict(model_xgb, test_data), test_data$classes)
 ```
 
-```{r results_bar_xgb, fig.width=5, fig.height=3}
+```{r results_bar_xgb, fig.width=5, fig.height=3, fig.align='center'}
 results <- data.frame(actual = test_data$classes,
                       predict(model_xgb, test_data, type = "prob"))
 
@@ -605,7 +611,7 @@ ggplot(results, aes(x = prediction, fill = correct)) +
   geom_bar(position = "dodge")
 ```
 
-```{r results_jitter_xgb, fig.width=5, fig.height=3}
+```{r results_jitter_xgb, fig.width=5, fig.height=3, fig.align='center'}
 ggplot(results, aes(x = prediction, y = benign, color = correct, shape = correct)) +
   geom_jitter(size = 3, alpha = 0.6)
 ```
@@ -620,7 +626,7 @@ Performing feature selection on the whole dataset would lead to prediction bias,
 
 Correlations between all features are calculated and visualised with the *corrplot* package. I am then removing all features with a correlation higher than 0.7, keeping the feature with the lower mean.
 
-```{r}
+```{r fig.align='center'}
 library(corrplot)
 
 # calculate correlation matrix
@@ -643,7 +649,7 @@ train_data_cor <- train_data[, which(!colnames(train_data) %in% highlyCor)]
 
 Another way to choose features is with Recursive Feature Elimination. RFE uses a Random Forest algorithm to test combinations of features and rate each with an accuracy score. The combination with the highest score is usually preferential.
 
-```{r echo=FALSE, eval=FALSE}
+```{r echo=TRUE, eval=FALSE}
 set.seed(7)
 results_rfe <- rfe(x = train_data[, -1], 
                    y = train_data$classes, 
@@ -674,7 +680,7 @@ The Genetic Algorithm (GA) has been developed based on evolutionary principles o
 
 This concept of optimization can be applied to non-evolutionary models as well, like feature selection processes in machine learning.
 
-```{r echo=FALSE, eval=FALSE}
+```{r echo=TRUE, eval=FALSE}
 set.seed(27)
 model_ga <- gafs(x = train_data[, -1], 
                  y = train_data$classes,
@@ -695,7 +701,7 @@ save(model_ga, file = "models/model_ga.RData")
 load("models/model_ga.RData")
 ```
 
-```{r }
+```{r fig.align='center'}
 plot(model_ga) # Plot mean fitness (AUC) by generation
 
 train_data_ga <- train_data[, c(1, which(colnames(train_data) %in% model_ga$ga$final))]
@@ -730,7 +736,7 @@ save(model_rf_tune_auto, file = "models/model_rf_tune_auto.RData")
 load("models/model_rf_tune_auto.RData")
 ```
 
-```{r}
+```{r fig.align='center'}
 model_rf_tune_auto
 plot(model_rf_tune_auto)
 ```
@@ -766,7 +772,7 @@ save(model_rf_tune_man, file = "models/model_rf_tune_man.RData")
 load("models/model_rf_tune_man.RData")
 ```
 
-```{r}
+```{r fig.align='center'}
 model_rf_tune_man
 plot(model_rf_tune_man)
 ```
@@ -799,7 +805,7 @@ h2o.describe(bc_data_hf) %>%
          color = "")
 ```
 
-```{r corr_plot, warning=FALSE, message=FALSE}
+```{r corr_plot, warning=FALSE, message=FALSE, fig.align='center'}
 library(reshape2) # for melting
 
 bc_data_hf[, 1] <- h2o.asfactor(bc_data_hf[, 1])
@@ -842,7 +848,7 @@ summary(valid$classes, exact_quantiles = TRUE)
 summary(test$classes, exact_quantiles = TRUE)
 ```
 
-```{r pca_features}
+```{r pca_features, fig.align='center'}
 pca <- h2o.prcomp(training_frame = train,
            x = features,
            validation_frame = valid,
@@ -886,7 +892,8 @@ search_criteria <- list(
 
 ```{r eval=FALSE}
 rf_grid <- h2o.grid(algorithm = "randomForest", # h2o.randomForest, 
-                                                # alternatively h2o.gbm for Gradient boosting trees
+                                                # alternatively h2o.gbm 
+                                                # for Gradient boosting trees
                     x = features,
                     y = response,
                     grid_id = "rf_grid",
@@ -931,14 +938,13 @@ for (sort_by_2 in sort_options_2) {
 }
 ```
 
-```{r auc_mse, fig.height=5, fig.width=8}
+```{r auc_mse, fig.height=5, fig.width=8, fig.align='center'}
 files <- list.files(path = "models")
 rf_models <- files[grep("rf_grid_model", files)]
 
 for (model_id in rf_models) {
   
-  #path <- paste0("U:\\Github_blog\\Webinar\\Webinar_ML_for_disease\\models\\", model_id)
-  path <- paste0("/Users/Shirin/Documents/Github/Webinar_ML_for_disease/models/", model_id)
+  path <- paste0("U:\\Github_blog\\Webinar\\Webinar_ML_for_disease\\models\\", model_id)
   best_model <- h2o.loadModel(path)
   mse_auc_test <- data.frame(model_id = model_id, 
                              mse = h2o.mse(h2o.performance(best_model, test)),
@@ -977,18 +983,19 @@ for (model_id in rf_models) {
                                     as.data.frame(h2o.predict(object = best_model, 
                                                               newdata = test)))
   
-  finalRf_predictions$accurate <- ifelse(finalRf_predictions$actual == finalRf_predictions$predict, 
+  finalRf_predictions$accurate <- ifelse(finalRf_predictions$actual == 
+                                           finalRf_predictions$predict, 
                                          "yes", "no")
   
   finalRf_predictions$predict_stringent <- ifelse(finalRf_predictions$benign > 0.8, 
                                                   "benign", 
-                                                  ifelse(finalRf_predictions$malignant > 0.8, 
-                                                         "malignant", "uncertain"))
+                                                  ifelse(finalRf_predictions$malignant 
+                                                         > 0.8, "malignant", "uncertain"))
   
-  finalRf_predictions$accurate_stringent <- ifelse(finalRf_predictions$actual == finalRf_predictions$predict_stringent, 
-                                                   "yes", 
-                                         ifelse(finalRf_predictions$predict_stringent == "uncertain", 
-                                                "na", "no"))
+  finalRf_predictions$accurate_stringent <- ifelse(finalRf_predictions$actual == 
+                                                     finalRf_predictions$predict_stringent, "yes", 
+                                         ifelse(finalRf_predictions$predict_stringent == 
+                                                  "uncertain", "na", "no"))
   
   if (model_id == rf_models[[1]]) {
     
@@ -1002,7 +1009,7 @@ for (model_id in rf_models) {
 }
 ```
 
-```{r final_predictions_rf, fig.height=3, fig.width=9}
+```{r final_predictions_rf, fig.height=3, fig.width=9, fig.align='center'}
 finalRf_predictions_comb %>%
   ggplot(aes(x = actual, fill = accurate)) +
     geom_bar(position = "dodge") +
@@ -1022,10 +1029,7 @@ finalRf_predictions_comb %>%
 ```
 
 ```{r }
-#rf_model <- h2o.loadModel("U:\\Github_blog\\Webinar\\Webinar_ML_for_disease\\models\\rf_grid_model_6")
 rf_model <- h2o.loadModel("models/rf_grid_model_6")
-#summary(rf_model)
-#str(rf_model)
 ```
 
 ```{r }
@@ -1080,7 +1084,7 @@ perf
 plot(perf)
 ```
 
-```{r eval=FALSE, echo=FALSE}
+```{r eval=FALSE, echo=FALSE, fig.align='center'}
 perf@metrics$thresholds_and_metric_scores %>%
   ggplot(aes(x = fpr, y = tpr)) +
     geom_point() +
@@ -1098,16 +1102,21 @@ h2o.auc(perf)
 head(h2o.metric(perf))
 ```
 
-```{r}
+```{r fig.align='center'}
 finalRf_predictions <- data.frame(actual = as.vector(test$classes), 
-                                  as.data.frame(h2o.predict(object = rf_model, newdata = test)))
+                                  as.data.frame(h2o.predict(object = rf_model, 
+                                                            newdata = test)))
 
-finalRf_predictions$accurate <- ifelse(finalRf_predictions$actual == finalRf_predictions$predict, "yes", "no")
+finalRf_predictions$accurate <- ifelse(finalRf_predictions$actual == 
+                                         finalRf_predictions$predict, "yes", "no")
 
 finalRf_predictions$predict_stringent <- ifelse(finalRf_predictions$benign > 0.8, "benign", 
-                                                ifelse(finalRf_predictions$malignant > 0.8, "malignant", "uncertain"))
-finalRf_predictions$accurate_stringent <- ifelse(finalRf_predictions$actual == finalRf_predictions$predict_stringent, "yes", 
-                                       ifelse(finalRf_predictions$predict_stringent == "uncertain", "na", "no"))
+                                                ifelse(finalRf_predictions$malignant 
+                                                       > 0.8, "malignant", "uncertain"))
+finalRf_predictions$accurate_stringent <- ifelse(finalRf_predictions$actual == 
+                                                   finalRf_predictions$predict_stringent, "yes", 
+                                       ifelse(finalRf_predictions$predict_stringent == 
+                                                "uncertain", "na", "no"))
 
 finalRf_predictions %>%
   group_by(actual, predict) %>%
@@ -1118,7 +1127,7 @@ finalRf_predictions %>%
   dplyr::summarise(n = n())
 ```
 
-```{r}
+```{r fig.align='center'}
 finalRf_predictions %>%
   ggplot(aes(x = actual, fill = accurate)) +
     geom_bar(position = "dodge") +
@@ -1135,7 +1144,7 @@ finalRf_predictions %>%
          title = "Stringent predictions")
 ```
 
-```{r prop_table, fig.height=3, fig.width=6}
+```{r prop_table, fig.height=3, fig.width=6, fig.align='center'}
 df <- finalRf_predictions[, c(1, 3, 4)]
 
 thresholds <- seq(from = 0, to = 1, by = 0.1)

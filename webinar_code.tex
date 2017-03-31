@@ -135,8 +135,8 @@ This document presents the code used to produce the example analysis and
 figures shown in my webinar on building meaningful machine learning
 models for disease prediction.
 
-\href{https://github.com/ShirinG/Webinar_ML_for_disease}{My webinar
-slides are available on Github}
+\href{https://github.com/ShirinG/Webinar_ISDS/blob/master/Webinar_slides.pdf}{My
+webinar slides are available on Github}
 
 \begin{quote}
 \textbf{Description:} Dr Shirin Glander will go over her work on
@@ -207,7 +207,9 @@ aspirates (FNA)} of breast masses:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{bc_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"datasets/breast-cancer-wisconsin.data.txt"}\NormalTok{, }\DataTypeTok{header =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{sep =} \StringTok{","}\NormalTok{)}
+\NormalTok{bc_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"datasets/breast-cancer-wisconsin.data.txt"}\NormalTok{, }
+                      \DataTypeTok{header =} \OtherTok{FALSE}\NormalTok{, }
+                      \DataTypeTok{sep =} \StringTok{","}\NormalTok{)}
 \KeywordTok{colnames}\NormalTok{(bc_data) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"sample_code_number"}\NormalTok{, }
                        \StringTok{"clump_thickness"}\NormalTok{, }
                        \StringTok{"uniformity_of_cell_size"}\NormalTok{, }
@@ -296,7 +298,7 @@ Missing values are imputed with the \emph{mice} package.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/response_classification-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/response_classification-1} \end{center}
 
 \begin{itemize}
 \tightlist
@@ -311,7 +313,7 @@ Missing values are imputed with the \emph{mice} package.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/response_regression-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/response_regression-1} \end{center}
 
 \begin{itemize}
 \tightlist
@@ -351,7 +353,7 @@ Missing values are imputed with the \emph{mice} package.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/pca-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/pca-1} \end{center}
 
 \begin{itemize}
 \tightlist
@@ -472,7 +474,7 @@ data}\label{training-validation-and-test-data}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/residuals-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/residuals-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -485,7 +487,7 @@ data}\label{training-validation-and-test-data}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/residuals-2.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/residuals-2} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -596,7 +598,7 @@ cross-validation resuls with \texttt{model\_rf\$pred}.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/importance_rf-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/importance_rf-1} \end{center}
 
 \begin{itemize}
 \tightlist
@@ -654,7 +656,7 @@ cross-validation resuls with \texttt{model\_rf\$pred}.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/results_bar_rf-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/results_bar_rf-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -663,7 +665,7 @@ cross-validation resuls with \texttt{model\_rf\$pred}.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/results_jitter_rf-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/results_jitter_rf-1} \end{center}
 
 \paragraph{Extreme gradient boosting
 trees}\label{extreme-gradient-boosting-trees}
@@ -713,7 +715,7 @@ Here, I show a classification task.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/importance_xgb-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/importance_xgb-1} \end{center}
 
 \begin{itemize}
 \tightlist
@@ -771,7 +773,7 @@ Here, I show a classification task.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/results_bar_xgb-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/results_bar_xgb-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -780,7 +782,7 @@ Here, I show a classification task.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/results_jitter_xgb-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/results_jitter_xgb-1} \end{center}
 
 \subsubsection{Feature Selection}\label{feature-selection}
 
@@ -808,7 +810,7 @@ correlation higher than 0.7, keeping the feature with the lower mean.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-25-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-25-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -856,6 +858,16 @@ is usually preferential.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{7}\NormalTok{)}
+\NormalTok{results_rfe <-}\StringTok{ }\KeywordTok{rfe}\NormalTok{(}\DataTypeTok{x =} \NormalTok{train_data[, -}\DecValTok{1}\NormalTok{], }
+                   \DataTypeTok{y =} \NormalTok{train_data$classes, }
+                   \DataTypeTok{sizes =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{9}\NormalTok{), }
+                   \DataTypeTok{rfeControl =} \KeywordTok{rfeControl}\NormalTok{(}\DataTypeTok{functions =} \NormalTok{rfFuncs, }\DataTypeTok{method =} \StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \CommentTok{# chosen features}
 \KeywordTok{predictors}\NormalTok{(results_rfe)}
 \end{Highlighting}
@@ -898,11 +910,26 @@ as well, like feature selection processes in machine learning.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{27}\NormalTok{)}
+\NormalTok{model_ga <-}\StringTok{ }\KeywordTok{gafs}\NormalTok{(}\DataTypeTok{x =} \NormalTok{train_data[, -}\DecValTok{1}\NormalTok{], }
+                 \DataTypeTok{y =} \NormalTok{train_data$classes,}
+                 \DataTypeTok{iters =} \DecValTok{10}\NormalTok{, }\CommentTok{# generations of algorithm}
+                 \DataTypeTok{popSize =} \DecValTok{10}\NormalTok{, }\CommentTok{# population size for each generation}
+                 \DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"malignant"}\NormalTok{, }\StringTok{"benign"}\NormalTok{),}
+                 \DataTypeTok{gafsControl =} \KeywordTok{gafsControl}\NormalTok{(}\DataTypeTok{functions =} \NormalTok{rfGA, }\CommentTok{# Assess fitness with RF}
+                                           \DataTypeTok{method =} \StringTok{"cv"}\NormalTok{,    }\CommentTok{# 10 fold cross validation}
+                                           \DataTypeTok{genParallel =} \OtherTok{TRUE}\NormalTok{, }\CommentTok{# Use parallel programming}
+                                           \DataTypeTok{allowParallel =} \OtherTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{plot}\NormalTok{(model_ga) }\CommentTok{# Plot mean fitness (AUC) by generation}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-33-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/unnamed-chunk-33-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1063,21 +1090,21 @@ deep learning.
 ## H2O is not running yet, starting it now...
 ## 
 ## Note:  In case of errors look at the following log files:
-##     /var/folders/k5/yb4lljg51hg2vt_pt6nk9rcr0000gp/T//RtmppNiN8H/h2o_Shirin_started_from_r.out
-##     /var/folders/k5/yb4lljg51hg2vt_pt6nk9rcr0000gp/T//RtmppNiN8H/h2o_Shirin_started_from_r.err
+##     C:\Users\s_glan02\AppData\Local\Temp\RtmpcTqRr4/h2o_s_glan02_started_from_r.out
+##     C:\Users\s_glan02\AppData\Local\Temp\RtmpcTqRr4/h2o_s_glan02_started_from_r.err
 ## 
 ## 
-## Starting H2O JVM and connecting: ........ Connection successful!
+## Starting H2O JVM and connecting: . Connection successful!
 ## 
 ## R is connected to the H2O cluster: 
-##     H2O cluster uptime:         11 seconds 447 milliseconds 
+##     H2O cluster uptime:         1 seconds 788 milliseconds 
 ##     H2O cluster version:        3.10.3.6 
 ##     H2O cluster version age:    1 month and 9 days  
-##     H2O cluster name:           H2O_started_from_R_Shirin_tvy462 
+##     H2O cluster name:           H2O_started_from_R_s_glan02_tvy462 
 ##     H2O cluster total nodes:    1 
-##     H2O cluster total memory:   1.78 GB 
-##     H2O cluster total cores:    2 
-##     H2O cluster allowed cores:  2 
+##     H2O cluster total memory:   3.54 GB 
+##     H2O cluster total cores:    8 
+##     H2O cluster allowed cores:  8 
 ##     H2O cluster healthy:        TRUE 
 ##     H2O Connection ip:          localhost 
 ##     H2O Connection port:        54321 
@@ -1213,7 +1240,7 @@ data}\label{training-validation-and-test-data-1}
   |                                                                       
   |                                                                 |   0%
   |                                                                       
-  |====================================================             |  80%
+  |=============                                                    |  20%
   |                                                                       
   |=================================================================| 100%
 \end{verbatim}
@@ -1259,7 +1286,8 @@ data}\label{training-validation-and-test-data-1}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{rf_grid <-}\StringTok{ }\KeywordTok{h2o.grid}\NormalTok{(}\DataTypeTok{algorithm =} \StringTok{"randomForest"}\NormalTok{, }\CommentTok{# h2o.randomForest, }
-                                                \CommentTok{# alternatively h2o.gbm for Gradient boosting trees}
+                                                \CommentTok{# alternatively h2o.gbm }
+                                                \CommentTok{# for Gradient boosting trees}
                     \DataTypeTok{x =} \NormalTok{features,}
                     \DataTypeTok{y =} \NormalTok{response,}
                     \DataTypeTok{grid_id =} \StringTok{"rf_grid"}\NormalTok{,}
@@ -1314,8 +1342,7 @@ data}\label{training-validation-and-test-data-1}
 
 \NormalTok{for (model_id in rf_models) \{}
   
-  \CommentTok{#path <- paste0("U:\textbackslash{}\textbackslash{}Github_blog\textbackslash{}\textbackslash{}Webinar\textbackslash{}\textbackslash{}Webinar_ML_for_disease\textbackslash{}\textbackslash{}models\textbackslash{}\textbackslash{}", model_id)}
-  \NormalTok{path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"/Users/Shirin/Documents/Github/Webinar_ML_for_disease/models/"}\NormalTok{, model_id)}
+  \NormalTok{path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"U:}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Github_blog}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Webinar}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Webinar_ML_for_disease}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{models}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{"}\NormalTok{, model_id)}
   \NormalTok{best_model <-}\StringTok{ }\KeywordTok{h2o.loadModel}\NormalTok{(path)}
   \NormalTok{mse_auc_test <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{model_id =} \NormalTok{model_id, }
                              \DataTypeTok{mse =} \KeywordTok{h2o.mse}\NormalTok{(}\KeywordTok{h2o.performance}\NormalTok{(best_model, test)),}
@@ -1358,18 +1385,19 @@ data}\label{training-validation-and-test-data-1}
                                     \KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{h2o.predict}\NormalTok{(}\DataTypeTok{object =} \NormalTok{best_model, }
                                                               \DataTypeTok{newdata =} \NormalTok{test)))}
   
-  \NormalTok{finalRf_predictions$accurate <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(finalRf_predictions$actual ==}\StringTok{ }\NormalTok{finalRf_predictions$predict, }
+  \NormalTok{finalRf_predictions$accurate <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(finalRf_predictions$actual ==}\StringTok{ }
+\StringTok{                                           }\NormalTok{finalRf_predictions$predict, }
                                          \StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{)}
   
   \NormalTok{finalRf_predictions$predict_stringent <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(finalRf_predictions$benign >}\StringTok{ }\FloatTok{0.8}\NormalTok{, }
                                                   \StringTok{"benign"}\NormalTok{, }
-                                                  \KeywordTok{ifelse}\NormalTok{(finalRf_predictions$malignant >}\StringTok{ }\FloatTok{0.8}\NormalTok{, }
-                                                         \StringTok{"malignant"}\NormalTok{, }\StringTok{"uncertain"}\NormalTok{))}
+                                                  \KeywordTok{ifelse}\NormalTok{(finalRf_predictions$malignant }
+                                                         \NormalTok{>}\StringTok{ }\FloatTok{0.8}\NormalTok{, }\StringTok{"malignant"}\NormalTok{, }\StringTok{"uncertain"}\NormalTok{))}
   
-  \NormalTok{finalRf_predictions$accurate_stringent <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(finalRf_predictions$actual ==}\StringTok{ }\NormalTok{finalRf_predictions$predict_stringent, }
-                                                   \StringTok{"yes"}\NormalTok{, }
-                                         \KeywordTok{ifelse}\NormalTok{(finalRf_predictions$predict_stringent ==}\StringTok{ "uncertain"}\NormalTok{, }
-                                                \StringTok{"na"}\NormalTok{, }\StringTok{"no"}\NormalTok{))}
+  \NormalTok{finalRf_predictions$accurate_stringent <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(finalRf_predictions$actual ==}\StringTok{ }
+\StringTok{                                                     }\NormalTok{finalRf_predictions$predict_stringent, }\StringTok{"yes"}\NormalTok{, }
+                                         \KeywordTok{ifelse}\NormalTok{(finalRf_predictions$predict_stringent ==}\StringTok{ }
+\StringTok{                                                  "uncertain"}\NormalTok{, }\StringTok{"na"}\NormalTok{, }\StringTok{"no"}\NormalTok{))}
   
   \NormalTok{if (model_id ==}\StringTok{ }\NormalTok{rf_models[[}\DecValTok{1}\NormalTok{]]) \{}
     
@@ -1414,7 +1442,7 @@ data}\label{training-validation-and-test-data-1}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/final_predictions_rf-1.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/final_predictions_rf-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1429,14 +1457,11 @@ data}\label{training-validation-and-test-data-1}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{webinar_code_files/figure-latex/final_predictions_rf-2.pdf}
+\begin{center}\includegraphics{webinar_code_files/figure-latex/final_predictions_rf-2} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#rf_model <- h2o.loadModel("U:\textbackslash{}\textbackslash{}Github_blog\textbackslash{}\textbackslash{}Webinar\textbackslash{}\textbackslash{}Webinar_ML_for_disease\textbackslash{}\textbackslash{}models\textbackslash{}\textbackslash{}rf_grid_model_6")}
 \NormalTok{rf_model <-}\StringTok{ }\KeywordTok{h2o.loadModel}\NormalTok{(}\StringTok{"models/rf_grid_model_6"}\NormalTok{)}
-\CommentTok{#summary(rf_model)}
-\CommentTok{#str(rf_model)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1660,7 +1685,8 @@ data}\label{training-validation-and-test-data-1}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{finalRf_predictions <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{actual =} \KeywordTok{as.vector}\NormalTok{(test$classes), }
-                                  \KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{h2o.predict}\NormalTok{(}\DataTypeTok{object =} \NormalTok{rf_model, }\DataTypeTok{newdata =} \NormalTok{test)))}
+                                  \KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{h2o.predict}\NormalTok{(}\DataTypeTok{object =} \NormalTok{rf_model, }
+                                                            \DataTypeTok{newdata =} \NormalTok{test)))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1674,12 +1700,16 @@ data}\label{training-validation-and-test-data-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{finalRf_predictions$accurate <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(finalRf_predictions$actual ==}\StringTok{ }\NormalTok{finalRf_predictions$predict, }\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{)}
+\NormalTok{finalRf_predictions$accurate <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(finalRf_predictions$actual ==}\StringTok{ }
+\StringTok{                                         }\NormalTok{finalRf_predictions$predict, }\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{)}
 
 \NormalTok{finalRf_predictions$predict_stringent <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(finalRf_predictions$benign >}\StringTok{ }\FloatTok{0.8}\NormalTok{, }\StringTok{"benign"}\NormalTok{, }
-                                                \KeywordTok{ifelse}\NormalTok{(finalRf_predictions$malignant >}\StringTok{ }\FloatTok{0.8}\NormalTok{, }\StringTok{"malignant"}\NormalTok{, }\StringTok{"uncertain"}\NormalTok{))}
-\NormalTok{finalRf_predictions$accurate_stringent <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(finalRf_predictions$actual ==}\StringTok{ }\NormalTok{finalRf_predictions$predict_stringent, }\StringTok{"yes"}\NormalTok{, }
-                                       \KeywordTok{ifelse}\NormalTok{(finalRf_predictions$predict_stringent ==}\StringTok{ "uncertain"}\NormalTok{, }\StringTok{"na"}\NormalTok{, }\StringTok{"no"}\NormalTok{))}
+                                                \KeywordTok{ifelse}\NormalTok{(finalRf_predictions$malignant }
+                                                       \NormalTok{>}\StringTok{ }\FloatTok{0.8}\NormalTok{, }\StringTok{"malignant"}\NormalTok{, }\StringTok{"uncertain"}\NormalTok{))}
+\NormalTok{finalRf_predictions$accurate_stringent <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(finalRf_predictions$actual ==}\StringTok{ }
+\StringTok{                                                   }\NormalTok{finalRf_predictions$predict_stringent, }\StringTok{"yes"}\NormalTok{, }
+                                       \KeywordTok{ifelse}\NormalTok{(finalRf_predictions$predict_stringent ==}\StringTok{ }
+\StringTok{                                                "uncertain"}\NormalTok{, }\StringTok{"na"}\NormalTok{, }\StringTok{"no"}\NormalTok{))}
 
 \NormalTok{finalRf_predictions %>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(actual, predict) %>%}
@@ -1807,11 +1837,15 @@ category listing for \textbf{machine\_learning} on my blog}.
 
 \begin{verbatim}
 ## R version 3.3.3 (2017-03-06)
-## Platform: x86_64-apple-darwin13.4.0 (64-bit)
-## Running under: macOS Sierra 10.12.3
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 7 x64 (build 7601) Service Pack 1
 ## 
 ## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## [1] LC_COLLATE=English_United States.1252 
+## [2] LC_CTYPE=English_United States.1252   
+## [3] LC_MONETARY=English_United States.1252
+## [4] LC_NUMERIC=C                          
+## [5] LC_TIME=English_United States.1252    
 ## 
 ## attached base packages:
 ## [1] stats4    parallel  stats     graphics  grDevices utils     datasets 
@@ -1821,29 +1855,29 @@ category listing for \textbf{machine\_learning} on my blog}.
 ##  [1] ggrepel_0.6.5        reshape2_1.4.2       h2o_3.10.3.6        
 ##  [4] corrplot_0.77        plyr_1.8.4           xgboost_0.6-4       
 ##  [7] randomForest_4.6-12  dplyr_0.5.0          caret_6.0-73        
-## [10] lattice_0.20-34      doParallel_1.0.10    iterators_1.0.8     
+## [10] lattice_0.20-35      doParallel_1.0.10    iterators_1.0.8     
 ## [13] foreach_1.4.3        tidyr_0.6.1          pcaGoPromoter_1.18.0
 ## [16] Biostrings_2.42.1    XVector_0.14.0       IRanges_2.8.1       
 ## [19] S4Vectors_0.12.1     BiocGenerics_0.20.0  ellipse_0.3-8       
-## [22] ggplot2_2.2.1       
+## [22] ggplot2_2.2.1.9000  
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.9          class_7.3-14         assertthat_0.1      
+##  [1] Rcpp_0.12.10         class_7.3-14         assertthat_0.1      
 ##  [4] rprojroot_1.2        digest_0.6.12        R6_2.2.0            
 ##  [7] backports_1.0.5      MatrixModels_0.4-1   RSQLite_1.1-2       
 ## [10] evaluate_0.10        e1071_1.6-8          zlibbioc_1.20.0     
 ## [13] lazyeval_0.2.0       minqa_1.2.4          data.table_1.10.4   
-## [16] SparseM_1.74         car_2.1-4            nloptr_1.0.4        
-## [19] Matrix_1.2-8         rmarkdown_1.3        labeling_0.3        
+## [16] SparseM_1.76         car_2.1-4            nloptr_1.0.4        
+## [19] Matrix_1.2-8         rmarkdown_1.4        labeling_0.3        
 ## [22] splines_3.3.3        lme4_1.1-12          stringr_1.2.0       
 ## [25] RCurl_1.95-4.8       munsell_0.4.3        mgcv_1.8-17         
 ## [28] htmltools_0.3.5      nnet_7.3-12          tibble_1.2          
 ## [31] codetools_0.2-15     MASS_7.3-45          bitops_1.0-6        
 ## [34] ModelMetrics_1.1.0   grid_3.3.3           nlme_3.1-131        
-## [37] jsonlite_1.2         gtable_0.2.0         DBI_0.5-1           
-## [40] magrittr_1.5         scales_0.4.1         stringi_1.1.2       
+## [37] jsonlite_1.3         gtable_0.2.0         DBI_0.6             
+## [40] magrittr_1.5         scales_0.4.1         stringi_1.1.3       
 ## [43] RColorBrewer_1.1-2   tools_3.3.3          Biobase_2.34.0      
-## [46] pbkrtest_0.4-6       yaml_2.1.14          AnnotationDbi_1.36.0
+## [46] pbkrtest_0.4-7       yaml_2.1.14          AnnotationDbi_1.36.2
 ## [49] colorspace_1.3-2     memoise_1.0.0        knitr_1.15.1        
 ## [52] quantreg_5.29
 \end{verbatim}
